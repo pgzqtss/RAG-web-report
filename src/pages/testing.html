@@ -1,227 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Requirements - QuickStart Bootstrap Template</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Testing - Rag-n-Bones</title>
 
   <!-- Favicons -->
-  <link href="../../assets/img/favicon.png" rel="icon">
-  <link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="../../assets/img/favicon.png" rel="icon" />
+  <link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Fonts & CSS -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Nunito:wght@700&display=swap" rel="stylesheet" />
+  <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <link href="../../assets/vendor/aos/aos.css" rel="stylesheet" />
+  <link href="../../assets/css/main.css" rel="stylesheet" />
 
-  <!-- Vendor CSS Files -->
-  <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../../assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
-  <link href="../../assets/css/main.css" rel="stylesheet">
-
-  <!-- 你可以在此处写一些页面专属的样式 -->
   <style>
-    /* Hero 区域的简易渐变背景示例 */
-    .requirements-hero {
-      background: linear-gradient(90deg, #f7672f 0%, #6f2fb8 100%);
-      padding: 60px 0;
-      text-align: center;
-      color: #fff;
+    pre code {
+      display: block;
+      background-color: #f4f6f8; /* 浅灰蓝色背景 */
+      color: #2d2d2d;            /* 深灰色文字 */
+      padding: 16px;
+     border-radius: 8px;
+     border: 1px solid #d0d7de;
+      font-family: 'Courier New', monospace;
+     font-size: 14px;
+     overflow-x: auto;
+     white-space: pre-wrap;
+      word-break: break-word;
     }
-    .requirements-hero h1 {
-      margin-bottom: 10px;
-      font-weight: 700;
-      font-size: 48px;
+    [id]::before {
+      content: "";
+      display: block;
+      height: 100px; /* header 高度 */
+      margin-top: -100px;
+      visibility: hidden;
     }
-    .requirements-hero .breadcrumbs {
-      font-size: 14px;
-    }
-    .requirements-hero .breadcrumbs a {
-      color: #fff;
-      text-decoration: underline;
-    }
-    .requirements-hero .breadcrumbs .current {
-      color: #fff;
-      opacity: 0.8;
+    
+    #header {
+      transition: all 0.6s ease;
     }
 
-    /* 主体内容区域示例 */
-    .requirements-content {
+    .testing-hero {
+      background: linear-gradient(90deg, #4ca1af, #c4e0e5);
+      color: #fff;
+      padding: 120px 0 60px;
+      text-align: center;
+    }
+
+    .testing-hero h1 {
+      font-family: 'Nunito', sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+    }
+
+    .content-wrapper {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .main-content {
+      flex: 3;
+    }
+
+    .sidebar-nav {
+      flex: 1;
+      position: sticky;
+      top: 120px;
+      height: fit-content;
+    }
+
+    .sidebar-nav ul {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .sidebar-nav a {
+      text-decoration: none;
+      color: #388da8;
+      display: block;
+      padding: 8px 0;
+    }
+
+    .sidebar-nav a:hover {
+      color: #145374;
+    }
+
+    .testing-section {
       padding: 60px 0;
     }
-    .requirements-content h2 {
+
+    .testing-section h2 {
+      color: #3399ff;
       font-weight: 700;
-      margin-bottom: 20px;
-      font-size: 32px;
+      font-size: 28px;
+      margin-top: 40px;
     }
-    .requirements-content p {
-      margin-bottom: 15px;
+
+    .testing-section p {
       line-height: 1.8;
     }
-    .requirements-content h4 {
-      margin-top: 40px;
-      font-weight: 600;
+
+    @media (max-width: 991px) {
+      .content-wrapper {
+        flex-direction: column;
+      }
+
+      .sidebar-nav {
+        position: static;
+      }
     }
   </style>
-
 </head>
+
 <body>
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center fixed-top bg-white shadow-sm">
+    <div class="container-fluid container-xl d-flex align-items-center">
+      <a href="../../index.html" class="logo d-flex align-items-center me-auto">
+        <img src="../../assets/img/logo.png" alt="Logo" style="height: 32px; margin-right: 10px;" />
+        <h1 class="sitename mb-0">Rag-n-Bones</h1>
+      </a>
 
-<!-- ======= Header (与 index.html 相同) ======= -->
-<header id="header" class="header d-flex align-items-center fixed-top">
-  <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
-    <!-- LOGO -->
-    <a href="index.html" class="logo d-flex align-items-center me-auto">
-      <img src="assets/img/logo.png" alt="">
-      <h1 class="sitename">QuickStart</h1>
-    </a>
-
-    <!-- 导航菜单 -->
-    <nav id="navmenu" class="navmenu">
-      <ul>
-        <!-- 你可以在此修改导航，让 Requirements 高亮，比如加个 .active -->
-        <li><a href="index.html">Home</a></li>
-        <li><a href="requirements.html" class="active">Requirements</a></li>
-        <li><a href="research.html">Research</a></li>
-        <li><a href="hci.html">HCI</a></li>
-        <li><a href="system-design.html">System Design</a></li>
-        <li><a href="implements.html">Implements</a></li>
-        <li><a href="testing.html">Testing</a></li>
-        <li><a href="evaluation.html">Evaluation</a></li>
-        <li><a href="appendix.html">Appendix</a></li>
-      </ul>
-      <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-    </nav>
-    <!-- /导航菜单 -->
-
-    <a class="btn-getstarted" href="index.html">Get Started</a>
-
-  </div>
-</header>
-<!-- /Header -->
-
-<main id="main">
-
-  <!-- ======= Hero (Requirements) ======= -->
-  <section class="requirements-hero">
-    <div class="container" data-aos="fade-up">
-      <h1>REQUIREMENTS</h1>
-      <nav class="breadcrumbs">
-        <ol>
-          <li><a href="index.html">Home</a></li>
-          <li class="current">Requirements</li>
-        </ol>
+      <nav id="navmenu" class="navmenu">
+        <ul class="d-flex list-unstyled mb-0">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="requirements.html">Requirements</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="hci.html">HCI</a></li>
+          <li><a href="system-design.html">System Design</a></li>
+          <li><a href="implements.html">Implements</a></li>
+          <li><a class="active" href="testing.html">Testing</a></li>
+          <li><a href="evaluation.html">Evaluation</a></li>
+          <li><a href="appendix.html">Appendix</a></li>
+        </ul>
       </nav>
+
+      <a class="btn btn-primary ms-3 rounded-pill px-4" href="../../index.html">Get Started</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="testing-hero" data-aos="fade-down">
+    <div class="container">
+      <h1>Testing</h1>
+      <p class="lead">To ensure quality in our project we used User Acceptance and Unit Testing</p>
     </div>
   </section>
-  <!-- /Hero -->
 
-  <!-- ======= Main Content ======= -->
-  <section class="requirements-content">
-    <div class="container" data-aos="fade-up">
-      <h2>Project Background</h2>
-      <p>
-        （在这里放你项目的背景描述、需求说明等）
-      </p>
-      <p>
-        Recent Covid-19 crisis has changed people’s working style. With remote-working being trendy in most companies...
-      </p>
-      <h4>PAIN POINTS</h4>
-      <p>
-        - Pain point 1...<br>
-        - Pain point 2...
-      </p>
-      <h4>AVABOT CURES</h4>
-      <p>
-        - Cure 1...<br>
-        - Cure 2...
-      </p>
-      <!-- 你可以继续添加更多自定义内容，如图文并排、卡片、表格等 -->
-    </div>
-  </section>
-  <!-- /Main Content -->
+  <!-- Content -->
 
-</main>
-
-<!-- ======= Footer (与 index.html 相同) ======= -->
-<footer id="footer" class="footer text-white position-relative" style="background: linear-gradient(to right, #4b6cb7, #182848);">
-
-    <!-- 这里是一个波浪形 SVG，用来装饰顶部。如果不需要波浪形，可删除此 div -->
-    <div class="wave-shape" style="position: absolute; top: -100px; left: 0; width: 100%; overflow: hidden; line-height: 0; transform: rotate(180deg);">
-      <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="position: relative; display: block; width: calc(100% + 1.3px); height: 100px;">
-        <path d="M-2.19,29.63 C149.99,150.00 321.41,-49.99 502.54,44.96 L500.00,0.00 L0.00,0.00 Z"
-              style="stroke: none; fill: #ffffff;"></path>
-      </svg>
-    </div>
   
-    <div class="container pt-5" style="position: relative; z-index: 1;">
-      <div class="row gy-4">
-        <!-- 左侧：Site Info -->
-        <div class="col-lg-4 col-md-6">
-          <h3 class="fw-bold">Site Info</h3>
-          <p>
-            This is the website for UCL Year2 2020-2023 COMP106B Team4 Avanade’s COVID19 changes,  
-            which introduces the team project and contains all the portfolios.
-          </p>
+  <section class="testing-section">
+    <div class="container content-wrapper">
+      <!-- Left Column -->
+      <div class="main-content" data-aos="fade-up">
+        <h2 id="strategy">Testing Strategy</h2>
+        <p>To validate the correctness, robustness, and efficiency of our RAG pipeline system, we employed a combination of unit testing, integration testing, and efficiency benchmarking. Given the multi-stage nature of our backend system—including PDF processing, embedding generation, query-based summarisation, and history storage—each layer was tested independently and jointly to ensure end-to-end consistency.
+          The system interacts with real files, vector databases (Pinecone), and a MySQL backend. As such, it was essential to both isolate logic during development, and test the entire pipeline during production-level simulation.
+          We also implemented automated reporting using pytest-html and benchmark tests to measure how system performance scaled with increasing workloads (i.e., number of papers uploaded).</p>
+        <h3 id="scope" class="mt-4">Testing Scope</h3>
+        <P>Our RAG-based system handles PDF ingestion, semantic vector embedding, question-answering, systematic review generation, and user history storage. As such, the scope of our testing spans a variety of functional, boundary, and integration scenarios to ensure robustness, correctness, and a reliable user experience.</P>
+        <ol>
+        <li>PDF Upload and Preprocessing: Users can upload research papers in PDF format, which are then parsed, chunked, and processed.ensured the upload and parsing pipeline works correctly across edge cases without crashing or producing malformed data.</li>
+        <li>Embedding and Vector Database Integration: The system relies on transforming parsed content into semantic embeddings and storing them in a vector database (Pinecone).We confirmed that each document chunk is processed and stored in Pinecone or gracefully handled in fallback mode if needed.</li>
+        <li>Query Processing and Systematic Review Generation: We simulated realistic and malformed user queries to evaluate the end-to-end RAG pipeline, ensured that the system invokes the generation model correctly and returns structured outputs, covering sections such as Background, Methods, Results, and Conclusion.</li>
+        <li>User History Storage and Database Integrity: Each completed review is saved to a MySQL backend for traceability, verified the system's ability to handle database writes reliably and reject invalid input gracefully.</li>
+        </ol>
+
+        <h2 id="unit-testing">Unit Testing</h2>
+        <p>We utilized unit testing extensively to verify the correctness and robustness of individual components and functions within our backend system. Each function and route handler within our Flask application—such as database utilities, embedding modules, PDF processing functions, and route-level logic—were independently tested. These unit tests run in isolation, allowing us to quickly identify and resolve any issues early in the development process.</p>
+        <p>Testing Frameworks: We leveraged pytest as our primary unit testing framework, benefiting from its simple syntax, flexible assertion system, and rich ecosystem. To facilitate testing of external dependencies such as the database or Pinecone, we employed pytest-mock to mock these external services, simulating various behaviors and ensuring our code handled these conditions gracefully.</p>
+        <p>For example, in our route tests, we verified that each endpoint could correctly handle invalid inputs or missing fields without causing unintended crashes:</p>
+        <pre><code># backend/test/integration/test_save_history.py
+    def test_save_history_wrong_types(client):
+        payload = {
+            "user_id": ["invalid_id"],  # should be integers
+            "prompt_id": "invalid_prompt_id",  # should be integer
+            "prompt": "Sample prompt",
+            "systematic_review": "Sample review"
+        }
+        response = client.post("/api/save", json=payload)
+        assert response.status_code == 400
+    </code></pre>
+    
+        <h2 id="integration-testing">Integration Testing</h2>
+        <p>Integration tests were developed to verify the correct interaction between multiple components across the RAG pipeline—PDF upload, vector embedding, systematic review generation, and history storage in the database. These tests simulate realistic end-to-end scenarios, ensuring the entire system operates cohesively as intended.</p>
+        <p>Testing Frameworks: We primarily used pytest combined with Flask’s built-in test client to simulate HTTP requests to our API endpoints. Integration tests often involved multiple API requests sequentially, mimicking actual user interactions with our system. By creating dedicated test scenarios that included PDF file uploads, prompt queries, and historical data storage, we ensured comprehensive coverage of realistic workflows.</p>
+        <pre><code># backend/test/integration/test_full_pipeline.py
+    def test_full_rag_pipeline(client):
+        prepare_test_files()
+        
+        response_upsert = client.post("/api/upsert", json={"id": "test_user"})
+        assert response_upsert.status_code == 200
+        
+        response_generate = client.post("/api/generate", json={"id": "test_user", "prompt": "Effects of MSCs in COVID-19?"})
+        assert response_generate.status_code == 200
+        
+        review = response_generate.get_json().get("systematic_review", "")
+        assert "background" in review.lower()
+        
+        response_save = client.post("/api/save", json={
+            "user_id": [1],
+            "prompt_id": 999,
+            "prompt": "Effects of MSCs in COVID-19?",
+            "systematic_review": review
+        })
+        assert response_save.status_code == 200
+    </code></pre>
+
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <img src="../../assets/img/TEST1.png" alt="Test 1" class="img-fluid rounded shadow">
+          </div>
+          <div class="col-md-6">
+            <img src="../../assets/img/TEST2.png" alt="Test 2" class="img-fluid rounded shadow">
+          </div>
         </div>
-        <!-- 中间：Site Menu -->
-        <div class="col-lg-4 col-md-6">
-          <h3 class="fw-bold">Site Menu</h3>
+        <h2 id="test-coverage">Test Coverage</h2>
+        <p>We leveraged the pytest-cov plugin to generate test coverage reports, ensuring that our automated test suite comprehensively covered the RAG system’s codebase. The coverage report indicated that 90% of our codebase was covered by automated tests. We strategically excluded certain third-party integration points (e.g., direct interactions with Pinecone or external APIs) from our unit testing coverage report, as these were covered via dedicated integration tests.</p>
+        <p>Although there were inherent challenges in covering certain interactions (such as external API dependencies or file-system constraints), we are satisfied with the achieved high coverage rate, ensuring a strong foundation for ongoing development and stability of the project.</p>
+
+        <img src="../../assets/img/testing-example.png" alt="Testing Example" class="img-fluid mt-3 rounded shadow" />
+
+        <h2 id="acceptance">User Acceptance</h2>
+        <p>We conducted user testing among team members and non-technical users. Feedback was gathered through surveys and direct interviews, and we iterated based on the results.</p>
+      </div>
+
+      <!-- Right Column Nav -->
+      <aside class="sidebar-nav" data-aos="fade-left">
+        <h5 class="fw-bold mb-3">On This Page</h5>
+        <ul>
+          <li><a href="#strategy">Testing Strategy</a></li>
+          <li><a href="#unit-testing">Unit Testing</a></li>
+          <li><a href="#integration-testing">Integration Testing</a></li>  
+          <li><a href="#acceptance">User Acceptance</a></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer bg-dark text-white py-5 mt-5">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-4">
+          <h5>Site Info</h5>
+          <p>This is the official site of UCL Year 2 COMP106B Team 4, showcasing the full development lifecycle of our project.</p>
+        </div>
+        <div class="col-lg-4">
+          <h5>Menu</h5>
           <ul class="list-unstyled">
-            <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
-            <li><a href="requirements.html" class="text-white text-decoration-none">Requirements</a></li>
-            <li><a href="research.html" class="text-white text-decoration-none">Research</a></li>
-            <li><a href="hci.html" class="text-white text-decoration-none">HCI</a></li>
-            <li><a href="system-design.html" class="text-white text-decoration-none">System Design</a></li>
-            <li><a href="implements.html" class="text-white text-decoration-none">Implements</a></li>
-            <li><a href="testing.html" class="text-white text-decoration-none">Testing</a></li>
-            <li><a href="evaluation.html" class="text-white text-decoration-none">Evaluation</a></li>
-            <li><a href="appendix.html" class="text-white text-decoration-none">Appendix</a></li>
+            <li><a href="../../index.html" class="text-white">Home</a></li>
+            <li><a href="requirements.html" class="text-white">Requirements</a></li>
+            <li><a href="testing.html" class="text-white">Testing</a></li>
           </ul>
         </div>
-        <!-- 右侧：Project Supporters -->
-        <div class="col-lg-4 col-md-12">
-          <h3 class="fw-bold">Project Supporters</h3>
-          <p class="mb-1">Avanade</p>
-          <p class="mb-3">UCL</p>
-          <p class="mb-0">
-            A lot of thanks to our company partner Avanade and Mr. Kenza 404 especially.
-          </p>
+        <div class="col-lg-4">
+          <h5>Supporters</h5>
+          <p>Avanade, UCL — with special thanks to Mr. Kenza 404.</p>
         </div>
-      </div>
-  
-      <!-- 底部版权信息 -->
-      <hr class="my-4">
-      <div class="text-center pb-3">
-        <p class="mb-0">© 2021 All Rights Reserved</p>
       </div>
     </div>
   </footer>
-<!-- /Footer -->
 
-<!-- Scroll Top -->
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-<!-- Preloader -->
-<div id="preloader"></div>
-
-<!-- Vendor JS Files -->
-<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../../assets/vendor/php-email-form/validate.js"></script>
-<script src="../../assets/vendor/aos/aos.js"></script>
-<script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-<!-- Main JS File -->
-<script src="../../assets/js/main.js"></script>
-
+  <!-- Scripts -->
+  <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/vendor/aos/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
+
 </html>
