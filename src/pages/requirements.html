@@ -27,50 +27,168 @@
   <link href="../../assets/css/main.css" rel="stylesheet">
 
   <!-- 你可以在此处写一些页面专属的样式 -->
-  <style>
-    /* Hero 区域的简易渐变背景示例 */
-    .requirements-hero {
-      background: linear-gradient(90deg, #f7672f 0%, #6f2fb8 100%);
-      padding: 60px 0;
-      text-align: center;
-      color: #fff;
-    }
-    .requirements-hero h1 {
-      margin-bottom: 10px;
-      font-weight: 700;
-      font-size: 48px;
-    }
-    .requirements-hero .breadcrumbs {
-      font-size: 14px;
-    }
-    .requirements-hero .breadcrumbs a {
-      color: #fff;
-      text-decoration: underline;
-    }
-    .requirements-hero .breadcrumbs .current {
-      color: #fff;
-      opacity: 0.8;
+ <!-- 统一样式调整 -->
+ <style>
+    /* ======= 增强样式 ======= */
+    :root {
+      --primary-gradient: linear-gradient(135deg, #6f2fb8 0%, #f7672f 100%);
+      --card-shadow: 0 12px 24px -8px rgba(111,47,184,0.1);
+      --transition-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    /* 主体内容区域示例 */
+    body {
+      background: #f8f9fa;
+      font-family: 'Inter', sans-serif;
+      color: #2d3748;
+      line-height: 1.7;
+    }
+
+    /* ======= 标题区优化 ======= */
+    .requirements-hero {
+      background: var(--primary-gradient);
+      padding: 8rem 0;
+      position: relative;
+      overflow: hidden;
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    }
+
+    .requirements-hero::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      transform: translate(-25%, -50%);
+    }
+
+    .requirements-hero h1 {
+      font-size: 3.5rem;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      letter-spacing: -0.05em;
+    }
+
+    /* ======= 内容卡片设计 ======= */
     .requirements-content {
-      padding: 60px 0;
+      padding: 4rem 0;
+      margin-top: -6rem;
+      position: relative;
+      z-index: 2;
     }
-    .requirements-content h2 {
-      font-weight: 700;
-      margin-bottom: 20px;
-      font-size: 32px;
+
+    .content-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      margin: 2rem 0;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s var(--transition-ease);
+      border: 1px solid rgba(111,47,184,0.05);
     }
-    .requirements-content p {
-      margin-bottom: 15px;
-      line-height: 1.8;
+
+    .content-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 32px -12px rgba(111,47,184,0.15);
     }
-    .requirements-content h4 {
-      margin-top: 40px;
+
+    /* ======= 表格优化 ======= */
+    .use-case-table {
+      border-collapse: separate;
+      border-spacing: 0;
+      background: white;
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+
+    .use-case-table th {
+      background: #6f2fb8;
+      color: white;
       font-weight: 600;
+      padding: 1.2rem;
+      border-bottom: 3px solid #5a23a3;
+    }
+
+    .use-case-table td {
+      padding: 1rem;
+      border-bottom: 1px solid #f1f5f9;
+      transition: background 0.3s ease;
+    }
+
+    .use-case-table tr:hover td {
+      background: #f8f5ff;
+    }
+
+    /* ======= MoSCoW分析卡片 ======= */
+    .requirements-card {
+      border: none;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      transition: transform 0.3s var(--transition-ease);
+    }
+
+    .requirements-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .priority-group h5 {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    .img-fluid {
+      display: block;
+      margin: 0 auto;
+    }
+    .must-have .card-header { background: #dc3545; }
+    .should-have .card-header { background: #ffc107; }
+    .could-have .card-header { background: #0d6efd; }
+    .wont-have .card-header { background: #6c757d; }
+
+    .list-group-item {
+      border: none;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .list-group-item::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.5;
+    }
+
+    /* ======= 图片优化 ======= */
+    .persona-img {
+      border-radius: 1rem;
+      box-shadow: 0 8px 24px -6px rgba(111,47,184,0.15);
+      transition: transform 0.3s var(--transition-ease);
+    }
+
+    .persona-img:hover {
+      transform: scale(1.02);
+    }
+
+    /* ======= 响应式优化 ======= */
+    @media (max-width: 768px) {
+      .requirements-hero {
+        padding: 4rem 0;
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+      }
+      
+      .requirements-hero h1 {
+        font-size: 2.25rem;
+      }
+      
+      .content-card {
+        padding: 1.5rem;
+      }
     }
   </style>
-
 </head>
 <body>
 
@@ -125,30 +243,326 @@
   <!-- /Hero -->
 
   <!-- ======= Main Content ======= -->
+
   <section class="requirements-content">
-    <div class="container" data-aos="fade-up">
-      <h2>Project Background</h2>
-      <p>
-        （在这里放你项目的背景描述、需求说明等）
-      </p>
-      <p>
-        Recent Covid-19 crisis has changed people’s working style. With remote-working being trendy in most companies...
-      </p>
-      <h4>PAIN POINTS</h4>
-      <p>
-        - Pain point 1...<br>
-        - Pain point 2...
-      </p>
-      <h4>AVABOT CURES</h4>
-      <p>
-        - Cure 1...<br>
-        - Cure 2...
-      </p>
-      <!-- 你可以继续添加更多自定义内容，如图文并排、卡片、表格等 -->
+    <div class="container">
+      <div class="content-card" data-aos="fade-up">
+        <h2 class="mb-4">📋 Partner & Project Overview</h2>
+        <div class="highlight-text">
+          <p>Our client CarefulAI focuses on creating safe and reliable AI agents for various fields, including healthcare and economic development. They manage AI safety and assurance across the complete AI supply chain, from algorithm design to global management. CarefulAI hopes to benefit the society using AI, leveraging technology to make meaningful difference.</p>
+          <p>Our project, in partnership with Joseph Connor from CarefulAI, is developing a RAG system to undertake systematic reviews, serving as an important tool for NHS integration. This initiative aligns with CarefulAI's values and guides us toward creating AI applications that benefit humanity.</p>
+        </div>
+      </div>
+
+<!-- Project Goals 改进 -->
+<div class="content-card" data-aos="fade-up">
+  <h2 class="section-title mb-4">🎯 Project Goals</h2>
+  <div class="row g-4">
+    <div class="col-md-6 col-lg-3">
+      <div class="goal-card">
+        <div class="goal-icon bg-primary">
+        </div>
+        <h5>Medical Paper Analysis</h5>
+        <p>Develop RAG system for comprehensive medical paper analysis</p>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="goal-card">
+        <div class="goal-icon bg-success">
+        </div>
+        <h5>Automated Review</h5>
+        <p>Generate structured systematic reviews automatically</p>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="goal-card">
+        <div class="goal-icon bg-danger">
+        </div>
+        <h5>Workload Reduction</h5>
+        <p>Achieve 50%+ efficiency improvement for medical professionals</p>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="goal-card">
+        <div class="goal-icon bg-warning">
+        </div>
+        <h5>PDF Processing</h5>
+        <p>Enable PDF upload & natural language query processing</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-card" data-aos="fade-up">
+  <h2 class="section-title mb-4">📊 Requirement Gathering</h2>
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <div class="requirement-block client-requirements">
+        <div class="requirement-header">
+          <h4>Client Requirements</h4>
+        </div>
+        <ul class="requirement-list">
+          <li>
+            <i class="bi bi-check-circle-fill"></i>
+            Web application with PDF processing pipeline
+          </li>
+          <li>
+            <i class="bi bi-database-fill"></i>
+            Vector database integration (Pinecone)
+          </li>
+          <li>
+            Matplotlib visualization for quality assessments
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="col-lg-6">
+      <div class="requirement-block user-survey">
+        <div class="requirement-header">
+          <h4>User Survey Highlights</h4>
+        </div>
+        <div class="survey-stats">
+          <div class="stat-item">
+            <div class="stat-label">87% Find analysis time-consuming</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">5-10 Papers read monthly</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- Personas Section with Images -->
+      <div class="content-card" data-aos="fade-up">
+        <h2 class="mb-4">👥 User Personas</h2>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <img src="../../assets/img/persona1.png" class="persona-img" alt="Primary Persona">
+          </div>
+          <div class="col-md-6">
+            <img src="../../assets/img/persona2.png" class="persona-img" alt="Secondary Persona">
+          </div>
+        </div>
+      </div>
+
+      <div class="content-card" data-aos="fade-up">
+        <h2 class="mb-4 text-center">Use Cases</h2>
+        <div class="row justify-content-center">
+          <div class="col-md-8 text-center">
+            <img src="../../assets/img/use-case-flow.png" class="img-fluid border rounded" alt="Use Case Flow">
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="content-card" data-aos="fade-up">
+        <h2 class="mb-4">🔧 Key Use Cases</h2>
+        <div class="table-responsive">
+            <table class="table use-case-table">
+            <thead class="table-dark">
+              <tr>
+                <th style="width: 10%">ID</th>
+                <th style="width: 20%">Use Case</th>
+                <th style="width: 45%">Flow</th>
+                <th style="width: 25%">Result</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- UC01 -->
+              <tr>
+                <td rowspan="2">UC01</td>
+                <td rowspan="2">Log in</td>
+                <td>1. User enters username and password</td>
+                <td rowspan="2">User is logged in or sees an error message</td>
+              </tr>
+              <tr>
+                <td>2. System verifies login</td>
+              </tr>
+    
+              <!-- UC02 -->
+              <tr>
+                <td rowspan="3">UC02</td>
+                <td rowspan="3">Sign up</td>
+                <td>1. User enters registration details</td>
+                <td rowspan="3">User is successfully registered</td>
+              </tr>
+              <tr>
+                <td>2. System verifies and registers the user</td>
+              </tr>
+              <tr>
+                <td>3. If unsuccessful, display error message</td>
+              </tr>
+    
+              <!-- UC03 -->
+              <tr>
+                <td rowspan="3">UC03</td>
+                <td rowspan="3">Upload PDFs</td>
+                <td>1. User selects PDF files</td>
+                <td rowspan="3">PDFs uploaded for processing or error displayed</td>
+              </tr>
+              <tr>
+                <td>2. System uploads the file</td>
+              </tr>
+              <tr>
+                <td>3. If upload fails, error message shown</td>
+              </tr>
+    
+              <!-- UC04 -->
+              <tr>
+                <td rowspan="2">UC04</td>
+                <td rowspan="2">Enter Query</td>
+                <td>1. User enters query</td>
+                <td rowspan="2">Query is sent to LLM</td>
+              </tr>
+              <tr>
+                <td>2. System processes the query</td>
+              </tr>
+    
+              <!-- UC05 -->
+              <tr>
+                <td rowspan="4">UC05</td>
+                <td rowspan="4">Generate Systematic Review</td>
+                <td>1. Retrieve data from Pinecone</td>
+                <td rowspan="4">Review generated and available for download</td>
+              </tr>
+              <tr><td>2. Send query + data to OpenAI LLM</td></tr>
+              <tr><td>3. LLM generates review text</td></tr>
+              <tr><td>4. Compile structured review</td></tr>
+    
+              <!-- UC06 -->
+              <tr>
+                <td rowspan="2">UC06</td>
+                <td rowspan="2">Download Review</td>
+                <td>1. User requests download</td>
+                <td rowspan="2">User receives PDF report</td>
+              </tr>
+              <tr><td>2. System generates PDF download</td></tr>
+    
+              <!-- UC07 -->
+              <tr>
+                <td rowspan="2">UC07</td>
+                <td rowspan="2">Download Graphs</td>
+                <td>1. User requests graph download</td>
+                <td rowspan="2">User receives assessment graphs</td>
+              </tr>
+              <tr><td>2. System generates PDF graphs</td></tr>
+    
+              <!-- UC08 -->
+              <tr>
+                <td rowspan="3">UC08</td>
+                <td rowspan="3">Access History</td>
+                <td>1. User accesses history</td>
+                <td rowspan="3">User can access historical data</td>
+              </tr>
+              <tr><td>2. System fetches previous records</td></tr>
+              <tr><td>3. User reads past reviews</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="content-card" data-aos="fade-up">
+        <h2 class="mb-4"> Requirements Prioritization</h2>
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="requirements-card card must-have">
+              <div class="card-header text-white">
+                <h4 class="mb-0"><i class="bi bi-gear me-2"></i>Functional Requirements</h4>
+              </div>
+                <div class="card-body">
+                  <!-- Must Have -->
+                  <div class="priority-group must-have">
+                    <h5 class="text-danger">★ Must Have</h5>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">PDF input capability</li>
+                      <li class="list-group-item">Prompt-driven review definition</li>
+                      <li class="list-group-item">Structured review display</li>
+                      <li class="list-group-item">Vector database integration (RAG)</li>
+                      <li class="list-group-item">LLM-powered section generation</li>
+                    </ul>
+                  </div>
+  
+                  <!-- Should Have -->
+                  <div class="priority-group should-have mt-4">
+                    <h5 class="text-warning">▲ Should Have</h5>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">User authentication system</li>
+                      <li class="list-group-item">Review history tracking</li>
+                      <li class="list-group-item">Quality assessment visualization</li>
+                      <li class="list-group-item">PDF data cleansing</li>
+                    </ul>
+                  </div>
+  
+                  <!-- Could Have -->
+                  <div class="priority-group could-have mt-4">
+                    <h5 class="text-primary">● Could Have</h5>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">Source file visibility</li>
+                      <li class="list-group-item">PDF export functionality</li>
+                      <li class="list-group-item">Medical paper database integration</li>
+                    </ul>
+                  </div>
+  
+                  <!-- Won't Have -->
+                  <div class="priority-group wont-have mt-4">
+                    <h5 class="text-muted">✖ Won't Have</h5>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item text-muted"><del>Collaborative features</del></li>
+                      <li class="list-group-item text-muted"><del>Speech interface</del></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+        <!-- Non-Functional Requirements -->
+        <div class="col-lg-6">
+          <div class="requirements-card card border-primary">
+            <div class="card-header bg-primary text-white">
+              <h4 class="mb-0"><i class="bi bi-graph-up me-2"></i>Non-Functional Requirements</h4>
+            </div>
+              <!-- Must Have -->
+              <div class="priority-group must-have">
+                <h5 class="text-danger">★ Must Have</h5>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Web application implementation</li>
+                  <li class="list-group-item">RAG architecture compliance</li>
+                  <li class="list-group-item">Data encryption (bcrypt)</li>
+                </ul>
+              </div>
+  
+              <!-- Should Have -->
+              <div class="priority-group should-have mt-4">
+                <h5 class="text-warning">▲ Should Have</h5>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">High performance standards</li>
+                  <li class="list-group-item">Maintainable codebase</li>
+                </ul>
+              </div>
+  
+              <!-- Could Have -->
+              <div class="priority-group could-have mt-4">
+                <h5 class="text-primary">● Could Have</h5>
+                <div class="alert alert-info">No additional features prioritized</div>
+              </div>
+  
+              <!-- Won't Have -->
+              <div class="priority-group wont-have mt-4">
+                <h5 class="text-muted">✖ Won't Have</h5>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item text-muted"><del>Cross-platform compatibility</del></li>
+                  <li class="list-group-item text-muted"><del>Multilingual support</del></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
-  <!-- /Main Content -->
-
 </main>
 
 <!-- ======= Footer (与 index.html 相同) ======= -->
