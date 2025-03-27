@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Implementation - QuickStart Bootstrap Template</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="../../assets/img/favicon.png" rel="icon">
+  <link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Mono:wght@400;500&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="../../assets/css/main.css" rel="stylesheet">
+
+  <!-- Enhanced Styles -->
+  <style>
+    :root {
+      --primary-color: #81c33c;
+      --secondary-color: #f4f6f8;
+      --text-color: #2d3748;
+      --light-bg: #f8f9fa;
+      --lighter-bg: #f1f3f5;
+      --card-shadow: 0 12px 24px -8px rgba(111, 47, 184, 0.1);
+      --card-hover-shadow: 0 16px 32px -8px rgba(111, 47, 184, 0.15);
+    }
+    
+    body {
+      background: linear-gradient(135deg, var(--light-bg) 0%, var(--lighter-bg) 100%);
+      font-family: 'Inter', sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
+
+    p, li {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #4a5568;
+      margin-bottom: 1.2rem;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-top: 1.5em;
+      margin-bottom: 0.8em;
+      line-height: 1.3;
+    }
+    
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.75rem; }
+    h4 { font-size: 1.5rem; }
+
+    .system-hero {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      padding: 6rem 0 4rem;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .system-hero::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      transform: translate(-25%, -50%);
+    }
+
+    .system-hero h1 {
+      font-size: 2.8rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      animation: fadeInUp 0.8s ease;
+      color: white;
+      margin-bottom: 1rem;
+    }
+    
+    .breadcrumbs {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.8);
+    }
+    
+    .breadcrumbs a {
+      color: white;
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+    
+    .breadcrumbs a:hover {
+      opacity: 0.8;
+    }
+    
+    .breadcrumbs .current {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .content-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      margin: 2.5rem 0;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .content-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--card-hover-shadow);
+    }
+
+    h2 {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+    }
+
+    h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.25em;
+      height: 1.4em;
+      width: 5px;
+      background: var(--primary-color);
+      border-radius: 3px;
+    }
+    .code-block {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1em;
+    font-family: monospace;
+    white-space: pre;
+    overflow-x: auto;
+    }
+    h3 {
+      color: #374151;
+      margin-top: 2.5rem;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    
+    h4 {
+      color: #4b5563;
+      margin-top: 2rem;
+      font-size: 1.3rem;
+    }
+    
+    .code-block {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      font-family: 'Roboto Mono', monospace;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      border-left: 4px solid var(--secondary-color);
+    }
+
+    .code-block pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      tab-size: 2;
+    }
+    
+    ul, ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    li {
+      margin-bottom: 0.6rem;
+    }
+    
+    .section-nav {
+      position: sticky;
+      top: 120px;
+      max-height: calc(100vh - 140px);
+      overflow-y: auto;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      background: white;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    body.scrolled-to-bottom .section-nav {
+      position: absolute;
+      bottom: 0;
+      top: auto;
+      transform: translateY(-20px);
+    }
+
+    .section-nav ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .section-nav li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .section-nav a {
+      color: #4b5563;
+      text-decoration: none;
+      transition: color 0.2s;
+      font-size: 0.95rem;
+    }
+    
+    .section-nav a:hover {
+      color: var(--primary-color);
+    }
+    
+    /* 依赖标签 */
+    .dependencies {
+      background: #f3f4f6;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    .diagram-container {
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .diagram-container img {
+      max-width: 100%;
+      border-radius: 0.75rem;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 992px) {
+      .system-hero { padding: 5rem 0 3rem; }
+      .system-hero h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.8rem; }
+      h3 { font-size: 1.5rem; }
+    }
+    
+    @media (max-width: 768px) {
+      .system-hero { padding: 4rem 0 2.5rem; }
+      .system-hero h1 { font-size: 2rem; }
+      .content-card { padding: 1.5rem; }
+      h2 { font-size: 1.6rem; }
+      h3 { font-size: 1.4rem; }
+      
+      .section-nav {
+        display: none;
+      }
+    }
+    
+
+    @media (max-width: 576px) {
+      .system-hero h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.5rem; }
+      h3 { font-size: 1.3rem; }
+    }
+    @media (max-width: 991.98px) {
+      .section-nav {
+        position: static;
+        order: -1; 
+        margin-bottom: 2rem;
+        width: 100%;
+      }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ======= Header ======= -->
+<header id="header" class="header d-flex align-items-center fixed-top">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center">
+    <a href="../../index.html" class="logo d-flex align-items-center me-auto">
+      <img src="assets/img/logo.png" alt="">
+      <h1 class="sitename">Rag-n-Bones</h1>
+    </a>
+
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="requirements.html">Requirements</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="algorithm.html">Algorithm</a></li>
+        <li><a href="ui-design.html" class="active">UI Design</a></li>
+        <li><a href="system-design.html">System Design</a></li>
+        <li><a href="implements.html">Implementation</a></li>
+        <li><a href="testing.html">Testing</a></li>
+        <li><a href="evaluation.html">Evaluation</a></li>
+        <li><a href="appendix.html">Appendix</a></li>
+      </ul>
+      <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+    </nav>
+
+  </div>
+</header>
+
+<main id="main">
+  <!-- Hero Section -->
+  <section class="system-hero">
+    <div class="container" data-aos="fade-up">
+      <h1>USER INTERFACE DESIGN</h1>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="system-content">
+    <div class="container" data-aos="fade-up">
+      <div class="row flex-lg-nowrap">
+        <!-- 主内容区域 -->
+        <div class="col-lg-8 order-2 order-lg-1">
+          <!-- 简介 -->
+          <div class="content-card">
+            <p class="lead">This section provides an overview of the design of the website used to generate the systematic review. You will find the design principles we aim to follow throughout developement, sketches and a wireframe of the prototype of the pages.</p>
+          </div>
+          
+          <div class="content-card" id="design_principles">
+            <h2>Design Principles</h2>
+              <h3>Simplicity</h3>
+                <p>
+                  The design of the interface should be made as simple as possible while still keeping the main functionality. The user should not be overwhelmed by text and other buttons to allow them to easily navigate through the site. This can be done by splitting the site up into its components, such as a designated side tab for user history.
+                </p>
+              <h3>Consistency</h3>
+                <p>
+                  Each component of the website needs to be made consistent to allow the user to intuitively navigate through the page. Through the use of conventional icons and typical button placement, we can keep the design of the website similar to the user’s past experience on the web.
+                </p>
+              <h3>Visibility</h3>
+                <p>
+                  It is vital that users can easily view the important elements of the site, those being the user profile, user history and the generate section. By putting clear, bold labels and appropriate icons for buttons, users will be able to understand the outcome before clicking.
+                </p>
+              <h3>Feedback</h3>
+                <p>
+                  The website should include appropriate responses to the user for their actions so it is clear what is happening to the end user. The most vital aspect of this would be to include a loading screen when generating a systematic review so the user is reassured an action is taking place. Positive and negative feedback is also important in file upload or the log-in system as well. 
+                </p>
+              <h3>Efficiency</h3>
+                <p>
+                  The user should be able to generate a systematic review quickly in a short number of clicks/interactions on the site.  This process should only include the need for the user to input a prompt, their papers and a click to generate. Other aspects of the site should not involve a long chain of user interactions.
+                </p>
+              <h3>Affordance</h3>
+                <p>
+                  Each element of the design should have its function be obvious at first glance to the user. Aspects of affordance would include buttons that look clickable and long text that looks scrollable. By including these, the user can seamlessly navigate through the site without issue. 
+                </p>
+          </div>
+
+          <div class="content-card" id="sketches">
+            <h2>Sketches</h2>
+            <p>
+              We have produced the following hand-drawn sketches to demonstrate what the different pages of the website should look like. This includes the home page for when a user has not signed in, the home page when the user has logged in, and the page that displays the systematic review alongside some graphs. As shown below, there is a bar on the side to display the user’s history.  The home page contains an area for inputting a prompt and uploading files.
+            </p>
+            <div class="diagram-container">
+              <!-- Replace with your actual image path -->
+              <img src="../../assets/img/sketch.png" alt="Sketches">
+              <p><em>Figure 1: Sketches of the website design</em></p>
+            </div>
+          </div>
+
+          <div class="content-card" id="wireframe">
+            <h2>Wireframe</h2>
+            <p>
+              Utilising the sketches and design principles, we have created the following interactive wireframe using Figma to showcase what our website will look like including interactions between pages. 
+            </p>
+            <p>
+              There is a sidebar that shows the user’s previously generated systematic reviews. By clicking on one of them, the user is redirected to the systematic review and original prompt. Our wireframe also includes how a user will log in to be able to generate and save their review. 
+            </p>
+            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/bBHcA6y7AbeGmYkpIWgxlS/Wireframe?node-id=11-34&p=f&scaling=contain&content-scaling=fixed&page-id=1%3A3401&starting-point-node-id=11%3A34&embed-host=share" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+        
+        <!-- 侧边导航 -->
+        <div class="col-lg-4 order-1 order-lg-2 ps-lg-4">
+          <div class="section-nav">
+            <h5>Page Sections</h5>
+            <ul class="list-unstyled">
+              <li><a href="#upserting" class="d-block py-2">Upserting Text Chunks</a></li>
+              <li><a href="#generating" class="d-block py-2">Generating Review</a></li>
+              <li><a href="#database" class="d-block py-2">Database</a></li>
+              <li><a href="#user-system" class="d-block py-2">User System</a></li>
+              <li><a href="#file-query" class="d-block py-2">File &amp; Query</a></li>
+              <li><a href="#user-history" class="d-block py-2">User History</a></li>
+              <li><a href="#display-page" class="d-block py-2">Display Page</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ======= Footer ======= -->
+<footer id="footer" class="footer text-white position-relative" style="background: linear-gradient(to right, #4b6cb7, #182848);">
+
+    <!-- 波浪形 SVG -->
+    <div class="wave-shape" style="position: absolute; top: -100px; left: 0; width: 100%; overflow: hidden; line-height: 0; transform: rotate(180deg);">
+      <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="position: relative; display: block; width: calc(100% + 1.3px); height: 100px;">
+        <path d="M-2.19,29.63 C149.99,150.00 321.41,-49.99 502.54,44.96 L500.00,0.00 L0.00,0.00 Z"
+              style="stroke: none; fill: #ffffff;"></path>
+      </svg>
+    </div>
+  
+    <div class="container pt-5" style="position: relative; z-index: 1;">
+      <div class="row gy-4">
+        <!-- 左侧：Site Info -->
+        <div class="col-lg-4 col-md-6">
+          <h3 class="fw-bold">Site Info</h3>
+          <p>
+            This is the website for UCL Year2 2020-2023 COMP106B Team4 Avanade's COVID19 changes,  
+            which introduces the team project and contains all the portfolios.
+          </p>
+        </div>
+        <!-- 中间：Site Menu -->
+        <div class="col-lg-4 col-md-6">
+          <h3 class="fw-bold">Site Menu</h3>
+          <ul class="list-unstyled">
+            <li><a href="../../index.html" class="text-white text-decoration-none">Home</a></li>
+            <li><a href="requirements.html" class="text-white text-decoration-none">Requirements</a></li>
+            <li><a href="research.html" class="text-white text-decoration-none">Research</a></li>
+            <li><a href="algorithm.html" class="text-white text-decoration-none">Algorithm</a></li>
+            <li><a href="system-design.html" class="text-white text-decoration-none">System Design</a></li>
+            <li><a href="implements.html" class="text-white text-decoration-none">Implementation</a></li>
+            <li><a href="testing.html" class="text-white text-decoration-none">Testing</a></li>
+            <li><a href="evaluation.html" class="text-white text-decoration-none">Evaluation</a></li>
+            <li><a href="appendix.html" class="text-white text-decoration-none">Appendix</a></li>
+          </ul>
+        </div>
+        <!-- 右侧：Project Supporters -->
+        <div class="col-lg-4 col-md-12">
+          <h3 class="fw-bold">Project Supporters</h3>
+          <p class="mb-1">Avanade</p>
+          <p class="mb-3">UCL</p>
+          <p class="mb-0">
+            A lot of thanks to our company partner Avanade and Mr. Kenza 404 especially.
+          </p>
+        </div>
+      </div>
+  
+      <!-- 底部版权信息 -->
+      <hr class="my-4">
+      <div class="text-center pb-3">
+        <p class="mb-0">© 2021 All Rights Reserved</p>
+      </div>
+    </div>
+  </footer>
+<!-- /Footer -->
+
+<!-- Scroll Top -->
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Preloader -->
+<div id="preloader"></div>
+
+<!-- Vendor JS Files -->
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/php-email-form/validate.js"></script>
+<script src="../../assets/vendor/aos/aos.js"></script>
+<script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- Main JS File -->
+<script src="../../assets/js/main.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const body = document.body;
+    const footer = document.querySelector('footer');
+    const nav = document.querySelector('.section-nav');
+    
+    if (!footer || !nav) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          body.classList.add('scrolled-to-bottom');
+        } else {
+          body.classList.remove('scrolled-to-bottom');
+        }
+      });
+    }, {threshold: 0.1});
+    
+    observer.observe(footer);
+    
+    function checkNavPosition() {
+      const scrollBottom = window.innerHeight + window.scrollY;
+      const docHeight = document.body.offsetHeight;
+      const footerTop = footer.offsetTop;
+      
+      if (scrollBottom >= docHeight - 50 || window.scrollY >= footerTop - window.innerHeight) {
+        body.classList.add('scrolled-to-bottom');
+      } else {
+        body.classList.remove('scrolled-to-bottom');
+      }
+    }
+    
+    checkNavPosition();
+
+    window.addEventListener('scroll', checkNavPosition);
+  });
+  </script>
+
+</body>
+</html>
