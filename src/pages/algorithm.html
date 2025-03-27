@@ -80,6 +80,261 @@
       text-decoration: none;
       color: #3399ff;
     }
+
+    /* File Cards */
+  .file-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .file-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-top: 3px solid #6f2fb8;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .file-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+  }
+  
+  .file-title {
+    font-size: 1.1rem;
+    color: #6f2fb8;
+    margin-bottom: 0.5rem;
+  }
+  
+  .file-description {
+    color: #666;
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+  
+  .steps-list {
+    padding-left: 1.2rem;
+    margin: 1rem 0;
+  }
+  
+  .steps-list li {
+    margin-bottom: 0.5rem;
+    color: #555;
+  }
+  
+  /* Output Cards */
+  .output-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .output-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .output-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+    border-color: #6f2fb8;
+  }
+  
+  .output-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .file-indicator {
+    font-size: 0.8rem;
+    color: #f7672f;
+    font-weight: 500;
+  }
+  
+  .output-preview {
+    display: flex;
+    align-items: center;
+    color: #666;
+  }
+  
+  .output-preview i {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+  }
+  
+  /* Text Styles */
+  .intro-text, .process-description, .comparison-description, .results-text, .additional-info {
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 1.2rem;
+  }
+
+    .breadcrumbs {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.8);
+    }
+    
+    .breadcrumbs a {
+      color: white;
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+    
+    .breadcrumbs a:hover {
+      opacity: 0.8;
+    }
+    
+    .breadcrumbs .current {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .content-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      margin: 2.5rem 0;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .content-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--card-hover-shadow);
+    }
+
+    h2 {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+    }
+
+    h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.25em;
+      height: 1.4em;
+      width: 5px;
+      background: var(--primary-color);
+      border-radius: 3px;
+    }
+    .code-block {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1em;
+    font-family: monospace;
+    white-space: pre;
+    overflow-x: auto;
+    }
+    h3 {
+      color: #374151;
+      margin-top: 2.5rem;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    
+    h4 {
+      color: #4b5563;
+      margin-top: 2rem;
+      font-size: 1.3rem;
+    }
+    
+    .code-block {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      font-family: 'Roboto Mono', monospace;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      border-left: 4px solid var(--secondary-color);
+    }
+
+    .code-block pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      tab-size: 2;
+    }
+    
+    ul, ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    li {
+      margin-bottom: 0.6rem;
+    }
+    
+    .section-nav {
+      position: sticky;
+      top: 120px;
+      max-height: calc(100vh - 140px);
+      overflow-y: auto;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      background: white;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    body.scrolled-to-bottom .section-nav {
+      position: absolute;
+      bottom: 0;
+      top: auto;
+      transform: translateY(-20px);
+    }
+
+    .section-nav ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .section-nav li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .section-nav a {
+      color: #4b5563;
+      text-decoration: none;
+      transition: color 0.2s;
+      font-size: 0.95rem;
+    }
+    
+    .section-nav a:hover {
+      color: var(--primary-color);
+    }
+    
+    /* 依赖标签 */
+    .dependencies {
+      background: #f3f4f6;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+    
+    
   </style>
 </head>
 <body>
@@ -121,24 +376,123 @@
     <div class="container">
       <div class="row">
         <!-- Main Content -->
-        <div class="col-lg-9" data-aos="fade-up">
-          <h2 id="algorithm">Algorithm</h2>
-  
-          <h3>Experiment on Fine-tuning</h3>
-          <p>We were thinking of improving accuracy and relevancy, so we planned to fine-tune a language model to achieve better performance. However, due to various reasons such as GPU limitation, cost limitation, time limitation, we stopped implementing. The fine-tuning code is available in our GitHub, called model_agent in backend. And here is the process of how we did.</p>
-  
-          <p>There are three files, <code>upload_pdfs.py</code>, <code>fine_tune_model.py</code>, and <code>try_model.py</code>. First of all, <code>upload_pdfs.py</code> is responsible for loading PDF files, cleaning the text, splitting the data like what we do in the regular pipeline. However, there’s an additional step, preparing the training and testing datasets, and saving it into CSV files.</p>
-  
-          <p>We prepare the dataset by pairing X as input medical papers and Y as output systematic reviews into a Pandas data frame. We created the dataset manually by looking up systematic reviews (Y) online and getting their reference papers (X). Then, we split the data into training and testing datasets with 80% for training and 20% for testing. After all these, we save them into <code>training_data.csv</code> and <code>testing_data.csv</code>.</p>
-  
-          <p>Then, <code>fine_tune_model.py</code> explains the process of fine-tuning a pre-trained T5-small model (from hugging face) on the prepared dataset. After loading the <code>training_data.csv</code>, X and Y are extracted. We then create a custom TensorFlow dataset class to tokenize the input X and target Y texts. After initializing the model, we compile it with optimizer and computes the loss function. Then the model is trained on the dataset in batches of 8 for 3 epochs. The model is then evaluated on the same dataset (we did not have time to create a validation dataset). Finally, the fine-tuned model and tokenizer are saved to the <code>fine-tuned-model</code> directory.</p>
-  
-          <p>Last step is testing the model, where <code>try_model.py</code> runs the fine-tuned model on the testing dataset and generates a review. First is load the model from <code>fine-tuned-model</code> directory and load the <code>testing_data.csv</code> file with X_test and Y_test extracted. Again, create a custom TensorFlow dataset class to tokenize X_test and Y_test texts. Compile, compute loss, and evaluate, where the test loss is printed. Finally, the model generates predictions for the testing dataset and printed out in terminal.</p>
-  
-          <p>Unfortunately, the result output was some sentences that aren’t even grammatically correct, many sentences were nonsensical and lack coherence. As the model failed to produce meaningful systematic reviews, we did not conduct any measurement evaluations like BLEU scores. Overall, it is an interesting experience, especially the fine-tuning process for transformer models. Also, we understand that there is a lot of challenges beside writing the code itself, such as data quality, pre-trained model itself, etc. If given more time and computational resources, we could try this on a larger dataset and better language model, potentially achieving higher quality results.</p>
-  
-          <p>Here’s the comparison between output from our fine-tuned model, and our current application output.</p>
-          <p><code>[fine-tuning-output.txt] [RAG-app-generate-review.txt]</code></p>
+        <div class="content-card implementation-section">
+          <h2 class="section-title">Implementation</h2>
+          
+          <div class="experiment-intro">
+            <h3 class="subsection-title">Experiment on Fine-tuning</h3>
+            <p class="intro-text">
+              We were thinking of improving accuracy and relevancy, so we planned to fine-tune a language model to achieve better performance. 
+              However, due to various reasons such as GPU limitation, cost limitation, time limitation, we stopped implementing. 
+              The fine-tuning code is available in our GitHub, called model_agent in backend. Here is the process of how we did it.
+            </p>
+          </div>
+        
+          <div class="process-section">
+            <h4 class="process-title">Fine-tuning Process</h4>
+            <p class="process-description">
+              There are three files involved in the fine-tuning process:
+            </p>
+            
+            <div class="file-cards">
+              <!-- Upload PDFs Card -->
+              <div class="file-card">
+                <h5 class="file-title">upload_pdfs.py</h5>
+                <p class="file-description">Responsible for loading PDF files, cleaning the text, splitting the data</p>
+                <div class="file-details">
+                  <p>This script performs the following steps:</p>
+                  <ul class="steps-list">
+                    <li>Loads PDF files</li>
+                    <li>Cleans the text</li>
+                    <li>Splits the data (similar to the regular pipeline)</li>
+                    <li>Prepares training and testing datasets</li>
+                    <li>Saves data into CSV files</li>
+                  </ul>
+                  <p class="additional-info">
+                    We prepare the dataset by pairing X as input medical papers and Y as output systematic reviews into a Pandas data frame. 
+                    We created the dataset manually by looking up systematic reviews (Y) online and getting their reference papers (X). 
+                    Then, we split the data into training and testing datasets with 80% for training and 20% for testing. 
+                    After all these, we save them into training_data.csv and testing_data.csv.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Fine Tune Model Card -->
+            <div class="file-card">
+              <h5 class="file-title">fine_tune_model.py</h5>
+              <p class="file-description">Handles the fine-tuning process of the pre-trained model</p>
+              <div class="file-details">
+                <p>This script explains the process of fine-tuning a pre-trained T5-small model (from Hugging Face) on the prepared dataset:</p>
+                <ul class="steps-list">
+                  <li>Loads the training_data.csv</li>
+                  <li>Extracts X and Y</li>
+                  <li>Creates a custom TensorFlow dataset class to tokenize the input X and target Y texts</li>
+                  <li>Initializes the model</li>
+                  <li>Compiles it with optimizer and computes the loss function</li>
+                  <li>Trains the model on the dataset in batches of 8 for 3 epochs</li>
+                  <li>Evaluates the model on the same dataset (we did not have time to create a validation dataset)</li>
+                  <li>Saves the fine-tuned model and tokenizer to the fine-tuned-model directory</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Try Model Card -->
+            <div class="file-card">
+              <h5 class="file-title">try_model.py</h5>
+              <p class="file-description">Used for testing the fine-tuned model</p>
+              <div class="file-details">
+                <p>This script tests the fine-tuned model:</p>
+                <ul class="steps-list">
+                  <li>Loads the model from fine-tuned-model directory</li>
+                  <li>Loads the testing_data.csv file with X_test and Y_test extracted</li>
+                  <li>Creates a custom TensorFlow dataset class to tokenize X_test and Y_test texts</li>
+                  <li>Compiles, computes loss, and evaluates</li>
+                  <li>Prints the test loss</li>
+                  <li>Generates predictions for the testing dataset and prints them in terminal</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="results-section">
+          <h4 class="results-title">Results and Comparison</h4>
+          <div class="results-content">
+            <p class="results-text">
+              Unfortunately, the result output was some sentences that aren't even grammatically correct, 
+              many sentences were nonsensical and lack coherence. As the model failed to produce meaningful 
+              systematic reviews, we did not conduct any measurement evaluations like BLEU scores.
+            </p>
+            <p class="results-text">
+              Overall, it is an interesting experience, especially the fine-tuning process for transformer models. 
+              Also, we understand that there is a lot of challenges beside writing the code itself, such as data quality, 
+              pre-trained model itself, etc. If given more time and computational resources, we could try this on a larger 
+              dataset and better language model, potentially achieving higher quality results.
+            </p>
+          </div>
+          
+          <div class="comparison-section">
+            <h5 class="comparison-title">Comparison Between Outputs</h5>
+            <p class="comparison-description">
+              Here's the comparison between output from our fine-tuned model, and our current application output:
+            </p>
+            <h5>Comparison Between Outputs</h5>
+            <p>
+              Here's the comparison between output from our fine-tuned model, and our current application output:
+            </p>
+            <!-- Replace with your actual file paths -->
+            <div class="code-block clickable-file" data-filepath="../../assets/content/fine-tuning-output.txt">
+              <strong>Fine-tuned Model Output:</strong><br>
+              <span class="file-content">Click to view fine-tuning output file</span>
+            </div>
+            
+            <div class="code-block clickable-file" data-filepath="../../assets/content/RAG-app-generate-review.txt">
+              <strong>Current Application Output:</strong><br>
+              <span class="file-content">Click to view current application output file</span>
+            </div>  
+          </div>
+        </div>
+      </div>
   
           <h3 class="mt-5">Experiment of Crawling Similar Articles</h3>
           <h5>Experiment System Description</h5>
@@ -186,6 +540,8 @@
   
           <p>This system constructs verified academic databases for content generation, avoiding unsubstantiated claims. Ongoing development focuses on increasing literature coverage depth and contextual relevance to support evidence-based writing.</p>
         </div>
+
+        
   
         <!-- Right Sidebar -->
         <div class="col-lg-3" data-aos="fade-left">
@@ -247,6 +603,20 @@
 
   <script>
     AOS.init();
+  
+  document.addEventListener("DOMContentLoaded", function () {
+    const clickableFiles = document.querySelectorAll(".clickable-file");
+
+    clickableFiles.forEach(function (block) {
+      block.addEventListener("click", function () {
+        const filePath = block.getAttribute("data-filepath");
+        if (filePath) {
+          window.open(filePath, "_blank");
+        }
+      });
+    });
+  });
+
   </script>
 </body>
 </html>
