@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Requirements - QuickStart Bootstrap Template</title>
+  <title>System Design - QuickStart Bootstrap Template</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -12,9 +12,9 @@
   <link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,73 +26,291 @@
   <!-- Main CSS File -->
   <link href="../../assets/css/main.css" rel="stylesheet">
 
-  <!-- 你可以在此处写一些页面专属的样式 -->
+  <!-- Enhanced Styles -->
   <style>
-    /* Hero 区域的简易渐变背景示例 */
-    .requirements-hero {
-      background: linear-gradient(90deg, #f7672f 0%, #6f2fb8 100%);
-      padding: 60px 0;
+    body {
+      background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f5 100%);
+      font-family: 'Inter', sans-serif;
+      color: #2d3748;
+    }
+
+    .system-hero {
+      background: linear-gradient(135deg, #6f2fb8 0%, #f7672f 100%);
+      padding: 8rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .system-hero::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      transform: translate(-25%, -50%);
+    }
+
+    .clickable-file {
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .clickable-file:hover {
+      background-color: #3a3a3a;
+    }
+
+    .content-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      margin: 2rem 0;
+      box-shadow: 0 12px 24px -8px rgba(111,47,184,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .tech-card {
+      background: #fff;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      box-shadow: 0 8px 16px -4px rgba(111,47,184,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    h2 {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.35em;
+      height: 1.2em;
+      width: 5px;
+      background: #6f2fb8;
+      border-radius: 3px;
+    }
+
+    .code-block {
+      background: #2d2d2d;
+      color: #f8f8f8;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      font-family: 'Roboto Mono', monospace;
+    }
+
+    .requirements-content table, .system-design-content table {
+      font-size: 18px;
+      color: #333;
+      background-color: #fff;
+      margin: 20px 0;
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .requirements-content th, .system-design-content th {
+      background-color: #6f2fb8;
+      color: #fff;
+      font-weight: bold;
       text-align: center;
-      color: #fff;
-    }
-    .requirements-hero h1 {
-      margin-bottom: 10px;
-      font-weight: 700;
-      font-size: 48px;
-    }
-    .requirements-hero .breadcrumbs {
-      font-size: 14px;
-    }
-    .requirements-hero .breadcrumbs a {
-      color: #fff;
-      text-decoration: underline;
-    }
-    .requirements-hero .breadcrumbs .current {
-      color: #fff;
-      opacity: 0.8;
+      padding: 12px;
     }
 
-    /* 主体内容区域示例 */
-    .requirements-content {
-      padding: 60px 0;
+    .requirements-content td, .system-design-content td {
+      text-align: left;
+      padding: 12px;
+      border-bottom: 1px solid #eee;
     }
-    .requirements-content h2 {
-      font-weight: 700;
-      margin-bottom: 20px;
-      font-size: 32px;
+
+    .requirements-content tr:hover, .system-design-content tr:hover {
+      background-color: #f9f9f9;
     }
-    .requirements-content p {
-      margin-bottom: 15px;
-      line-height: 1.8;
+
+    .diagram-container {
+      margin: 2rem 0;
+      text-align: center;
     }
-    .requirements-content h4 {
-      margin-top: 40px;
-      font-weight: 600;
+
+    .diagram-container img {
+      max-width: 100%;
+      border-radius: 0.75rem;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     }
+
+    .diagram-container p {
+      margin-top: 1rem;
+      font-style: italic;
+      color: #666;
+    }
+
+    @media (max-width: 768px) {
+      .system-hero { padding: 4rem 0; }
+      .content-card { padding: 1.5rem; }
+    }
+
+    .implementation-section {
+    padding: 2.5rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    color: #6f2fb8;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f0f0f0;
+  }
+  
+  .subsection-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 1.5rem 0 1rem;
+  }
+  
+  .process-title, .results-title {
+    font-size: 1.3rem;
+    color: #444;
+    margin: 2rem 0 1rem;
+    padding-left: 1rem;
+    border-left: 4px solid #f7672f;
+  }
+  
+  .comparison-title {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 1.5rem 0 0.5rem;
+  }
+  
+  /* File Cards */
+  .file-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .file-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-top: 3px solid #6f2fb8;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .file-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+  }
+  
+  .file-title {
+    font-size: 1.1rem;
+    color: #6f2fb8;
+    margin-bottom: 0.5rem;
+  }
+  
+  .file-description {
+    color: #666;
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+  
+  .steps-list {
+    padding-left: 1.2rem;
+    margin: 1rem 0;
+  }
+  
+  .steps-list li {
+    margin-bottom: 0.5rem;
+    color: #555;
+  }
+  
+  /* Output Cards */
+  .output-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .output-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .output-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+    border-color: #6f2fb8;
+  }
+  
+  .output-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .file-indicator {
+    font-size: 0.8rem;
+    color: #f7672f;
+    font-weight: 500;
+  }
+  
+  .output-preview {
+    display: flex;
+    align-items: center;
+    color: #666;
+  }
+  
+  .output-preview i {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+  }
+  
+  /* Text Styles */
+  .intro-text, .process-description, .comparison-description, .results-text, .additional-info {
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 1.2rem;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .file-cards, .output-cards {
+      grid-template-columns: 1fr;
+    }
+    
+    .implementation-section {
+      padding: 1.5rem;
+    }
+  }
   </style>
-
 </head>
+
 <body>
 
-<!-- ======= Header (与 index.html 相同) ======= -->
+<!-- ======= Header ======= -->
 <header id="header" class="header d-flex align-items-center fixed-top">
   <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
-    <!-- LOGO -->
     <a href="../../index.html" class="logo d-flex align-items-center me-auto">
       <img src="assets/img/logo.png" alt="">
       <h1 class="sitename">Rag-n-Bones</h1>
     </a>
 
-    <!-- 导航菜单 -->
     <nav id="navmenu" class="navmenu">
       <ul>
-        <!-- 你可以在此修改导航，让 Requirements 高亮，比如加个 .active -->
         <li><a href="../../index.html">Home</a></li>
-        <li><a href="requirements.html" class="active">Requirements</a></li>
+        <li><a href="requirements.html">Requirements</a></li>
         <li><a href="research.html">Research</a></li>
         <li><a href="hci.html">HCI</a></li>
-        <li><a href="system-design.html">System Design</a></li>
+        <li><a href="system-design.html" class="active">System Design</a></li>
         <li><a href="implements.html">Implements</a></li>
         <li><a href="testing.html">Testing</a></li>
         <li><a href="evaluation.html">Evaluation</a></li>
@@ -100,112 +318,246 @@
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>
-    <!-- /导航菜单 -->
 
     <a class="btn-getstarted" href="../../index.html">Get Started</a>
-
   </div>
 </header>
-<!-- /Header -->
 
 <main id="main">
-
-  <!-- ======= Hero (Requirements) ======= -->
-  <section class="requirements-hero">
+  <!-- Hero Section -->
+  <section class="system-hero">
     <div class="container" data-aos="fade-up">
-      <h1>REQUIREMENTS</h1>
+      <h1>SYSTEM DESIGN</h1>
       <nav class="breadcrumbs">
         <ol>
           <li><a href="../../index.html">Home</a></li>
-          <li class="current">Requirements</li>
+          <li class="current">System Design</li>
         </ol>
       </nav>
     </div>
   </section>
-  <!-- /Hero -->
 
-  <!-- ======= Main Content ======= -->
-  <section class="requirements-content">
+  <!-- Content Section -->
+  <section class="system-content">
     <div class="container" data-aos="fade-up">
-      <h2>Project Background</h2>
-      <p>
-        （在这里放你项目的背景描述、需求说明等）
-      </p>
-      <p>
-        Recent Covid-19 crisis has changed people’s working style. With remote-working being trendy in most companies...
-      </p>
-      <h4>PAIN POINTS</h4>
-      <p>
-        - Pain point 1...<br>
-        - Pain point 2...
-      </p>
-      <h4>AVABOT CURES</h4>
-      <p>
-        - Cure 1...<br>
-        - Cure 2...
-      </p>
-      <!-- 你可以继续添加更多自定义内容，如图文并排、卡片、表格等 -->
-    </div>
-  </section>
-  <!-- /Main Content -->
+      
+      <div class="content-card">
+        <h2>System Architecture</h2>
+        <p>
+          This is a basic flowchart showing an abstract of the system architecture of backend in a RAG environment, 
+          explaining the concept of how we developed the pipeline.
+        </p>
+        
+        <div class="diagram-container">
+          <!-- Replace with your actual image path -->
+          <img src="../../assets/img/system-architecture-flowchart.png" alt="System Architecture Flowchart">
+          <p><em>Figure 1: System architecture flowchart of the RAG backend</em></p>
+        </div>
 
+
+        <h3>Sequence Diagrams</h3>
+        <p>
+          [If you have sequence diagrams, you can add them here with descriptions]
+        </p>
+
+        <h3>Design Patterns</h3>
+        <p>
+          [Describe any design patterns used in your system architecture]
+        </p>
+      </div>
+
+      <div class="content-card">
+        <h2>Data Storage</h2>
+        <p>
+          [Describe your data storage approach and include ER diagrams if applicable]
+        </p>
+
+        <h3>Data Schema</h3>
+        <p>
+          [Include your database schema or ER diagram here]
+        </p>
+      </div>
+
+      <div class="content-card">
+        <h2>Packages and APIs</h2>
+        <p>
+          [Describe your package structure and API definitions]
+        </p>
+      </div>
+
+      <div class="content-card implementation-section">
+        <h2 class="section-title">Implementation</h2>
+        
+        <div class="experiment-intro">
+          <h3 class="subsection-title">Experiment on Fine-tuning</h3>
+          <p class="intro-text">
+            We were thinking of improving accuracy and relevancy, so we planned to fine-tune a language model to achieve better performance. 
+            However, due to various reasons such as GPU limitation, cost limitation, time limitation, we stopped implementing. 
+            The fine-tuning code is available in our GitHub, called model_agent in backend. Here is the process of how we did it.
+          </p>
+        </div>
+      
+        <div class="process-section">
+          <h4 class="process-title">Fine-tuning Process</h4>
+          <p class="process-description">
+            There are three files involved in the fine-tuning process:
+          </p>
+          
+          <div class="file-cards">
+            <!-- Upload PDFs Card -->
+            <div class="file-card">
+              <h5 class="file-title">upload_pdfs.py</h5>
+              <p class="file-description">Responsible for loading PDF files, cleaning the text, splitting the data</p>
+              <div class="file-details">
+                <p>This script performs the following steps:</p>
+                <ul class="steps-list">
+                  <li>Loads PDF files</li>
+                  <li>Cleans the text</li>
+                  <li>Splits the data (similar to the regular pipeline)</li>
+                  <li>Prepares training and testing datasets</li>
+                  <li>Saves data into CSV files</li>
+                </ul>
+                <p class="additional-info">
+                  We prepare the dataset by pairing X as input medical papers and Y as output systematic reviews into a Pandas data frame. 
+                  We created the dataset manually by looking up systematic reviews (Y) online and getting their reference papers (X). 
+                  Then, we split the data into training and testing datasets with 80% for training and 20% for testing. 
+                  After all these, we save them into training_data.csv and testing_data.csv.
+                </p>
+              </div>
+            </div>
+            
+            <!-- Fine Tune Model Card -->
+            <div class="file-card">
+              <h5 class="file-title">fine_tune_model.py</h5>
+              <p class="file-description">Handles the fine-tuning process of the pre-trained model</p>
+              <div class="file-details">
+                <p>This script explains the process of fine-tuning a pre-trained T5-small model (from Hugging Face) on the prepared dataset:</p>
+                <ul class="steps-list">
+                  <li>Loads the training_data.csv</li>
+                  <li>Extracts X and Y</li>
+                  <li>Creates a custom TensorFlow dataset class to tokenize the input X and target Y texts</li>
+                  <li>Initializes the model</li>
+                  <li>Compiles it with optimizer and computes the loss function</li>
+                  <li>Trains the model on the dataset in batches of 8 for 3 epochs</li>
+                  <li>Evaluates the model on the same dataset (we did not have time to create a validation dataset)</li>
+                  <li>Saves the fine-tuned model and tokenizer to the fine-tuned-model directory</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Try Model Card -->
+            <div class="file-card">
+              <h5 class="file-title">try_model.py</h5>
+              <p class="file-description">Used for testing the fine-tuned model</p>
+              <div class="file-details">
+                <p>This script tests the fine-tuned model:</p>
+                <ul class="steps-list">
+                  <li>Loads the model from fine-tuned-model directory</li>
+                  <li>Loads the testing_data.csv file with X_test and Y_test extracted</li>
+                  <li>Creates a custom TensorFlow dataset class to tokenize X_test and Y_test texts</li>
+                  <li>Compiles, computes loss, and evaluates</li>
+                  <li>Prints the test loss</li>
+                  <li>Generates predictions for the testing dataset and prints them in terminal</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="results-section">
+          <h4 class="results-title">Results and Comparison</h4>
+          <div class="results-content">
+            <p class="results-text">
+              Unfortunately, the result output was some sentences that aren't even grammatically correct, 
+              many sentences were nonsensical and lack coherence. As the model failed to produce meaningful 
+              systematic reviews, we did not conduct any measurement evaluations like BLEU scores.
+            </p>
+            <p class="results-text">
+              Overall, it is an interesting experience, especially the fine-tuning process for transformer models. 
+              Also, we understand that there is a lot of challenges beside writing the code itself, such as data quality, 
+              pre-trained model itself, etc. If given more time and computational resources, we could try this on a larger 
+              dataset and better language model, potentially achieving higher quality results.
+            </p>
+          </div>
+          
+          <div class="comparison-section">
+            <h5 class="comparison-title">Comparison Between Outputs</h5>
+            <p class="comparison-description">
+              Here's the comparison between output from our fine-tuned model, and our current application output:
+            </p>
+            <h5>Comparison Between Outputs</h5>
+            <p>
+              Here's the comparison between output from our fine-tuned model, and our current application output:
+            </p>
+            <!-- Replace with your actual file paths -->
+            <div class="code-block clickable-file" data-filepath="../../assets/content/fine-tuning-output.txt">
+              <strong>Fine-tuned Model Output:</strong><br>
+              <span class="file-content">Click to view fine-tuning output file</span>
+            </div>
+            
+            <div class="code-block clickable-file" data-filepath="../../assets/content/current-output.txt">
+              <strong>Current Application Output:</strong><br>
+              <span class="file-content">Click to view current application output file</span>
+            </div>  
+          </div>
+        </div>
+      </div>
+  </section>
 </main>
 
-<!-- ======= Footer (与 index.html 相同) ======= -->
+<!-- ======= Footer ======= -->
 <footer id="footer" class="footer text-white position-relative" style="background: linear-gradient(to right, #4b6cb7, #182848);">
+  <!-- Here is a wave-shaped SVG to decorate the top. If you don't need the wave shape, you can delete this div -->
+  <div class="wave-shape" style="position: absolute; top: -100px; left: 0; width: 100%; overflow: hidden; line-height: 0; transform: rotate(180deg);">
+    <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="position: relative; display: block; width: calc(100% + 1.3px); height: 100px;">
+      <path d="M-2.19,29.63 C149.99,150.00 321.41,-49.99 502.54,44.96 L500.00,0.00 L0.00,0.00 Z"
+            style="stroke: none; fill: #ffffff;"></path>
+    </svg>
+  </div>
 
-    <!-- 这里是一个波浪形 SVG，用来装饰顶部。如果不需要波浪形，可删除此 div -->
-    <div class="wave-shape" style="position: absolute; top: -100px; left: 0; width: 100%; overflow: hidden; line-height: 0; transform: rotate(180deg);">
-      <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="position: relative; display: block; width: calc(100% + 1.3px); height: 100px;">
-        <path d="M-2.19,29.63 C149.99,150.00 321.41,-49.99 502.54,44.96 L500.00,0.00 L0.00,0.00 Z"
-              style="stroke: none; fill: #ffffff;"></path>
-      </svg>
-    </div>
-  
-    <div class="container pt-5" style="position: relative; z-index: 1;">
-      <div class="row gy-4">
-        <!-- 左侧：Site Info -->
-        <div class="col-lg-4 col-md-6">
-          <h3 class="fw-bold">Site Info</h3>
-          <p>
-            This is the website for UCL Year2 2020-2023 COMP106B Team4 Avanade’s COVID19 changes,  
-            which introduces the team project and contains all the portfolios.
-          </p>
-        </div>
-        <!-- 中间：Site Menu -->
-        <div class="col-lg-4 col-md-6">
-          <h3 class="fw-bold">Site Menu</h3>
-          <ul class="list-unstyled">
-            <li><a href="../../index.html" class="text-white text-decoration-none">Home</a></li>
-            <li><a href="requirements.html" class="text-white text-decoration-none">Requirements</a></li>
-            <li><a href="research.html" class="text-white text-decoration-none">Research</a></li>
-            <li><a href="hci.html" class="text-white text-decoration-none">HCI</a></li>
-            <li><a href="system-design.html" class="text-white text-decoration-none">System Design</a></li>
-            <li><a href="implements.html" class="text-white text-decoration-none">Implements</a></li>
-            <li><a href="testing.html" class="text-white text-decoration-none">Testing</a></li>
-            <li><a href="evaluation.html" class="text-white text-decoration-none">Evaluation</a></li>
-            <li><a href="appendix.html" class="text-white text-decoration-none">Appendix</a></li>
-          </ul>
-        </div>
-        <!-- 右侧：Project Supporters -->
-        <div class="col-lg-4 col-md-12">
-          <h3 class="fw-bold">Project Supporters</h3>
-          <p class="mb-1">Avanade</p>
-          <p class="mb-3">UCL</p>
-          <p class="mb-0">
-            A lot of thanks to our company partner Avanade and Mr. Kenza 404 especially.
-          </p>
-        </div>
+  <div class="container pt-5" style="position: relative; z-index: 1;">
+    <div class="row gy-4">
+      <!-- Left: Site Info -->
+      <div class="col-lg-4 col-md-6">
+        <h3 class="fw-bold">Site Info</h3>
+        <p>
+          This is the website for UCL Year2 2020-2023 COMP106B Team4 Avanade's COVID19 changes,  
+          which introduces the team project and contains all the portfolios.
+        </p>
       </div>
-  
-      <!-- 底部版权信息 -->
-      <hr class="my-4">
-      <div class="text-center pb-3">
-        <p class="mb-0">© 2021 All Rights Reserved</p>
+      <!-- Middle: Site Menu -->
+      <div class="col-lg-4 col-md-6">
+        <h3 class="fw-bold">Site Menu</h3>
+        <ul class="list-unstyled">
+          <li><a href="../../index.html" class="text-white text-decoration-none">Home</a></li>
+          <li><a href="requirements.html" class="text-white text-decoration-none">Requirements</a></li>
+          <li><a href="research.html" class="text-white text-decoration-none">Research</a></li>
+          <li><a href="hci.html" class="text-white text-decoration-none">HCI</a></li>
+          <li><a href="system-design.html" class="text-white text-decoration-none">System Design</a></li>
+          <li><a href="implements.html" class="text-white text-decoration-none">Implements</a></li>
+          <li><a href="testing.html" class="text-white text-decoration-none">Testing</a></li>
+          <li><a href="evaluation.html" class="text-white text-decoration-none">Evaluation</a></li>
+          <li><a href="appendix.html" class="text-white text-decoration-none">Appendix</a></li>
+        </ul>
+      </div>
+      <!-- Right: Project Supporters -->
+      <div class="col-lg-4 col-md-12">
+        <h3 class="fw-bold">Project Supporters</h3>
+        <p class="mb-1">Avanade</p>
+        <p class="mb-3">UCL</p>
+        <p class="mb-0">
+          A lot of thanks to our company partner Avanade and Mr. Kenza 404 especially.
+        </p>
       </div>
     </div>
-  </footer>
-<!-- /Footer -->
+
+    <!-- Bottom copyright information -->
+    <hr class="my-4">
+    <div class="text-center pb-3">
+      <p class="mb-0">© 2021 All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
 
 <!-- Scroll Top -->
 <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -219,6 +571,18 @@
 <script src="../../assets/vendor/aos/aos.js"></script>
 <script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
 <script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Add click handlers to all clickable file blocks
+    document.querySelectorAll('.clickable-file').forEach(block => {
+      block.addEventListener('click', function() {
+        const filePath = this.getAttribute('data-filepath');
+        window.open(filePath, '_blank');
+      });
+    });
+  });
+</script>
 
 <!-- Main JS File -->
 <script src="../../assets/js/main.js"></script>

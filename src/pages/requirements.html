@@ -14,7 +14,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Mono:wght@400;500&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,68 +26,347 @@
   <!-- Main CSS File -->
   <link href="../../assets/css/main.css" rel="stylesheet">
 
-  <!-- 你可以在此处写一些页面专属的样式 -->
+  <!-- Enhanced Styles -->
   <style>
-    /* Hero 区域的简易渐变背景示例 */
+    :root {
+      --primary-color: #6f2fb8;
+      --secondary-color: #f7672f;
+      --text-color: #2d3748;
+      --light-bg: #f8f9fa;
+      --lighter-bg: #f1f3f5;
+      --card-shadow: 0 12px 24px -8px rgba(111, 47, 184, 0.1);
+      --card-hover-shadow: 0 16px 32px -8px rgba(111, 47, 184, 0.15);
+    }
+    
+    body {
+      background: linear-gradient(135deg, var(--light-bg) 0%, var(--lighter-bg) 100%);
+      font-family: 'Inter', sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
+
+    /* Improved typography */
+    p, li {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #4a5568;
+      margin-bottom: 1.2rem;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-top: 1.5em;
+      margin-bottom: 0.8em;
+      line-height: 1.3;
+    }
+    
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.75rem; }
+    h4 { font-size: 1.5rem; }
+    
+    /* Hero section */
     .requirements-hero {
-      background: linear-gradient(90deg, #f7672f 0%, #6f2fb8 100%);
-      padding: 60px 0;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      padding: 6rem 0 4rem;
+      position: relative;
+      overflow: hidden;
       text-align: center;
-      color: #fff;
     }
+
+    .requirements-hero::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      transform: translate(-25%, -50%);
+    }
+
     .requirements-hero h1 {
-      margin-bottom: 10px;
-      font-weight: 700;
-      font-size: 48px;
+      font-size: 2.8rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      animation: fadeInUp 0.8s ease;
+      color: white;
+      margin-bottom: 1rem;
     }
-    .requirements-hero .breadcrumbs {
-      font-size: 14px;
+    
+    .breadcrumbs {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.8);
     }
-    .requirements-hero .breadcrumbs a {
-      color: #fff;
-      text-decoration: underline;
+    
+    .breadcrumbs a {
+      color: white;
+      text-decoration: none;
+      transition: opacity 0.3s;
     }
-    .requirements-hero .breadcrumbs .current {
-      color: #fff;
+    
+    .breadcrumbs a:hover {
       opacity: 0.8;
     }
+    
+    .breadcrumbs .current {
+      color: rgba(255,255,255,0.6);
+    }
 
-    /* 主体内容区域示例 */
-    .requirements-content {
-      padding: 60px 0;
+    /* Content cards */
+    .content-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      margin: 2.5rem 0;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.05);
     }
-    .requirements-content h2 {
-      font-weight: 700;
+
+    .content-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--card-hover-shadow);
+    }
+    
+    /* Improved heading styles */
+    h2 {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+    }
+
+    h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.25em;
+      height: 1.4em;
+      width: 5px;
+      background: var(--primary-color);
+      border-radius: 3px;
+    }
+    
+    h3 {
+      color: #374151;
+      margin-top: 2.5rem;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    
+    h4 {
+      color: #4b5563;
+      margin-top: 2rem;
+      font-size: 1.3rem;
+    }
+
+    /* Code block styling */
+    .code-block {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      font-family: 'Roboto Mono', monospace;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      border-left: 4px solid var(--secondary-color);
+    }
+    .persona-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1rem 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: block;
+    }
+
+    .persona-card {
+      overflow: hidden;
+    }
+  
+    .code-block pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      tab-size: 2;
+    }
+    
+    /* Improved lists */
+    ul, ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    li {
+      margin-bottom: 0.6rem;
+    }
+    
+    /* Side navigation */
+    .section-nav {
+      position: sticky;
+      top: 120px;
+      max-height: calc(100vh - 140px);
+      overflow-y: auto;
       margin-bottom: 20px;
-      font-size: 32px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      background: white;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      transition: transform 0.3s ease;
     }
-    .requirements-content p {
-      margin-bottom: 15px;
-      line-height: 1.8;
+
+    body.scrolled-to-bottom .section-nav {
+      position: absolute;
+      bottom: 0;
+      top: auto;
+      transform: translateY(-20px);
     }
-    .requirements-content h4 {
-      margin-top: 40px;
+
+    .section-nav ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    
+    .persona-grid {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .persona-item {
+    flex: 1;
+    min-width: 250px;
+    max-width: 350px;
+  }
+  
+  .persona-item img {
+    width: 100%;
+    height: auto;
+    max-height: 200px; 
+    object-fit: cover; 
+    border-radius: 8px;
+  }
+
+    .section-nav li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .section-nav a {
+      color: #4b5563;
+      text-decoration: none;
+      transition: color 0.2s;
+      font-size: 0.95rem;
+      display: block;
+      padding: 0.5rem 0;
+    }
+    
+    .section-nav a:hover {
+      color: var(--primary-color);
+    }
+    
+    .section-nav .sub-item {
+      padding-left: 1rem;
+      border-left: 2px solid #e5e7eb;
+    }
+
+    /* Table styling */
+    .use-case-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+    
+    .use-case-table th {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 0.75rem 1rem;
+      text-align: left;
+    }
+    
+    .use-case-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    
+    .use-case-table tr:hover td {
+      background-color: #f9f5ff;
+    }
+
+    /* Priority labels */
+    .priority-label {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.85rem;
       font-weight: 600;
+      margin-right: 0.5rem;
+    }
+    
+    .must-have { background-color: #dc3545; color: white; }
+    .should-have { background-color: #ffc107; color: #212529; }
+    .could-have { background-color: #0d6efd; color: white; }
+    .wont-have { background-color: #6c757d; color: white; }
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .requirements-hero { padding: 5rem 0 3rem; }
+      .requirements-hero h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.8rem; }
+      h3 { font-size: 1.5rem; }
+    }
+    
+    @media (max-width: 768px) {
+      .requirements-hero { padding: 4rem 0 2.5rem; }
+      .requirements-hero h1 { font-size: 2rem; }
+      .content-card { padding: 1.5rem; }
+      h2 { font-size: 1.6rem; }
+      h3 { font-size: 1.4rem; }
+      
+      .section-nav {
+        display: none;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .requirements-hero h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.5rem; }
+      h3 { font-size: 1.3rem; }
+    }
+    
+    @media (max-width: 991.98px) {
+      .section-nav {
+        position: static;
+        order: -1;
+        margin-bottom: 2rem;
+        width: 100%;
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
-
 </head>
+
 <body>
 
-<!-- ======= Header (与 index.html 相同) ======= -->
+<!-- ======= Header ======= -->
 <header id="header" class="header d-flex align-items-center fixed-top">
   <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
-    <!-- LOGO -->
     <a href="../../index.html" class="logo d-flex align-items-center me-auto">
       <img src="assets/img/logo.png" alt="">
       <h1 class="sitename">Rag-n-Bones</h1>
     </a>
 
-    <!-- 导航菜单 -->
     <nav id="navmenu" class="navmenu">
       <ul>
-        <!-- 你可以在此修改导航，让 Requirements 高亮，比如加个 .active -->
         <li><a href="../../index.html">Home</a></li>
         <li><a href="requirements.html" class="active">Requirements</a></li>
         <li><a href="research.html">Research</a></li>
@@ -100,61 +379,308 @@
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>
-    <!-- /导航菜单 -->
 
     <a class="btn-getstarted" href="../../index.html">Get Started</a>
-
   </div>
 </header>
-<!-- /Header -->
 
 <main id="main">
-
-  <!-- ======= Hero (Requirements) ======= -->
+  <!-- Hero Section -->
   <section class="requirements-hero">
     <div class="container" data-aos="fade-up">
       <h1>REQUIREMENTS</h1>
-      <nav class="breadcrumbs">
-        <ol>
-          <li><a href="../../index.html">Home</a></li>
-          <li class="current">Requirements</li>
-        </ol>
-      </nav>
     </div>
   </section>
-  <!-- /Hero -->
 
-  <!-- ======= Main Content ======= -->
+  <!-- Content Section -->
   <section class="requirements-content">
     <div class="container" data-aos="fade-up">
-      <h2>Project Background</h2>
-      <p>
-        （在这里放你项目的背景描述、需求说明等）
-      </p>
-      <p>
-        Recent Covid-19 crisis has changed people’s working style. With remote-working being trendy in most companies...
-      </p>
-      <h4>PAIN POINTS</h4>
-      <p>
-        - Pain point 1...<br>
-        - Pain point 2...
-      </p>
-      <h4>AVABOT CURES</h4>
-      <p>
-        - Cure 1...<br>
-        - Cure 2...
-      </p>
-      <!-- 你可以继续添加更多自定义内容，如图文并排、卡片、表格等 -->
+      <div class="row flex-lg-nowrap">
+        <!-- Main content area -->
+        <div class="col-lg-8 order-2 order-lg-1">
+          <!-- Introduction -->
+          <div class="content-card">
+            <p class="lead">This section outlines the comprehensive requirements for our systematic review generation system, including project goals, user needs, functional specifications, and prioritized feature sets.</p>
+          </div>
+          
+          <!-- Project Overview -->
+          <div class="content-card" id="overview">
+            <h2>Project Overview</h2>
+            
+            <p>Our client CarefulAI focuses on creating safe and reliable AI agents for various fields, including healthcare and economic development. They manage AI safety and assurance across the complete AI supply chain, from algorithm design to global management.</p>
+            
+            <p>Our project, in partnership with Joseph Connor from CarefulAI, is developing a RAG system to undertake systematic reviews, serving as an important tool for NHS integration. This initiative aligns with CarefulAI's values and guides us toward creating AI applications that benefit humanity.</p>
+          </div>
+          
+          <!-- Project Goals -->
+          <div class="content-card" id="goals">
+            <h2>Project Goals</h2>
+            
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="goal-item">
+                  <i class="bi bi-file-earmark-medical"></i>
+                  <h4>Medical Paper Analysis</h4>
+                  <p>Develop RAG system for comprehensive medical paper analysis</p>
+                </div>
+              </div>
+              
+              <div class="col-md-6">
+                <div class="goal-item">
+                  <i class="bi bi-journal-text"></i>
+                  <h4>Automated Review</h4>
+                  <p>Generate structured systematic reviews automatically</p>
+                </div>
+              </div>
+              
+              <div class="col-md-6">
+                <div class="goal-item">
+                  <i class="bi bi-speedometer2"></i>
+                  <h4>Workload Reduction</h4>
+                  <p>Achieve 50%+ efficiency improvement for medical professionals</p>
+                </div>
+              </div>
+              
+              <div class="col-md-6">
+                <div class="goal-item">
+                  <i class="bi bi-filetype-pdf"></i>
+                  <h4>PDF Processing</h4>
+                  <p>Enable PDF upload & natural language query processing</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Requirement Gathering -->
+          <div class="content-card" id="gathering">
+            <h2>Requirement Gathering</h2>
+            
+            <div class="row g-4">
+              <div class="col-lg-6">
+                <div class="requirement-block">
+                  <h3>Client Requirements</h3>
+                  <ul>
+                    <li>Web application with PDF processing pipeline</li>
+                    <li>Vector database integration (Pinecone)</li>
+                    <li>Matplotlib visualization for quality assessments</li>
+                    <li>Systematic review generation following PRISMA guidelines</li>
+                    <li>User authentication and history tracking</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="col-lg-6">
+                <div class="requirement-block">
+                  <h3>User Survey Highlights</h3>
+                  <div class="survey-stats">
+                    <div class="stat-item">
+                      <span class="stat-value">87%</span>
+                      <span class="stat-label">Find analysis time-consuming</span>
+                    </div>
+                    <div class="stat-item">
+                      <span class="stat-value">5-10</span>
+                      <span class="stat-label">Papers read monthly</span>
+                    </div>
+                    <div class="stat-item">
+                      <span class="stat-value">92%</span>
+                      <span class="stat-label">Would use automated review tool</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- User Personas -->
+          <div class="content-card" id="personas">
+            <h2>User Personas</h2>
+            
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="persona-item">
+                  <img src="../../assets/img/persona1.png" alt="Primary Persona" class="persona-img">
+                  <h4>Dr. Sarah Johnson</h4>
+                  <p class="persona-title">Medical Researcher</p>
+                  <ul>
+                    <li>Conducts systematic reviews monthly</li>
+                    <li>Needs to stay current with latest research</li>
+                    <li>Frustrated with time-consuming manual reviews</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="col-md-6">
+                <div class="persona-item">
+                  <img src="../../assets/img/persona2.png" alt="Secondary Persona" class="persona-img">
+                  <h4>Prof. Michael Chen</h4>
+                  <p class="persona-title">Academic Supervisor</p>
+                  <ul>
+                    <li>Oversees multiple research projects</li>
+                    <li>Needs to validate student literature reviews</li>
+                    <li>Wants consistent methodology across reviews</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Use Cases -->
+          <div class="content-card" id="use-cases">
+            <h2>Use Cases</h2>
+            
+            <div class="use-case-img">
+              <img src="../../assets/img/use-case-flow.png" alt="Use Case Flow Diagram" class="img-fluid">
+            </div>
+            
+            <table class="use-case-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Use Case</th>
+                  <th>Flow</th>
+                  <th>Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>UC01</td>
+                  <td>Log in</td>
+                  <td>1. User enters credentials<br>2. System verifies login</td>
+                  <td>User is logged in or sees error</td>
+                </tr>
+                <tr>
+                  <td>UC02</td>
+                  <td>Sign up</td>
+                  <td>1. User enters details<br>2. System registers user</td>
+                  <td>Account created or error shown</td>
+                </tr>
+                <tr>
+                  <td>UC03</td>
+                  <td>Upload PDFs</td>
+                  <td>1. User selects files<br>2. System processes upload</td>
+                  <td>Files ready for analysis</td>
+                </tr>
+                <tr>
+                  <td>UC04</td>
+                  <td>Generate Review</td>
+                  <td>1. Retrieve data<br>2. Send to LLM<br>3. Generate sections</td>
+                  <td>Structured review created</td>
+                </tr>
+                <tr>
+                  <td>UC05</td>
+                  <td>Download Results</td>
+                  <td>1. User requests download<br>2. System generates PDF</td>
+                  <td>User receives report</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <!-- Requirements Prioritization -->
+          <div class="content-card" id="prioritization">
+            <h2>Requirements Prioritization</h2>
+            
+            <div class="row g-4">
+              <div class="col-lg-6">
+                <div class="priority-card">
+                  <h3>Functional Requirements</h3>
+                  
+                  <div class="priority-group">
+                    <h4><span class="priority-label must-have">Must Have</span></h4>
+                    <ul>
+                      <li>PDF input capability</li>
+                      <li>Prompt-driven review definition</li>
+                      <li>Structured review display</li>
+                      <li>Vector database integration</li>
+                      <li>LLM-powered section generation</li>
+                    </ul>
+                  </div>
+                  
+                  <div class="priority-group">
+                    <h4><span class="priority-label should-have">Should Have</span></h4>
+                    <ul>
+                      <li>User authentication system</li>
+                      <li>Review history tracking</li>
+                      <li>Quality assessment visualization</li>
+                    </ul>
+                  </div>
+                  
+                  <div class="priority-group">
+                    <h4><span class="priority-label could-have">Could Have</span></h4>
+                    <ul>
+                      <li>Source file visibility</li>
+                      <li>PDF export functionality</li>
+                      <li>Medical paper database integration</li>
+                    </ul>
+                  </div>
+                  
+                  <div class="priority-group">
+                    <h4><span class="priority-label wont-have">Won't Have</span></h4>
+                    <ul>
+                      <li>Collaborative features</li>
+                      <li>Speech interface</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-lg-6">
+                <div class="priority-card">
+                  <h3>Non-Functional Requirements</h3>
+                  
+                  <div class="priority-group">
+                    <h4><span class="priority-label must-have">Must Have</span></h4>
+                    <ul>
+                      <li>Web application implementation</li>
+                      <li>RAG architecture compliance</li>
+                      <li>Data encryption (bcrypt)</li>
+                    </ul>
+                  </div>
+                  
+                  <div class="priority-group">
+                    <h4><span class="priority-label should-have">Should Have</span></h4>
+                    <ul>
+                      <li>High performance standards</li>
+                      <li>Maintainable codebase</li>
+                    </ul>
+                  </div>
+                  
+                  <div class="priority-group">
+                    <h4><span class="priority-label wont-have">Won't Have</span></h4>
+                    <ul>
+                      <li>Cross-platform compatibility</li>
+                      <li>Multilingual support</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Side navigation -->
+        <div class="col-lg-4 order-1 order-lg-2 ps-lg-4">
+          <div class="section-nav">
+            <h5>Page Sections</h5>
+            <ul class="list-unstyled">
+              <li><a href="#overview" class="d-block py-2">Project Overview</a></li>
+              <li><a href="#goals" class="d-block py-2">Project Goals</a></li>
+              <li><a href="#gathering" class="d-block py-2">Requirement Gathering</a></li>
+              <li><a href="#personas" class="d-block py-2">User Personas</a></li>
+              <li><a href="#use-cases" class="d-block py-2">Use Cases</a></li>
+              <li><a href="#prioritization" class="d-block py-2">Requirements Prioritization</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
-  <!-- /Main Content -->
-
 </main>
 
-<!-- ======= Footer (与 index.html 相同) ======= -->
+<!-- ======= Footer ======= -->
 <footer id="footer" class="footer text-white position-relative" style="background: linear-gradient(to right, #4b6cb7, #182848);">
 
-    <!-- 这里是一个波浪形 SVG，用来装饰顶部。如果不需要波浪形，可删除此 div -->
+    <!-- Wave shape SVG -->
     <div class="wave-shape" style="position: absolute; top: -100px; left: 0; width: 100%; overflow: hidden; line-height: 0; transform: rotate(180deg);">
       <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="position: relative; display: block; width: calc(100% + 1.3px); height: 100px;">
         <path d="M-2.19,29.63 C149.99,150.00 321.41,-49.99 502.54,44.96 L500.00,0.00 L0.00,0.00 Z"
@@ -164,15 +690,15 @@
   
     <div class="container pt-5" style="position: relative; z-index: 1;">
       <div class="row gy-4">
-        <!-- 左侧：Site Info -->
+        <!-- Left: Site Info -->
         <div class="col-lg-4 col-md-6">
           <h3 class="fw-bold">Site Info</h3>
           <p>
-            This is the website for UCL Year2 2020-2023 COMP106B Team4 Avanade’s COVID19 changes,  
+            This is the website for UCL Year2 2020-2023 COMP106B Team4 Avanade's COVID19 changes,  
             which introduces the team project and contains all the portfolios.
           </p>
         </div>
-        <!-- 中间：Site Menu -->
+        <!-- Middle: Site Menu -->
         <div class="col-lg-4 col-md-6">
           <h3 class="fw-bold">Site Menu</h3>
           <ul class="list-unstyled">
@@ -181,13 +707,13 @@
             <li><a href="research.html" class="text-white text-decoration-none">Research</a></li>
             <li><a href="hci.html" class="text-white text-decoration-none">HCI</a></li>
             <li><a href="system-design.html" class="text-white text-decoration-none">System Design</a></li>
-            <li><a href="implements.html" class="text-white text-decoration-none">Implements</a></li>
+            <li><a href="implements.html" class="text-white text-decoration-none">Implementation</a></li>
             <li><a href="testing.html" class="text-white text-decoration-none">Testing</a></li>
             <li><a href="evaluation.html" class="text-white text-decoration-none">Evaluation</a></li>
             <li><a href="appendix.html" class="text-white text-decoration-none">Appendix</a></li>
           </ul>
         </div>
-        <!-- 右侧：Project Supporters -->
+        <!-- Right: Project Supporters -->
         <div class="col-lg-4 col-md-12">
           <h3 class="fw-bold">Project Supporters</h3>
           <p class="mb-1">Avanade</p>
@@ -198,7 +724,7 @@
         </div>
       </div>
   
-      <!-- 底部版权信息 -->
+      <!-- Copyright -->
       <hr class="my-4">
       <div class="text-center pb-3">
         <p class="mb-0">© 2021 All Rights Reserved</p>
@@ -222,6 +748,48 @@
 
 <!-- Main JS File -->
 <script src="../../assets/js/main.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const body = document.body;
+    const footer = document.querySelector('footer');
+    const nav = document.querySelector('.section-nav');
+    
+    if (!footer || !nav) return;
+    
+    // Set up IntersectionObserver to detect footer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          body.classList.add('scrolled-to-bottom');
+        } else {
+          body.classList.remove('scrolled-to-bottom');
+        }
+      });
+    }, {threshold: 0.1});
+    
+    observer.observe(footer);
+    
+    // Ensure nav position is correct on page load
+    function checkNavPosition() {
+      const scrollBottom = window.innerHeight + window.scrollY;
+      const docHeight = document.body.offsetHeight;
+      const footerTop = footer.offsetTop;
+      
+      if (scrollBottom >= docHeight - 50 || window.scrollY >= footerTop - window.innerHeight) {
+        body.classList.add('scrolled-to-bottom');
+      } else {
+        body.classList.remove('scrolled-to-bottom');
+      }
+    }
+    
+    // Initial check
+    checkNavPosition();
+    
+    // Check on scroll
+    window.addEventListener('scroll', checkNavPosition);
+  });
+</script>
 
 </body>
 </html>

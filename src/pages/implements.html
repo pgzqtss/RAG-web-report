@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Requirements - QuickStart Bootstrap Template</title>
+  <title>Implementation - QuickStart Bootstrap Template</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -14,7 +14,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Mono:wght@400;500&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,135 +26,1215 @@
   <!-- Main CSS File -->
   <link href="../../assets/css/main.css" rel="stylesheet">
 
-  <!-- 你可以在此处写一些页面专属的样式 -->
+  <!-- Enhanced Styles -->
   <style>
-    /* Hero 区域的简易渐变背景示例 */
-    .requirements-hero {
-      background: linear-gradient(90deg, #f7672f 0%, #6f2fb8 100%);
-      padding: 60px 0;
+    :root {
+      --primary-color: #6f2fb8;
+      --secondary-color: #f4f6f8;
+      --text-color: #2d3748;
+      --light-bg: #f8f9fa;
+      --lighter-bg: #f1f3f5;
+      --card-shadow: 0 12px 24px -8px rgba(111, 47, 184, 0.1);
+      --card-hover-shadow: 0 16px 32px -8px rgba(111, 47, 184, 0.15);
+    }
+    
+    body {
+      background: linear-gradient(135deg, var(--light-bg) 0%, var(--lighter-bg) 100%);
+      font-family: 'Inter', sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
+
+    p, li {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #4a5568;
+      margin-bottom: 1.2rem;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-top: 1.5em;
+      margin-bottom: 0.8em;
+      line-height: 1.3;
+    }
+    
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.75rem; }
+    h4 { font-size: 1.5rem; }
+
+    .system-hero {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      padding: 6rem 0 4rem;
+      position: relative;
+      overflow: hidden;
       text-align: center;
-      color: #fff;
     }
-    .requirements-hero h1 {
-      margin-bottom: 10px;
-      font-weight: 700;
-      font-size: 48px;
+
+    .system-hero::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      transform: translate(-25%, -50%);
     }
-    .requirements-hero .breadcrumbs {
-      font-size: 14px;
+
+    .system-hero h1 {
+      font-size: 2.8rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      animation: fadeInUp 0.8s ease;
+      color: white;
+      margin-bottom: 1rem;
     }
-    .requirements-hero .breadcrumbs a {
-      color: #fff;
-      text-decoration: underline;
+    
+    .breadcrumbs {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.8);
     }
-    .requirements-hero .breadcrumbs .current {
-      color: #fff;
+    
+    .breadcrumbs a {
+      color: white;
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+    
+    .breadcrumbs a:hover {
       opacity: 0.8;
     }
+    
+    .breadcrumbs .current {
+      color: rgba(255,255,255,0.6);
+    }
 
-    /* 主体内容区域示例 */
-    .requirements-content {
-      padding: 60px 0;
+    .content-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      margin: 2.5rem 0;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.05);
     }
-    .requirements-content h2 {
-      font-weight: 700;
+
+    .content-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--card-hover-shadow);
+    }
+
+    h2 {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+    }
+
+    h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.25em;
+      height: 1.4em;
+      width: 5px;
+      background: var(--primary-color);
+      border-radius: 3px;
+    }
+    .code-block {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1em;
+    font-family: monospace;
+    white-space: pre;
+    overflow-x: auto;
+    }
+    h3 {
+      color: #374151;
+      margin-top: 2.5rem;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    
+    h4 {
+      color: #4b5563;
+      margin-top: 2rem;
+      font-size: 1.3rem;
+    }
+    
+    .code-block {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      font-family: 'Roboto Mono', monospace;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      border-left: 4px solid var(--secondary-color);
+    }
+
+    .code-block pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      tab-size: 2;
+    }
+    
+    ul, ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    li {
+      margin-bottom: 0.6rem;
+    }
+    
+    .section-nav {
+      position: sticky;
+      top: 120px;
+      max-height: calc(100vh - 140px);
+      overflow-y: auto;
       margin-bottom: 20px;
-      font-size: 32px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      background: white;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      transition: transform 0.3s ease;
     }
-    .requirements-content p {
-      margin-bottom: 15px;
-      line-height: 1.8;
+
+    body.scrolled-to-bottom .section-nav {
+      position: absolute;
+      bottom: 0;
+      top: auto;
+      transform: translateY(-20px);
     }
-    .requirements-content h4 {
-      margin-top: 40px;
-      font-weight: 600;
+
+    .section-nav ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .section-nav li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .section-nav a {
+      color: #4b5563;
+      text-decoration: none;
+      transition: color 0.2s;
+      font-size: 0.95rem;
+    }
+    
+    .section-nav a:hover {
+      color: var(--primary-color);
+    }
+    
+    /* 依赖标签 */
+    .dependencies {
+      background: #f3f4f6;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 992px) {
+      .system-hero { padding: 5rem 0 3rem; }
+      .system-hero h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.8rem; }
+      h3 { font-size: 1.5rem; }
+    }
+    
+    @media (max-width: 768px) {
+      .system-hero { padding: 4rem 0 2.5rem; }
+      .system-hero h1 { font-size: 2rem; }
+      .content-card { padding: 1.5rem; }
+      h2 { font-size: 1.6rem; }
+      h3 { font-size: 1.4rem; }
+      
+      .section-nav {
+        display: none;
+      }
+    }
+    
+
+    @media (max-width: 576px) {
+      .system-hero h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.5rem; }
+      h3 { font-size: 1.3rem; }
+    }
+    @media (max-width: 991.98px) {
+      .section-nav {
+        position: static;
+        order: -1; 
+        margin-bottom: 2rem;
+        width: 100%;
+      }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
-
 </head>
+
 <body>
 
-<!-- ======= Header (与 index.html 相同) ======= -->
+<!-- ======= Header ======= -->
 <header id="header" class="header d-flex align-items-center fixed-top">
   <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
-    <!-- LOGO -->
     <a href="../../index.html" class="logo d-flex align-items-center me-auto">
-      <img src="../../assets/img/logo.png" alt="">
+      <img src="assets/img/logo.png" alt="">
       <h1 class="sitename">Rag-n-Bones</h1>
     </a>
 
-    <!-- 导航菜单 -->
     <nav id="navmenu" class="navmenu">
       <ul>
-        <!-- 你可以在此修改导航，让 Requirements 高亮，比如加个 .active -->
         <li><a href="../../index.html">Home</a></li>
-        <li><a href="requirements.html" class="active">Requirements</a></li>
+        <li><a href="requirements.html">Requirements</a></li>
         <li><a href="research.html">Research</a></li>
         <li><a href="hci.html">HCI</a></li>
         <li><a href="system-design.html">System Design</a></li>
-        <li><a href="implements.html">Implements</a></li>
+        <li><a href="implements.html" class="active">Implements</a></li>
         <li><a href="testing.html">Testing</a></li>
         <li><a href="evaluation.html">Evaluation</a></li>
         <li><a href="appendix.html">Appendix</a></li>
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>
-    <!-- /导航菜单 -->
 
     <a class="btn-getstarted" href="../../index.html">Get Started</a>
-
   </div>
 </header>
-<!-- /Header -->
 
 <main id="main">
-
-  <!-- ======= Hero (Requirements) ======= -->
-  <section class="requirements-hero">
+  <!-- Hero Section -->
+  <section class="system-hero">
     <div class="container" data-aos="fade-up">
-      <h1>REQUIREMENTS</h1>
-      <nav class="breadcrumbs">
-        <ol>
-          <li><a href="../../index.html">Home</a></li>
-          <li class="current">Requirements</li>
-        </ol>
-      </nav>
+      <h1>IMPLEMENTATION DETAILS</h1>
     </div>
   </section>
-  <!-- /Hero -->
 
-  <!-- ======= Main Content ======= -->
-  <section class="requirements-content">
+  <!-- Content Section -->
+  <section class="system-content">
     <div class="container" data-aos="fade-up">
-      <h2>Project Background</h2>
-      <p>
-        （在这里放你项目的背景描述、需求说明等）
-      </p>
-      <p>
-        Recent Covid-19 crisis has changed people’s working style. With remote-working being trendy in most companies...
-      </p>
-      <h4>PAIN POINTS</h4>
-      <p>
-        - Pain point 1...<br>
-        - Pain point 2...
-      </p>
-      <h4>AVABOT CURES</h4>
-      <p>
-        - Cure 1...<br>
-        - Cure 2...
-      </p>
-      <!-- 你可以继续添加更多自定义内容，如图文并排、卡片、表格等 -->
+      <div class="row flex-lg-nowrap">
+        <!-- 主内容区域 -->
+        <div class="col-lg-8 order-2 order-lg-1">
+          <!-- 简介 -->
+          <div class="content-card">
+            <p class="lead">This section provides a comprehensive overview of the implementation details for our systematic review generation system. Below you'll find detailed explanations of each component and the technical decisions behind them.</p>
+          </div>
+          
+          <!-- Upserting Text Chunks -->
+          <div class="content-card" id="upserting">
+            <h2>Upserting Text Chunks to Pinecone</h2>
+            <div class="dependencies">Dependencies: Pinecone, Langchain, PyMuPDF, Flask, concurrent.futures</div>
+            
+            <p>Before any processing of text is done, the user must upload their own PDFs, which are saved locally with JavaScript in the front end. The ID that is associated with the files and systematic review is posted to the upsert API endpoint ('/api/upsert') in Flask.</p>
+
+            <h3>1. Process the PDFs into chunks</h3>
+            <p>The files that have been uploaded by the user must first be fetched using their associated ID because the input files are in a directory named by its ID. A dictionary is created that contains each file name without its extension (i.e. '.pdf') alongside its file path.</p>
+            
+            <div class="code-block">
+              <pre>files = {}
+
+for filename in os.listdir(path):
+    full_path = os.path.join(path, filename)
+    
+    if os.path.isfile(full_path):
+        # Extract the filename without extension
+        name_without_extension = os.path.splitext(filename)[0]
+        files[name_without_extension] = full_path</pre>
+            </div>
+
+            <p>PyMuPDF is used to open and read the contents of each PDF. This text is cleaned by removing unnecessary whitespaces and empty lines. For each PDF content, the text is split into smaller chunks of size 1500 characters with a 300-character overlap using Langchain's text splitter class (RecursiveCharacterTextSplitter).</p>
+            
+            <div class="code-block">
+              <pre>def split_text_into_chunks(text, chunk_size=1500, overlap=300):
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=chunk_size, 
+        chunk_overlap=overlap, 
+        separators=['\n\n', '\n', '.', '?', '!']
+    )
+    chunks = text_splitter.split_text(text)
+    return chunks</pre>
+            </div>
+
+            <h3>2. Classification of text chunks</h3>
+            <p>Each text chunk is categorised into one of the five sections of a systematic review, including introduction, methods, results, discussion and conclusion. Our approach to categorising each chunk was by inputting them into a prompt and using OpenAI's GPT model to assign it to the most relevant section.</p>
+            
+            <div class="code-block">
+              <pre>prompt = f'''
+You are an AI assistant classifying research paper sections.
+The following text is an excerpt from a scientific paper.
+Determine whether it belongs to one of these sections:
+- Background
+- Methods
+- Results
+- Discussion
+- Conclusion
+
+If uncertain, choose the most relevant section.
+
+---TEXT---
+{chunk_text}
+------------------
+
+Output only the section name: 
+'''</pre>
+            </div>
+
+            <h3>3. Upserting chunks to Pinecone</h3>
+            <p>Following categorisation, each chunk is embedded into vectors using OpenAI's embedding model integrated using Langchain. They are then uploaded with metadata containing the text content, source and section into a specified namespace within a Pinecone index.</p>
+            
+            <div class="code-block">
+              <pre>namespace = f'systematic_review/{paper_id}/{section}'
+index.upsert([
+    (
+        f'{paper_id}-chunk-{i}',
+        vector,
+        {
+            'text': chunk,
+            'source': paper_id,
+            'section': section
+        }
+    )
+], namespace=namespace)</pre>
+            </div>
+
+            <p>When upserting text chunks, the ThreadPoolExecutor class from the 'concurrent.futures' inbuilt Python module is used to upsert text concurrently using multiple threads.</p>
+            
+            <div class="code-block">
+              <pre>with ThreadPoolExecutor() as executor:
+    for i, chunk in enumerate(text_chunks):
+        executor.submit(upsert_chunk, i, chunk, paper_id, stored_sections, index)</pre>
+            </div>
+
+            <h3>4. Validation</h3>
+            <p>Before moving forward to generating the sections of a systematic review, a validation process is done to ensure all text chunks have been successfully uploaded into Pinecone and all data can be retrieved for review generation.</p>
+            
+            <div class="code-block">
+              <pre>def check_all_upserted_chunks(files, chunks_count, max_retries=10, delay=2):
+    index = pinecone.Index(PINECONE_INDEX_NAME)
+    
+    retries = 0
+    while retries &lt; max_retries:
+        print(f'Retries: {retries}')
+        total_vector_count = 0
+        index_stats = index.describe_index_stats()
+        namespaces = index_stats.get('namespaces', {})
+        for namespace, stats in namespaces.items():
+            for paper_id in files:
+                if namespace.startswith(f'systematic_review/{paper_id}'):
+                    total_vector_count += stats.get('vector_count', 0)
+        print(f'Vector Count: {total_vector_count}')
+
+        if total_vector_count == chunks_count:
+            print(f'All vectors are fully indexed!')
+            return
+        
+        retries += 1
+        sleep(delay)
+    print(f'Vectors may not be fully indexed yet. Proceeding with querying.')</pre>
+            </div>
+          </div>
+
+          <!-- Generating Systematic Review -->
+          <div class="content-card" id="generating">
+            <h2>Generating Systematic Review</h2>
+            <div class="dependencies">Dependencies: Pinecone, Langchain, GPT-3.5-turbo, all-MiniLM-L6-v2</div>
+            
+            <p>The systematic review is generated by individually generating each section sequentially (background, methods, results, discussion, conclusion) using the OpenAI model. Within the prompts, the model is given information on the markdown format it should use and the topic points it should include.</p>
+
+            <h3>1. Retrieve from the vector database</h3>
+            <p>When the user is redirected to another page after uploading their PDFs and the research topic, an HTTP request containing the ID and the research topic is sent from an async fetch function in Next.js and is received by the Flask endpoint '/api/generate'.</p>
+            
+            <div class="code-block">
+              <pre>export async function generateText(prompt, id) {
+  const response = await fetch('http://127.0.0.1:5000/api/generate', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ prompt, id })
+  });
+
+  const data = await response.json();
+  return data;</pre>
+            </div>
+
+            <div class="code-block">
+              <pre>@app.route('/api/generate', methods=['POST'])
+def generate_full_systematic_review():
+    data = request.json
+    query = data.get('prompt')
+    id = data.get('id')
+    paper_ids = [paper for paper in get_files(id)]</pre>
+            </div>
+
+            <p>The research topic is first embedded into a vector with OpenAI's embedding model and is used to query a namespace of an index. The namespace is determined using the file name and series of vectors that are related to a review section (e.g. background).</p>
+            
+            <div class="code-block">
+              <pre>query_vector = embeddings.embed_query(query)
+
+def query_with_namespace(paper_id, section, query_vector, top_k, index):
+    index = pinecone.Index(PINECONE_INDEX_NAME)
+    namespace = f'systematic_review/{paper_id}/{section}'
+    print(f'Querying Pinecone in namespace: "{namespace}"')
+
+    results = index.query(
+        vector=query_vector, 
+        top_k=top_k, 
+        namespace=namespace, 
+        include_metadata=True
+    )
+
+    if results['matches']:
+        print(f'Found {len(results[\'matches\'])} results in {namespace}')
+        return results
+    else:
+        print(f'No relevant results found in {namespace}')</pre>
+            </div>
+
+            <p>Similarly to our upsert process, multithreading is utilised when searching for the most relevant text chunks in the database through concurrent.futures' ThreadPoolExecutor class.</p>
+            
+            <div class="code-block">
+              <pre>result = []
+
+with ThreadPoolExecutor() as executor:
+    future_to_queries = {
+        executor.submit(
+            query_with_namespace, 
+            paper_id, 
+            section, 
+            query_vector, 
+            top_k, 
+            index
+        ): paper_id for paper_id in paper_ids
+    }
+
+    for future in as_completed(future_to_queries):
+        try:
+            response = future.result()
+            result.extend([match['metadata']['text'] for match in response['matches']])
+        except Exception as e:
+            print(f'Error querying namespace {future_to_queries[future]}: {e}')
+
+return result</pre>
+            </div>
+
+            <h3>2. Generate the section of systematic review</h3>
+            <p>A scaffold prompt is used for each section of the systematic review, which sets the role the LLM should play alongside writing guidelines and output constraints.</p>
+            
+            <div class="code-block">
+              <pre>prompt = textwrap.dedent(f'''
+# 📚 Systematic Review Writing Task: {section_title}
+
+You are an expert researcher conducting a Systematic Review following PRISMA guidelines. 
+Your task is to generate the {section_title} section in a structured, evidence-based, and academic manner.
+
+## 🔍 Key Writing Guidelines
+
+- Follow PRISMA guidelines for transparency &amp; reproducibility
+Clarity &amp; Coherence: Ensure smooth readability
+- Maintain logical flow with clear transition sentences
+- Avoid redundancy—summarize rather than repeat ideas
+
+## 📌 Context (Original Query & Research Data)
+
+Below is the original query that sets the topic:
+
+## 🛠 Instructions for Writing This Section
+{section_prompt}
+
+- Use this data as a reference to ensure consistency
+- If methodology or prior findings are referenced, align your section accordingly
+
+## 🎯 Output Constraints
+
+- Format: Use markdown headings (## for main, ### for sub)
+- Word Limit: Aim for {max_length} words
+- Clarity & Coherence: Ensure smooth readability
+- MUST NOT: Do not include in-text citations
+
+## 📝 Now, generate the full {section_title} section:
+''')</pre>
+            </div>
+
+            <p>The method used to ensure each section of the systematic review contains relevant content; distinct additional prompts are embedded into the previous prompt to highlight the required contents and guidelines for the section.</p>
+            
+            <div class="code-block">
+              <pre>section_prompt = textwrap.dedent(f'''
+{section_title}                             
+
+Generate the {section_title} section for the Systematic Review using relevant information retrieved through a RAG system. Structure the content logically and focus on summarizing the key findings from the retrieved information.
+
+🔹 Required Content:
+    1. Relevant Information Summary:
+        • Provide a general overview of the information retrieved
+        • Focus on summarizing the main themes and findings
+    2. Study Types and Methodological Insights (If Available):
+        • Briefly describe any study types or methodological details
+        • Only include if explicitly mentioned in the content
+    3. Key Findings and Themes:
+        • Present a clear, concise summary of major findings
+        • Highlight recurring themes or notable differences
+    4. General Observations and Gaps:
+        • Mention any apparent gaps in the retrieved information
+        • Avoid making unsupported assumptions
+
+🔹 Writing Style:
+
+✅ Focused on clear, unbiased summaries
+✅ Only present information directly supported by content
+✅ Flexible structure, prioritizing relevance
+''').strip()</pre>
+            </div>
+
+            <p>Once the response has been generated by the LLM for a particular section, it undergoes a cleaning process to remove any similar sentences.</p>
+            
+            <div class="code-block">
+              <pre>filtered_sentences = []
+for sentence in unique_sentences:
+    if not filtered_sentences:  # First sentence is always added
+        filtered_sentences.append(sentence)
+        continue
+    
+    # Compute similarity between new sentence and existing filtered ones
+    embeddings1 = bert_model.encode([sentence], convert_to_tensor=True)
+    embeddings2 = bert_model.encode(filtered_sentences, convert_to_tensor=True)
+    similarity_scores = util.pytorch_cos_sim(embeddings1, embeddings2).mean().item()
+
+    # Only add sentence if it is not too similar to previous ones
+    if similarity_scores &lt; similarity_threshold:
+        filtered_sentences.append(sentence)</pre>
+            </div>
+
+            <h3>3. Store text as PDF</h3>
+            <p>Each generated section is combined together to form the whole systematic review. Before it is returned to be saved into the MySQL database, the text is locally stored as a PDF using the 'markdown-pdf' module.</p>
+            
+            <div class="code-block">
+              <pre>def store_pdf(text, id):
+  pdf = MarkdownPdf(toc_level=3)
+  pdf.add_section(Section(text, toc=False))
+  path = os.path.abspath(os.path.join(
+    os.path.dirname(__file__), 
+    '..', '..', 'frontend', 'public', 
+    'output', str(id), 'systematic_review.pdf'
+  ))
+  os.makedirs(os.path.dirname(path), exist_ok=True)
+  pdf.save(path)</pre>
+            </div>
+
+            <p>The systematic review is returned in JSON format back to the Next.js frontend. The review, user ID, review ID and research question are then embedded into a POST request that is sent to the '/api/save' endpoint.</p>
+            
+            <div class="code-block">
+              <pre>export async function saveSystematicReview(user_id, prompt_id, prompt, systematic_review) {
+  try {
+    const response = await fetch('http://127.0.0.1:5000/api/save', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ user_id, prompt_id, prompt, systematic_review })
+    });
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error saving systematic review:', error);
+  }
+}</pre>
+            </div>
+
+            <div class="code-block">
+              <pre>@app.route('/api/save', methods=['POST'])
+def save_history():
+    data = request.json
+    user_id = data.get('user_id')
+    user_id = user_id[0]
+    prompt_id = data.get('prompt_id')
+    prompt = data.get('prompt')
+    systematic_review = data.get('systematic_review')
+
+    conn = connect_to_database()
+    cursor = conn.cursor()
+    try:
+        cursor.execute(
+            'INSERT INTO history (user_id, prompt_id, user_input, model_output) VALUES (%s, %s, %s, %s)',
+            (user_id, prompt_id, prompt, systematic_review)
+        )
+        conn.commit()
+        return jsonify({'message': 'Systematic review has been stored successfully'})
+    except mysql.connector.IntegrityError:
+        return jsonify({'error': 'Systematic review already exists'}), 409
+    finally:
+        cursor.close()
+        conn.close()</pre>
+            </div>
+          </div>
+
+          <!-- Database Functionality -->
+          <div class="content-card" id="database">
+            <h2>Database Functionality</h2>
+            <div class="dependencies">Dependencies: MySQL</div>
+
+            <h3>1. Connect to database</h3>
+            <p>Whenever the Flask backend wants to interact with the MySQL database (e.g. log in the system), it must establish a connection between itself and the database using the connect function from the 'mysql.connector' module.</p>
+            
+            <div class="code-block">
+              <pre>def connect_to_database():
+    return mysql.connector.connect(
+        host=MYSQL_HOST,
+        user=MYSQL_USER,
+        password=MYSQL_PASSWORD,
+        database=DATABASE_NAME
+    )</pre>
+            </div>
+
+            <h3>2. Inserting data into the database</h3>
+            <p>[Implementation details for inserting data]</p>
+
+            <h3>3. Retrieving data from the database</h3>
+            <p>[Implementation details for retrieving data]</p>
+          </div>
+
+          <!-- User System -->
+          <div class="content-card" id="user-system">
+            <h2>User System</h2>
+            <div class="dependencies">Dependencies: MySQL, FLask</div>
+
+            <h3>1. Signing up</h3>
+            <p>Users can sign up by entering a username, password and a confirmation password. Before this data is sent to an API endpoint for database storage, the strength of the password is checked using the 'zod' library in the frontend.</p>
+            
+            <div class="code-block">
+              <pre>export const SignupSchema = z.object({
+  username: z
+    .string()
+    .min(3, { message: 'Username must be at least 3 characters long.' })
+    .trim(),
+  password: z
+    .string()
+    .min(8, { message: 'Be at least 8 characters long.' })
+    .regex(/[A-Z]/, { message: 'Contain at least one capital letter.' })
+    .regex(/[0-9]/, { message: 'Contain at least one number.' })
+    .regex(/[^a-zA-Z0-9]/, {
+      message: 'Contain at least one special character.',
+    })
+    .trim(),
+  confirmPassword: z
+    .string()
+    .trim(),
+  }).refine((data) =&gt; data.password === data.confirmPassword, {
+    message: 'Passwords much match',
+    path: ['confirmPassword'],
+  });</pre>
+            </div>
+
+            <p>To compare the user's form inputs to the schema, the safeParse() method is used. If all fields meet the requirements of the schema, it will return true in a success attribute.</p>
+            
+            <div class="code-block">
+              <pre>const validatedFields = SignupSchema.safeParse({
+    username: username,
+    password: password,
+    confirmPassword: confirmPassword
+  })
+if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+    }
+  }</pre>
+            </div>
+
+            <div class="code-block">
+              const [state, action, pending] = useActionState(signup, undefined)
+              …
+              {state?.errors?.password &amp;&amp; (
+                  &lt;div&gt;
+                    &lt;p&gt;Password must:&lt;/p&gt;
+                    &lt;ul&gt;
+                      {state.errors.password.map((error) =&gt; (
+                        &lt;li key={error}&gt; {error}&lt;/li&gt;
+                      ))}
+                    &lt;/ul&gt;
+                  &lt;/div&gt;
+              )}
+              </div>
+
+            <p>If the user's inputs are valid, a POST request is sent to the '/api/register' endpoint with the username and password in the body. In the backend, the username and password are received for saving into the MySQL users table.</p>
+            
+            <div class="code-block">
+              <pre>@app.route('/api/register', methods=['POST'])
+def register():
+    data = request.json
+    username = data.get('username')
+    password = data.get('password')
+
+    if not username or not password:
+        return jsonify({'error': 'Missing username or password'}), 400
+
+    password_hash = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+    conn = connect_to_database()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        'INSERT INTO users (username, password_hash) VALUES (%s, %s)',
+        (username, password_hash)
+    )
+    conn.commit()</pre>
+            </div>
+
+            <h3>2. Logging in</h3>
+            <p>The login system is similar to the signup process, with the distinction that validation occurs with the backend interacting with the MySQL database.</p>
+            
+            <div class="code-block">
+              <pre>@app.route('/api/login', methods=['POST'])
+def login():
+    data = request.json
+    username = data.get('username')
+    password = data.get('password')
+
+    conn = connect_to_database()
+    cursor = conn.cursor()
+    cursor.execute('SELECT id, password_hash FROM users WHERE username = %s', (username,))
+    user = cursor.fetchone()
+    cursor.close()
+    conn.close()
+
+    if user and bcrypt.checkpw(password.encode('utf-8'), user[1].encode('utf-8')):
+        return jsonify({'message': 'User logged in successfully'}), 200
+    else:
+        return jsonify({'error': 'Invalid username or password'}), 401</pre>
+            </div>
+
+            <h3>3. User login tracking</h3>
+            <p>The user's details are stored in the local storage of the browser, which allows the user state to be maintained when the user enters different pages of the website or leaves it.</p>
+            
+            <div class="code-block">
+              <pre>const AuthContext = createContext();
+
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+
+  ...
+  
+  return (
+    <AuthContext.Provider value={{ user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+</pre>
+</div>
+
+<div class="code-block">
+<pre><code>export default function App() {
+  const { user } = useAuth();
+
+  return (
+    &lt;AuthProvider&gt;
+      &lt;MainContent user={user} /&gt;
+    &lt;/AuthProvider&gt;
+  );
+}</code></pre>
+</div>
+
+            <p>When the user successfully logs in, the login function within 'AuthProvider' is executed, which sets the user state to the username.</p>
+            
+            <div class="code-block">
+              <pre>const login = (username) => {
+    setUser({ username });
+    localStorage.setItem('user', JSON.stringify({ username }));
+  };</pre>
+            </div>
+
+            <p>When the user logs out, the opposite occurs, such that the user state is set to null to indicate the user is not signed in.</p>
+            
+            <div class="code-block">
+              <pre>const logout = () => {
+    setUser(null);
+    localStorage.removeItem('user');
+  };</pre>
+            </div>
+
+            <p>Whenever the user enters the website, there is a check for the stored user inside the browser's local storage using the 'useEffect' hook.</p>
+            
+            <div class="code-block">
+              <pre>useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);</pre>
+            </div>
+          </div>
+
+          <!-- File & Query Input -->
+          <div class="content-card" id="file-query">
+            <h2>File & Query Input</h2>
+            <div class="dependencies">Dependencies: fs (Node.js)</div>
+
+            <h3>1. Uploading and deleting files</h3>
+            <p>Uploading and deleting files is done with the 'fs' module from Node.js on the frontend. When the user uploads the files, there is an API call containing the ID and the files to the '/API/upload_files' endpoint in the 'API' frontend directory.</p>
+            
+            <div class="code-block">
+              <pre>for (const file of files) {
+      const arrayBuffer = await file.arrayBuffer();
+      const buffer = new Uint8Array(arrayBuffer);
+      const filePath = path.join(uploadDir, file.name);
+
+      await fs.writeFile(filePath, buffer);
+    }</pre>
+            </div>
+
+            <p>Deleting a file works similarly, where the file name is retrieved from a POST request to the '/api/delete_file'.</p>
+            
+            <div class="code-block">
+              <pre>const deleteDir = path.join(process.cwd(), 'public', 'files', id);
+    const filePath = path.join(deleteDir, file);
+    await fs.unlink(filePath);
+    
+    const files = await fs.readdir(deleteDir);
+    if (files.length === 0) {
+      await fs.rmdir(deleteDir);
+    }</pre>
+            </div>
+
+            <h3>2. Sending the prompt</h3>
+            <p>The prompt is put into a URL parameter of the redirected systematic review page URL. It is retrieved from the 'useSearchParams' function from Next.js.</p>
+            
+            <div class="code-block">
+              <pre>router.push(`/${id}?prompt=${encodeURIComponent(currentPrompt)}`);</pre>
+            </div>
+
+            <div class="code-block">
+              <pre>const searchParams = useSearchParams();
+  const prompt = searchParams.get('prompt');</pre>
+            </div>
+          </div>
+
+          <!-- User History -->
+          <div class="content-card" id="user-history">
+            <h2>User History</h2>
+            <div class="dependencies">Dependencies: fs (Node.js), MySQL</div>
+
+            <h3>1. Retrieving and Deleting History</h3>
+            <p>When the website is rendered, the user history is retrieved. This is done by first checking if there is a non-null user in the user state, followed by getting the user ID and then getting the user history.</p>
+            
+            <div class="code-block">
+              <pre>useEffect(() => {
+    const fetchHistory = async () => {
+      if (user) {
+        const user_id = (await queryID(user.username)).user_id[0];
+        const response = (await queryUsersHistory(user_id)).result;
+        setHistory(response);
+      }
+    };
+    fetchHistory();
+  }, [refresh, user]);</pre>
+            </div>
+
+            <p>To get the user ID, a POST request is sent to the '/api/query_user' endpoint containing the username.</p>
+            
+            <div class="code-block">
+              <pre>cursor.execute(
+            'SELECT id FROM users WHERE username = %s',
+            (username,)
+        )
+        result = cursor.fetchone()
+        return jsonify({'message': 'Found user successfully',
+                        'user_id': result}), 200</pre>
+            </div>
+
+            <p>Getting the user's history deleted involves sending a POST request containing the user ID to the '/api/query_user_history' endpoint.</p>
+            
+            <div class="code-block">
+              <pre>cursor.execute(
+            'SELECT prompt_id, user_input FROM history WHERE user_id = %s ORDER BY created_at DESC',
+            (user_id,)
+        )
+        result = cursor.fetchall()
+        return jsonify({'message': 'Found user history successfully',
+                        'result': result}), 200</pre>
+            </div>
+
+            <p>When a user hovers over a previously generated systematic review, they have the option to delete it from their history. If the user chooses to delete, a request containing the ID is sent to the '/api/delete_user_history' Flask endpoint.</p>
+            
+            <div class="code-block">
+              <pre>cursor.execute(
+            'DELETE FROM history WHERE prompt_id = %s',
+            (prompt_id,)
+        )
+        conn.commit()
+        return jsonify({'message': 'Systematic review successfully'}), 200</pre>
+            </div>
+
+            <h3>2. Displaying User History</h3>
+            <p>Recall that the history of the user is fetched if there is a valid user state. If the contents length of the history is greater than 0, each systematic review is shown as a list item displaying the user's input and contains the key of the review ID.</p>
+            
+            <div class="code-block">
+              <pre><code>{history.length &gt; 0 &amp;&amp; (
+                &lt;ul&gt;
+                  {history?.map((item) =&gt; {
+                    const [prompt_id, user_input] = item || [];
+                    if (!prompt_id) return null;
+                    
+                    return (
+                      &lt;li key={prompt_id}&gt;
+                        &lt;div
+                          onMouseEnter={() =&gt; toggleHover(prompt_id)}
+                          onMouseLeave={() =&gt; {
+                            toggleHover(null);
+                            setEditOpenPromptId(null);
+                          }}
+                          onClick={() =&gt; router.push(`/${prompt_id}`)}
+                        &gt;
+                          {user_input}
+                          {hoveredPrompt === prompt_id &amp;&amp; (
+                            &lt;div className="edit-menu"&gt;
+                              {/* edit menu */}
+                            &lt;/div&gt;
+                          )}
+                        &lt;/div&gt;
+                      &lt;/li&gt;
+                    );
+                  })}
+                &lt;/ul&gt;
+              )}</code></pre>
+              </div>
+
+            <p>When the user hovers over a certain history list item, the 'toggleHover' function sets the 'hoveredPrompt' state to the ID linked with the list item.</p>
+            
+            <div class="code-block">
+              <pre><code>function refreshHistory() {
+                  setRefresh(!refresh);
+              }
+              
+              const toggleHover = (prompt_id) =&gt; {
+                setHoveredPrompt(prompt_id);
+              };
+              
+              const toggleEditMenu = (prompt_id, event) =&gt; {
+                event.stopPropagation();
+                setEditOpenPromptId(editOpenPromptId === prompt_id ? null : prompt_id);
+              };
+              
+              {hoveredPrompt === prompt_id &amp;&amp; (
+                &lt;div
+                  onClick={(event) =&gt; toggleEditMenu(prompt_id, event)}
+                &gt;
+                  &lt;img src='ellipsis.svg' alt='Close Icon' height='20' width='20'/&gt;
+                &lt;/div&gt;
+                {editOpenPromptId === prompt_id &amp;&amp; (
+                  &lt;div
+                    onMouseLeave={() =&gt; setEditOpenPromptId(null)}
+                  &gt;
+                    &lt;button 
+                      onClick={(event) =&gt; delete_history(prompt_id, refreshHistory, event)}
+                    &gt;
+                      Delete
+                    &lt;/button&gt;
+                  &lt;/div&gt;
+                )}
+              )}</code></pre>
+              </div>
+
+          <!-- Systematic Review Display Page -->
+          <div class="content-card" id="display-page">
+            <h2>Systematic Review Display Page</h2>
+            <div class="dependencies">Dependencies: Next.js</div>
+
+            <h3>1. Check if there is a systematic review</h3>
+            <p>The URL used to view a systematic review is given by its ID in the following format: 'localhost:3000/[id]'. This is implemented by using a 'page.js' file in the '/app/[id]' directory of the frontend.</p>
+            
+            <div class="code-block">
+              <pre>const response = await queryHistory(prompt_id);
+  
+      if (response.error) {
+        return {
+          error: response.error,
+          success: false
+        }
+      }
+  
+      return {
+        message: 'Systematic review was found successfully',
+        prompt: response.prompt,
+        systematic_review: response.systematic_review,
+        success: true</pre>
+            </div>
+
+            <div class="code-block">
+              <pre>@app.route('/api/query', methods=['POST'])
+def query():
+    data = request.json
+    prompt_id = data.get('prompt_id')
+
+    conn = connect_to_database()
+    cursor = conn.cursor()
+    try:
+        cursor.execute(
+            'SELECT user_input, model_output FROM history WHERE prompt_id = %s',
+            (prompt_id,)
+        )
+        result = cursor.fetchone()
+        user_input, model_output = result
+        return jsonify({'message': 'Found systematic review successfully',
+                        'prompt': user_input,
+                        'systematic_review': model_output}), 200
+    except:
+        return jsonify({'error': 'No systematic review found'}), 404
+    finally:
+        cursor.close()
+        conn.close()</pre>
+            </div>
+
+            <h3>2. Systematic Review Pipeline</h3>
+            <p>If a systematic review is not found, it will go through the systematic review generation pipeline. The 'useState' hooks are to keep track of what is happening during the pipeline so progress can be displayed to the user.</p>
+            
+            <div class="code-block">
+              <pre>setUpsertLoading(true);
+  try {
+    await upsert(id);
+  } catch (error) {
+    console.error('Upsert failed:', error);
+  }
+  setUpsertLoading(false);</pre>
+            </div>
+
+            <div class="code-block">
+              <pre>@app.route('/api/upsert', methods=['POST'])
+def init_pinecone():
+  data = request.json
+  id = data.get('id')
+
+  try:
+    initialise_pinecone()
+    text_chunks_count, files = process_and_store_all_pdfs(id)
+    check_all_upserted_chunks(files=files, chunks_count=text_chunks_count)</pre>
+            </div>
+
+            <p>Before dealing with the PDFs, the vector database in Pinecone must be initialised. The names of indexes associated with the Pinecone API key given are checked, and if the index name is not found, a new index is created.</p>
+            
+            <div class="code-block">
+              <pre>if PINECONE_INDEX_NAME not in pinecone.list_indexes().names():
+        print(f'Creating Pinecone index: {PINECONE_INDEX_NAME}...')
+        pinecone.create_index(
+            name=PINECONE_INDEX_NAME,
+            dimension=VECTOR_DIMENSION,
+            metric=SEARCH_METRIC,
+            spec=ServerlessSpec(
+                cloud=SPEC_CLOUD,
+                region=SPEC_REGION  
+            )
+        )
+        print(f'Index "{PINECONE_INDEX_NAME}" created successfully!')
+    else:
+        print(f'Index "{PINECONE_INDEX_NAME}" already exists.')</pre>
+            </div>
+
+            <p>After the vector database has been initialised, the text is extracted from the PDFs and split into chunks. These text chunks are classified and then uploaded to the vector database.</p>
+            
+            <div class="code-block">
+              <pre>setGenerateLoading(true);
+  try {
+    const generateRes = await generate(prompt, id);
+    const systematic_review = generateRes.systematic_review
+    
+    const username = JSON.parse(localStorage.getItem('user')).username
+    const user_id = (await queryID(username)).user_id;
+    await save(user_id, id, prompt, systematic_review);
+  } catch (error) {
+    console.error('Generation failed:', error);
+  }
+  setGenerateLoading(false);</pre>
+            </div>
+
+            <p>Finally, the quality of the generated systematic review is checked by generating various graphs with an API request.</p>
+            
+            <div class="code-block">
+              <pre>setQualityLoading(true);
+  try {
+    await check_quality(id);
+    setQualityLoading(false);
+    setGenerate(false);
+    toggleUpdate();
+  } catch (error) {
+    console.error('Quality checking failed:', error);
+  }</pre>
+            </div>
+
+            <h3>3. Fetch systematic review</h3>
+            <p>If there is a systematic review found using the given ID, a success attribute set to true is returned. This 'displayText' state is to be set to true, which allows the systematic review React element to be displayed.</p>
+            
+            <div class="code-block">
+              <pre>const response = await query(id);
+  
+      if (response?.success) {
+        setDisplayText(true);
+        const data = await query(id);
+        setInput(data.prompt);
+        setOutput(data.systematic_review); 
+      return (
+  
+      {displayText && }
+      )</pre>
+            </div>
+
+            <p>The ReactMarkdown component from the 'react-markdown' React module is used to display markdown text in standard HTML.</p>
+            
+            <div class="code-block">
+              <pre><code>
+            &lt;ReactMarkdown
+              remarkPlugins={[remarkBreaks]}
+              components={{
+                h2: ({ children }) => &lt;h2 className="text-2xl font-semibold"&gt;{children}&lt;/h2&gt;,
+                h3: ({ children }) => &lt;h3 className="text-xl font-semibold"&gt;{children}&lt;/h3&gt;,
+                p: ({ children }) => &lt;p&gt;{children}&lt;/p&gt;
+              }}
+            &gt;
+              {preprocessText(text)}
+            &lt;/ReactMarkdown&gt;
+              </code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+        <!-- 侧边导航 -->
+        <div class="col-lg-4 order-1 order-lg-2 ps-lg-4">
+          <div class="section-nav">
+            <h5>Page Sections</h5>
+            <ul class="list-unstyled">
+              <li><a href="#upserting" class="d-block py-2">Upserting Text Chunks</a></li>
+              <li><a href="#generating" class="d-block py-2">Generating Review</a></li>
+              <li><a href="#database" class="d-block py-2">Database</a></li>
+              <li><a href="#user-system" class="d-block py-2">User System</a></li>
+              <li><a href="#file-query" class="d-block py-2">File &amp; Query</a></li>
+              <li><a href="#user-history" class="d-block py-2">User History</a></li>
+              <li><a href="#display-page" class="d-block py-2">Display Page</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
-  <!-- /Main Content -->
-
 </main>
 
-<!-- ======= Footer (与 index.html 相同) ======= -->
+<!-- ======= Footer ======= -->
 <footer id="footer" class="footer text-white position-relative" style="background: linear-gradient(to right, #4b6cb7, #182848);">
 
-    <!-- 这里是一个波浪形 SVG，用来装饰顶部。如果不需要波浪形，可删除此 div -->
+    <!-- 波浪形 SVG -->
     <div class="wave-shape" style="position: absolute; top: -100px; left: 0; width: 100%; overflow: hidden; line-height: 0; transform: rotate(180deg);">
       <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="position: relative; display: block; width: calc(100% + 1.3px); height: 100px;">
         <path d="M-2.19,29.63 C149.99,150.00 321.41,-49.99 502.54,44.96 L500.00,0.00 L0.00,0.00 Z"
@@ -168,7 +1248,7 @@
         <div class="col-lg-4 col-md-6">
           <h3 class="fw-bold">Site Info</h3>
           <p>
-            This is the website for UCL Year2 2020-2023 COMP106B Team4 Avanade’s COVID19 changes,  
+            This is the website for UCL Year2 2020-2023 COMP106B Team4 Avanade's COVID19 changes,  
             which introduces the team project and contains all the portfolios.
           </p>
         </div>
@@ -181,7 +1261,7 @@
             <li><a href="research.html" class="text-white text-decoration-none">Research</a></li>
             <li><a href="hci.html" class="text-white text-decoration-none">HCI</a></li>
             <li><a href="system-design.html" class="text-white text-decoration-none">System Design</a></li>
-            <li><a href="implements.html" class="text-white text-decoration-none">Implements</a></li>
+            <li><a href="implements.html" class="text-white text-decoration-none">Implementation</a></li>
             <li><a href="testing.html" class="text-white text-decoration-none">Testing</a></li>
             <li><a href="evaluation.html" class="text-white text-decoration-none">Evaluation</a></li>
             <li><a href="appendix.html" class="text-white text-decoration-none">Appendix</a></li>
@@ -222,6 +1302,44 @@
 
 <!-- Main JS File -->
 <script src="../../assets/js/main.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const body = document.body;
+    const footer = document.querySelector('footer');
+    const nav = document.querySelector('.section-nav');
+    
+    if (!footer || !nav) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          body.classList.add('scrolled-to-bottom');
+        } else {
+          body.classList.remove('scrolled-to-bottom');
+        }
+      });
+    }, {threshold: 0.1});
+    
+    observer.observe(footer);
+    
+    function checkNavPosition() {
+      const scrollBottom = window.innerHeight + window.scrollY;
+      const docHeight = document.body.offsetHeight;
+      const footerTop = footer.offsetTop;
+      
+      if (scrollBottom >= docHeight - 50 || window.scrollY >= footerTop - window.innerHeight) {
+        body.classList.add('scrolled-to-bottom');
+      } else {
+        body.classList.remove('scrolled-to-bottom');
+      }
+    }
+    
+    checkNavPosition();
+
+    window.addEventListener('scroll', checkNavPosition);
+  });
+  </script>
 
 </body>
 </html>

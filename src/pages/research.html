@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Requirements - QuickStart Bootstrap Template</title>
+  <title>Research - QuickStart Bootstrap Template</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -14,7 +14,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,71 +26,312 @@
   <!-- Main CSS File -->
   <link href="../../assets/css/main.css" rel="stylesheet">
 
-  <!-- 你可以在此处写一些页面专属的样式 -->
+  <!-- Enhanced Styles -->
   <style>
-    /* Hero 区域的简易渐变背景示例 */
-    .requirements-hero {
-      background: linear-gradient(90deg, #f7672f 0%, #6f2fb8 100%);
-      padding: 60px 0;
+    :root {
+      --primary-color: #6f2fb8;
+      --secondary-color: #f7672f;
+      --text-color: #2d3748;
+      --light-bg: #f8f9fa;
+      --lighter-bg: #f1f3f5;
+      --card-shadow: 0 12px 24px -8px rgba(111, 47, 184, 0.1);
+      --card-hover-shadow: 0 16px 32px -8px rgba(111, 47, 184, 0.15);
+    }
+    
+    body {
+      background: linear-gradient(135deg, var(--light-bg) 0%, var(--lighter-bg) 100%);
+      font-family: 'Inter', sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
+
+    /* Improved typography */
+    p, li {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #4a5568;
+      margin-bottom: 1.2rem;
+    }
+    
+    .lead {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #4a5568;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-top: 1.5em;
+      margin-bottom: 0.8em;
+      line-height: 1.3;
+    }
+    
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.75rem; }
+    h4 { font-size: 1.5rem; }
+    
+    /* Hero section */
+    .research-hero {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      padding: 6rem 0 4rem;
+      position: relative;
+      overflow: hidden;
       text-align: center;
-      color: #fff;
     }
-    .requirements-hero h1 {
-      margin-bottom: 10px;
-      font-weight: 700;
-      font-size: 48px;
+
+    .research-hero::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      transform: translate(-25%, -50%);
     }
-    .requirements-hero .breadcrumbs {
-      font-size: 14px;
+
+    .research-hero h1 {
+      font-size: 2.8rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      animation: fadeInUp 0.8s ease;
+      color: white;
+      margin-bottom: 1rem;
     }
-    .requirements-hero .breadcrumbs a {
-      color: #fff;
-      text-decoration: underline;
+    
+    .breadcrumbs {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.8);
     }
-    .requirements-hero .breadcrumbs .current {
-      color: #fff;
+    
+    .breadcrumbs a {
+      color: white;
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+    
+    .breadcrumbs a:hover {
       opacity: 0.8;
     }
+    
+    .breadcrumbs .current {
+      color: rgba(255,255,255,0.6);
+    }
 
-    /* 主体内容区域示例 */
-    .requirements-content {
-      padding: 60px 0;
+    /* Content cards */
+    .content-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      margin: 2.5rem 0;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.05);
     }
-    .requirements-content h2 {
-      font-weight: 700;
-      margin-bottom: 20px;
-      font-size: 32px;
+
+    .content-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--card-hover-shadow);
     }
-    .requirements-content p {
-      margin-bottom: 15px;
-      line-height: 1.8;
+    
+    h2 {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
     }
-    .requirements-content h4 {
-      margin-top: 40px;
+
+    h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.25em;
+      height: 1.4em;
+      width: 5px;
+      background: var(--primary-color);
+      border-radius: 3px;
+    }
+    
+    h3 {
+      color: #374151;
+      margin-top: 2.5rem;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    
+    h4 {
+      color: #4b5563;
+      margin-top: 2rem;
+      font-size: 1.3rem;
+    }
+
+    .tech-card {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s ease;
+      height: 100%;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .tech-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--card-hover-shadow);
+    }
+    
+    .tech-card i {
+      font-size: 1.75rem;
+      margin-right: 1rem;
+    }
+    
+    /* Reference list */
+    .reference-list {
+      counter-reset: ref-counter;
+      padding-left: 0;
+    }
+    
+    .ref-item {
+      position: relative;
+      padding-left: 2.5rem;
+      margin-bottom: 1.5rem;
+      list-style: none;
+    }
+    
+    .ref-number {
+      position: absolute;
+      left: 0;
       font-weight: 600;
+      color: var(--primary-color);
+    }
+    
+    .ref-content p {
+      font-size: 0.95rem;
+      color: #4a5568;
+      margin-bottom: 0.5rem;
+    }
+    
+    .ref-content a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    
+    .ref-content a:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+
+    .section-nav {
+      position: sticky;
+      top: 120px;
+      max-height: calc(100vh - 140px);
+      overflow-y: auto;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      background: white;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    /* 当页面滚动到底部时的状态 */
+    body.scrolled-to-bottom .section-nav {
+      position: absolute;
+      bottom: 0;
+      top: auto;
+      transform: translateY(-20px);
+    }
+
+    .section-nav ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .section-nav li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .section-nav a {
+      color: #4b5563;
+      text-decoration: none;
+      transition: color 0.2s;
+      font-size: 0.95rem;
+      display: block;
+      padding: 0.5rem 0;
+    }
+    
+    .section-nav a:hover {
+      color: var(--primary-color);
+    }
+    
+    .section-nav .sub-item {
+      padding-left: 1rem;
+      border-left: 2px solid #e5e7eb;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .research-hero { padding: 5rem 0 3rem; }
+      .research-hero h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.8rem; }
+      h3 { font-size: 1.5rem; }
+    }
+    
+    @media (max-width: 768px) {
+      .research-hero { padding: 4rem 0 2.5rem; }
+      .research-hero h1 { font-size: 2rem; }
+      .content-card { padding: 1.5rem; }
+      h2 { font-size: 1.6rem; }
+      h3 { font-size: 1.4rem; }
+    }
+    
+    @media (max-width: 576px) {
+      .research-hero h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.5rem; }
+      h3 { font-size: 1.3rem; }
+    }
+    
+    @media (max-width: 991.98px) {
+      .section-nav {
+        position: static;
+        order: -1;
+        margin-bottom: 2rem;
+        width: 100%;
+        max-height: none;
+      }
+      
+      body.scrolled-to-bottom .section-nav {
+        position: static;
+        transform: none;
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
-
 </head>
+
 <body>
 
-<!-- ======= Header (与 index.html 相同) ======= -->
+<!-- ======= Header ======= -->
 <header id="header" class="header d-flex align-items-center fixed-top">
   <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
-    <!-- LOGO -->
     <a href="../../index.html" class="logo d-flex align-items-center me-auto">
       <img src="assets/img/logo.png" alt="">
       <h1 class="sitename">Rag-n-Bones</h1>
     </a>
 
-    <!-- 导航菜单 -->
     <nav id="navmenu" class="navmenu">
       <ul>
-        <!-- 你可以在此修改导航，让 Requirements 高亮，比如加个 .active -->
         <li><a href="../../index.html">Home</a></li>
-        <li><a href="requirements.html" class="active">Requirements</a></li>
-        <li><a href="research.html">Research</a></li>
+        <li><a href="requirements.html">Requirements</a></li>
+        <li><a href="research.html" class="active">Research</a></li>
         <li><a href="hci.html">HCI</a></li>
         <li><a href="system-design.html">System Design</a></li>
         <li><a href="implements.html">Implements</a></li>
@@ -100,61 +341,218 @@
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>
-    <!-- /导航菜单 -->
 
     <a class="btn-getstarted" href="../../index.html">Get Started</a>
-
   </div>
 </header>
-<!-- /Header -->
 
 <main id="main">
-
-  <!-- ======= Hero (Requirements) ======= -->
-  <section class="requirements-hero">
+  <!-- Hero Section -->
+  <section class="research-hero">
     <div class="container" data-aos="fade-up">
-      <h1>REQUIREMENTS</h1>
+      <h1>RESEARCH</h1>
       <nav class="breadcrumbs">
-        <ol>
-          <li><a href="../../index.html">Home</a></li>
-          <li class="current">Requirements</li>
-        </ol>
       </nav>
     </div>
   </section>
-  <!-- /Hero -->
 
-  <!-- ======= Main Content ======= -->
-  <section class="requirements-content">
+  <!-- Content Section -->
+  <section class="research-content">
     <div class="container" data-aos="fade-up">
-      <h2>Project Background</h2>
-      <p>
-        （在这里放你项目的背景描述、需求说明等）
-      </p>
-      <p>
-        Recent Covid-19 crisis has changed people’s working style. With remote-working being trendy in most companies...
-      </p>
-      <h4>PAIN POINTS</h4>
-      <p>
-        - Pain point 1...<br>
-        - Pain point 2...
-      </p>
-      <h4>AVABOT CURES</h4>
-      <p>
-        - Cure 1...<br>
-        - Cure 2...
-      </p>
-      <!-- 你可以继续添加更多自定义内容，如图文并排、卡片、表格等 -->
+      <div class="row flex-lg-nowrap">
+        <!-- Main content area -->
+        <div class="col-lg-8 order-2 order-lg-1">
+          <div class="content-card" id="related-projects">
+            <h2>Related Project Review</h2>
+
+            <div class="project-card mb-5">
+              <div class="d-flex align-items-center mb-3">
+                <i class="bi bi-github me-3 fs-4" style="color: var(--primary-color);"></i>
+                <h3>RAG-Demystified by pchunduri6</h3>
+              </div>
+              <p class="lead">This is a question-answering system that retrieves data from data warehouse, and generates response using LLMs. For the first step, a data warehouse is used to store the information relevant to the question answering task. Then, we retrieve the data with two different methods: vector retrieval and summary retrieval. Finally, the system aggregates the LLM responses from sub-questions into a final response.</p>
+              <p>This GitHub repository is really detailed, it helped us a lot in understanding the process step by step, including chunking the text (vector retrieval is used in our project), prompt template design (prompting does affect the quality of generated text), and most importantly, showing us our future implementing goals (what and how can we improve our prototype in the future).</p>
+            </div>
+
+            <div class="project-card">
+              <div class="d-flex align-items-center mb-3">
+                <i class="bi bi-boxes me-3 fs-4" style="color: var(--secondary-color);"></i>
+                <h3>Grab's Report Summarizer</h3>
+              </div>
+              <p class="lead">There are a few components in this report summarizer system. Airflow acts as a scheduler, it invokes the SpellVault application when requested. SpellVault is an LLM-based app, processes the user prompts and retrieve the relevant information using RAG. Then Data-Arks, acts as the data middleware, executes the predefined query and send the SQL result output back to SpellVault. The summarized query output is then sent to Slack, functions as a user interface.</p>
+              <p>From this project, we understand the system architecture of a high maturity application that is using RAG. Knowing how the system can be developed via different APIs, also knowing what these APIs act as in the application. This allows us to look at real life cases, using created pathways to achieve a cheaper cost (the company owns the APIs for SpellVault and Data-Arks) but better performance application.</p>
+            </div>
+          </div>
+
+          <div class="content-card" id="technology-review">
+            <h2>Technology Review</h2>
+            
+            <div class="row g-4">
+              <div class="col-md-6" id="pinecone">
+                <div class="tech-card">
+                  <div class="d-flex align-items-center mb-3">
+                    <i class="bi bi-database me-3" style="color: var(--primary-color);"></i>
+                    <h4>Pinecone Vector DB</h4>
+                  </div>
+                  <p>Pinecone is a vector database designed for managing high-dimensional vector data. Having a vector database is definitely useful when it comes up to high-dimensional vector embeddings, which is a must operation in RAG and LLMs. The reason why we chose Pinecone includes scalability, allowing real-time search, allowing semantic search. Pinecone is built to handle large-scale vector data, which maximizes the limit of input files. Pinecone provides real-time search, which allows quick response. Pinecone performs semantic searches, retrieving results that are contextually relevant rather than just keyword matches, which leads to higher accuracy and relevance.</p>
+                </div>
+              </div>
+              
+              <div class="col-md-6" id="openai">
+                <div class="tech-card">
+                  <div class="d-flex align-items-center mb-3">
+                    <i class="bi bi-cpu me-3" style="color: var(--secondary-color);"></i>
+                    <h4>OpenAI GPT-3.5</h4>
+                  </div>
+                  <p>We used OpenAI GPT-3.5 as the LLM of our prototype. An LLM plays a very important role in RAG system. It is used to process the text and generate the sections of the review, which then is combined to a full systematic review. The reason we chose GPT-3.5 as the model, was because it performs decently in understanding the prompt and generates a middle quality result. We were not able to invest in better models or fine-tuning due to the pricing of those models, such as GPT-4o.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-5" id="implementation-libraries">
+              <h3>Implementation Libraries</h3>
+              
+              <div class="row g-4 mt-3">
+                <div class="col-md-6">
+                  <div class="tech-card">
+                    <div class="d-flex align-items-center mb-3">
+                      <i class="bi bi-file-pdf me-3" style="color: #dc3545;"></i>
+                      <h4>PyMuPDF</h4>
+                    </div>
+                    <p>Converts PDF documents into raw text for easier processing by the system.</p>
+                  </div>
+                </div>
+          
+                <div class="col-md-6">
+                  <div class="tech-card">
+                    <div class="d-flex align-items-center mb-3">
+                      <i class="bi bi-text-paragraph me-3" style="color: #0d6efd;"></i>
+                      <h4>LangChain</h4>
+                    </div>
+                    <p>Handles text processing including text splitting and human message management.</p>
+                  </div>
+                </div>
+          
+                <div class="col-md-6">
+                  <div class="tech-card">
+                    <div class="d-flex align-items-center mb-3">
+                      <i class="bi bi-table me-3" style="color: #198754;"></i>
+                      <h4>Pandas</h4>
+                    </div>
+                    <p>Used for data manipulation and analysis, creating data frames for quality check visualizations.</p>
+                  </div>
+                </div>
+          
+                <div class="col-md-6">
+                  <div class="tech-card">
+                    <div class="d-flex align-items-center mb-3">
+                      <i class="bi bi-bar-chart-line me-3" style="color: #fd7e14;"></i>
+                      <h4>Matplotlib</h4>
+                    </div>
+                    <p>Generates visualized graphs for data analysis and quality checks.</p>
+                  </div>
+                </div>
+          
+                <div class="col-md-6">
+                  <div class="tech-card">
+                    <div class="d-flex align-items-center mb-3">
+                      <i class="bi bi-gear me-3" style="color: #0dcaf0;"></i>
+                      <h4>Flask</h4>
+                    </div>
+                    <p>Web framework handling backend operations, HTTP requests, and API endpoints.</p>
+                  </div>
+                </div>
+          
+                <div class="col-md-6">
+                  <div class="tech-card">
+                    <div class="d-flex align-items-center mb-3">
+                      <i class="bi bi-shield-lock me-3" style="color: #6f42c1;"></i>
+                      <h4>Bcrypt</h4>
+                    </div>
+                    <p>Secures user passwords through hashing before database storage.</p>
+                  </div>
+                </div>
+          
+                <div class="col-md-6">
+                  <div class="tech-card">
+                    <div class="d-flex align-items-center mb-3">
+                      <i class="bi bi-database me-3" style="color: #6c757d;"></i>
+                      <h4>MySQL</h4>
+                    </div>
+                    <p>Database system storing user authentication details and usage history.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+            <div class="mt-5" id="technical-decisions">
+              <h3>Technical Decisions Summary</h3>
+              <p class="lead">
+                Our technical choices evolved through iterative experimentation, balancing effectiveness with 
+                cost-efficiency. Decisions were made both pre-development and during implementation phases, 
+                with continuous optimization of approaches to minimize resource expenditure while maximizing 
+                system performance.
+              </p>
+            </div>
+          </div>
+          
+          <div class="content-card" id="references">
+            <h2>References</h2>
+            
+            <div class="reference-list">
+              <div class="ref-item mb-4">
+                <span class="ref-number">[1]</span>
+                <div class="ref-content">
+                  <p class="mb-1">J. A. A. P. A. A. N. Pramod Chunduri, "RAG-Demystified", GitHub Repository, 26 Jan 2024. 
+                    <a href="https://github.com/pchunduri6/rag-demystified?tab=readme-ov-file" target="_blank">
+                      https://github.com/pchunduri6/rag-demystified
+                    </a>
+                  </p>
+                </div>
+              </div>
+          
+              <div class="ref-item mb-4">
+                <span class="ref-number">[2]</span>
+                <div class="ref-content">
+                  <p class="mb-1">Y. N. O. Edmund Hong, "Transforming the Analytics Landscape with RAG-powered LLM", 
+                    <em>Grab Tech Blog</em>, 9 Oct 2024.
+                    <a href="https://engineering.grab.com/transforming-the-analytics-landscape-with-RAG-powered-LLM" target="_blank">
+                      https://engineering.grab.com/article-link
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Side navigation -->
+        <div class="col-lg-4 order-1 order-lg-2 ps-lg-4">
+          <div class="section-nav">
+            <h5>Page Sections</h5>
+            <ul class="list-unstyled">
+              <li><a href="#related-projects" class="d-block py-2">Related Project Review</a></li>
+              <li><a href="#technology-review" class="d-block py-2">Technology Review</a>
+                <ul class="list-unstyled">
+                  <li class="sub-item"><a href="#pinecone" class="d-block py-2">Pinecone Vector DB</a></li>
+                  <li class="sub-item"><a href="#openai" class="d-block py-2">OpenAI GPT-3.5</a></li>
+                  <li class="sub-item"><a href="#implementation-libraries" class="d-block py-2">Implementation Libraries</a></li>
+                  <li class="sub-item"><a href="#technical-decisions" class="d-block py-2">Technical Decisions</a></li>
+                </ul>
+              </li>
+              <li><a href="#references" class="d-block py-2">References</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
-  <!-- /Main Content -->
-
 </main>
 
-<!-- ======= Footer (与 index.html 相同) ======= -->
+<!-- ======= Footer ======= -->
 <footer id="footer" class="footer text-white position-relative" style="background: linear-gradient(to right, #4b6cb7, #182848);">
 
-    <!-- 这里是一个波浪形 SVG，用来装饰顶部。如果不需要波浪形，可删除此 div -->
+    <!-- Wave shape SVG -->
     <div class="wave-shape" style="position: absolute; top: -100px; left: 0; width: 100%; overflow: hidden; line-height: 0; transform: rotate(180deg);">
       <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="position: relative; display: block; width: calc(100% + 1.3px); height: 100px;">
         <path d="M-2.19,29.63 C149.99,150.00 321.41,-49.99 502.54,44.96 L500.00,0.00 L0.00,0.00 Z"
@@ -164,15 +562,15 @@
   
     <div class="container pt-5" style="position: relative; z-index: 1;">
       <div class="row gy-4">
-        <!-- 左侧：Site Info -->
+        <!-- Left: Site Info -->
         <div class="col-lg-4 col-md-6">
           <h3 class="fw-bold">Site Info</h3>
           <p>
-            This is the website for UCL Year2 2020-2023 COMP106B Team4 Avanade’s COVID19 changes,  
+            This is the website for UCL Year2 2020-2023 COMP106B Team4 Avanade's COVID19 changes,  
             which introduces the team project and contains all the portfolios.
           </p>
         </div>
-        <!-- 中间：Site Menu -->
+        <!-- Middle: Site Menu -->
         <div class="col-lg-4 col-md-6">
           <h3 class="fw-bold">Site Menu</h3>
           <ul class="list-unstyled">
@@ -181,13 +579,13 @@
             <li><a href="research.html" class="text-white text-decoration-none">Research</a></li>
             <li><a href="hci.html" class="text-white text-decoration-none">HCI</a></li>
             <li><a href="system-design.html" class="text-white text-decoration-none">System Design</a></li>
-            <li><a href="implements.html" class="text-white text-decoration-none">Implements</a></li>
+            <li><a href="implements.html" class="text-white text-decoration-none">Implementation</a></li>
             <li><a href="testing.html" class="text-white text-decoration-none">Testing</a></li>
             <li><a href="evaluation.html" class="text-white text-decoration-none">Evaluation</a></li>
             <li><a href="appendix.html" class="text-white text-decoration-none">Appendix</a></li>
           </ul>
         </div>
-        <!-- 右侧：Project Supporters -->
+        <!-- Right: Project Supporters -->
         <div class="col-lg-4 col-md-12">
           <h3 class="fw-bold">Project Supporters</h3>
           <p class="mb-1">Avanade</p>
@@ -198,7 +596,7 @@
         </div>
       </div>
   
-      <!-- 底部版权信息 -->
+      <!-- Copyright -->
       <hr class="my-4">
       <div class="text-center pb-3">
         <p class="mb-0">© 2021 All Rights Reserved</p>
@@ -222,6 +620,51 @@
 
 <!-- Main JS File -->
 <script src="../../assets/js/main.js"></script>
+
+<!-- 添加底部检测脚本 -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const body = document.body;
+  const footer = document.querySelector('footer');
+  const nav = document.querySelector('.section-nav');
+  
+  if (!footer || !nav) return;
+  
+  // 设置IntersectionObserver来检测footer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // 当footer进入视口时，添加scrolled-to-bottom类
+        body.classList.add('scrolled-to-bottom');
+      } else {
+        // 当footer离开视口时，移除scrolled-to-bottom类
+        body.classList.remove('scrolled-to-bottom');
+      }
+    });
+  }, {threshold: 0.1});
+  
+  observer.observe(footer);
+  
+  // 确保导航栏在页面加载时位置正确
+  function checkNavPosition() {
+    const scrollBottom = window.innerHeight + window.scrollY;
+    const docHeight = document.body.offsetHeight;
+    const footerTop = footer.offsetTop;
+    
+    if (scrollBottom >= docHeight - 50 || window.scrollY >= footerTop - window.innerHeight) {
+      body.classList.add('scrolled-to-bottom');
+    } else {
+      body.classList.remove('scrolled-to-bottom');
+    }
+  }
+  
+  // 初始检查
+  checkNavPosition();
+  
+  // 滚动时检查
+  window.addEventListener('scroll', checkNavPosition);
+});
+</script>
 
 </body>
 </html>
