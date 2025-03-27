@@ -30,7 +30,7 @@
   <style>
     :root {
       --primary-color: #6f2fb8;
-      --secondary-color: #f7672f;
+      --secondary-color: #f4f6f8;
       --text-color: #2d3748;
       --light-bg: #f8f9fa;
       --lighter-bg: #f1f3f5;
@@ -66,7 +66,7 @@
     h2 { font-size: 2rem; }
     h3 { font-size: 1.75rem; }
     h4 { font-size: 1.5rem; }
-    
+
     .system-hero {
       background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
       padding: 6rem 0 4rem;
@@ -125,7 +125,7 @@
       transform: translateY(-5px);
       box-shadow: var(--card-hover-shadow);
     }
-    
+
     h2 {
       position: relative;
       padding-left: 1.2rem;
@@ -165,8 +165,7 @@
       margin-top: 2rem;
       font-size: 1.3rem;
     }
-
-    /* 代码块 */
+    
     .code-block {
       background: #1e1e1e;
       color: #d4d4d4;
@@ -187,7 +186,6 @@
       tab-size: 2;
     }
     
-    /* 列表改进 */
     ul, ol {
       padding-left: 1.5rem;
       margin-bottom: 1.5rem;
@@ -197,18 +195,26 @@
       margin-bottom: 0.6rem;
     }
     
-    /* 章节导航 */
     .section-nav {
-    position: sticky;
-    top: 120px; /* 根据header高度调整 */
-    height: fit-content;
-    padding: 1rem;
-    background: white;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 120px;
+      max-height: calc(100vh - 140px);
+      overflow-y: auto;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      background: white;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      transition: transform 0.3s ease;
     }
 
-    
+    body.scrolled-to-bottom .section-nav {
+      position: absolute;
+      bottom: 0;
+      top: auto;
+      transform: translateY(-20px);
+    }
+
     .section-nav ul {
       list-style: none;
       padding-left: 0;
@@ -229,6 +235,7 @@
       color: var(--primary-color);
     }
     
+    /* 依赖标签 */
     .dependencies {
       background: #f3f4f6;
       padding: 0.5rem 1rem;
@@ -239,6 +246,7 @@
       color: #4b5563;
     }
     
+    /* 响应式调整 */
     @media (max-width: 992px) {
       .system-hero { padding: 5rem 0 3rem; }
       .system-hero h1 { font-size: 2.2rem; }
@@ -267,7 +275,7 @@
     @media (max-width: 991.98px) {
       .section-nav {
         position: static;
-        order: -1; /* 移动端显示在内容前面 */
+        order: -1; 
         margin-bottom: 2rem;
         width: 100%;
       }
@@ -293,10 +301,10 @@
       <ul>
         <li><a href="../../index.html">Home</a></li>
         <li><a href="requirements.html">Requirements</a></li>
-        <li><a href="research.html" class="active">Research</a></li>
+        <li><a href="research.html">Research</a></li>
         <li><a href="hci.html">HCI</a></li>
         <li><a href="system-design.html">System Design</a></li>
-        <li><a href="implements.html">Implements</a></li>
+        <li><a href="implements.html" class="active">Implements</a></li>
         <li><a href="testing.html">Testing</a></li>
         <li><a href="evaluation.html">Evaluation</a></li>
         <li><a href="appendix.html">Appendix</a></li>
@@ -1186,16 +1194,18 @@ def init_pinecone():
             <p>The ReactMarkdown component from the 'react-markdown' React module is used to display markdown text in standard HTML.</p>
             
             <div class="code-block">
-              <pre><ReactMarkdown
-            remarkPlugins={[remarkBreaks]}
-            components={{
-              h2: ({ children }) => <h2 className="text-2xl font-semibold">{children}</h2>,
-              h3: ({ children }) => <h3 className="text-xl font-semibold">{children}</h3>,
-              p: ({ children }) => <p>{children}</p>,
-            }}
-          >
-            {preprocessText(text)}
-          </ReactMarkdown></pre>
+              <pre><code>
+            &lt;ReactMarkdown
+              remarkPlugins={[remarkBreaks]}
+              components={{
+                h2: ({ children }) => &lt;h2 className="text-2xl font-semibold"&gt;{children}&lt;/h2&gt;,
+                h3: ({ children }) => &lt;h3 className="text-xl font-semibold"&gt;{children}&lt;/h3&gt;,
+                p: ({ children }) => &lt;p&gt;{children}&lt;/p&gt;
+              }}
+            &gt;
+              {preprocessText(text)}
+            &lt;/ReactMarkdown&gt;
+              </code></pre>
             </div>
           </div>
         </div>
@@ -1203,7 +1213,7 @@ def init_pinecone():
         
         <!-- 侧边导航 -->
         <div class="col-lg-4 order-1 order-lg-2 ps-lg-4">
-          <div class="section-nav sticky-top">
+          <div class="section-nav">
             <h5>Page Sections</h5>
             <ul class="list-unstyled">
               <li><a href="#upserting" class="d-block py-2">Upserting Text Chunks</a></li>
@@ -1292,6 +1302,44 @@ def init_pinecone():
 
 <!-- Main JS File -->
 <script src="../../assets/js/main.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const body = document.body;
+    const footer = document.querySelector('footer');
+    const nav = document.querySelector('.section-nav');
+    
+    if (!footer || !nav) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          body.classList.add('scrolled-to-bottom');
+        } else {
+          body.classList.remove('scrolled-to-bottom');
+        }
+      });
+    }, {threshold: 0.1});
+    
+    observer.observe(footer);
+    
+    function checkNavPosition() {
+      const scrollBottom = window.innerHeight + window.scrollY;
+      const docHeight = document.body.offsetHeight;
+      const footerTop = footer.offsetTop;
+      
+      if (scrollBottom >= docHeight - 50 || window.scrollY >= footerTop - window.innerHeight) {
+        body.classList.add('scrolled-to-bottom');
+      } else {
+        body.classList.remove('scrolled-to-bottom');
+      }
+    }
+    
+    checkNavPosition();
+
+    window.addEventListener('scroll', checkNavPosition);
+  });
+  </script>
 
 </body>
 </html>
