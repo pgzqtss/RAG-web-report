@@ -402,9 +402,23 @@
                 <div class="tech-card">
                   <div class="d-flex align-items-center mb-3">
                     <i class="bi bi-cpu me-3" style="color: var(--secondary-color);"></i>
-                    <h4>OpenAI GPT-3.5</h4>
+                    <h4>OpenAI GPT-4o Mini</h4>
                   </div>
-                  <p>We used OpenAI GPT-3.5 as the LLM of our prototype. An LLM plays a very important role in RAG system. It is used to process the text and generate the sections of the review, which then is combined to a full systematic review. The reason we chose GPT-3.5 as the model, was because it performs decently in understanding the prompt and generates a middle quality result. We were not able to invest in better models or fine-tuning due to the pricing of those models, such as GPT-4o.</p>
+                  <p>We used OpenAI GPT-4o Mini as the Large Language Model (LLM) of our prototype. 
+                    The LLM plays a crucial important role in RAG system, as it 
+                    processes the embedded text to generate sections of 
+                    a review, that are then combined into a full systematic 
+                    review. 
+                    The reason we why chose GPT-4o Mini as the model 
+                    was because it performs good understanding the prompt
+                    and generates a decent quality result. We were not able to 
+                    invest in a better models like GPT-4.5 or fine-tuning 
+                    pre-trained LLM due to the resource and pricing problems.
+                    How is GPT-4o Mini better than GPT-3.5? GPT-4o Mini supports
+                    up to 128k tokens, whereas GPT-3.5 only supports up to 16.4k tokens.
+                    Larger number of tokens allows us to generate longer text with better quality.
+                    Moreover, GPT-4o Mini has a more recent knowledge cut-off(Oct 
+                    2023) comparing to GPT-3.5(Sept 2021).
                 </div>
               </div>
             </div>
@@ -535,7 +549,7 @@
               <li><a href="#technology-review" class="d-block py-2">Technology Review</a>
                 <ul class="list-unstyled">
                   <li class="sub-item"><a href="#pinecone" class="d-block py-2">Pinecone Vector DB</a></li>
-                  <li class="sub-item"><a href="#openai" class="d-block py-2">OpenAI GPT-3.5</a></li>
+                  <li class="sub-item"><a href="#openai" class="d-block py-2">OpenAI GPT-4o mini</a></li>
                   <li class="sub-item"><a href="#implementation-libraries" class="d-block py-2">Implementation Libraries</a></li>
                   <li class="sub-item"><a href="#technical-decisions" class="d-block py-2">Technical Decisions</a></li>
                 </ul>
