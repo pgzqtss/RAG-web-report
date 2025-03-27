@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Algorithm - RAG-n-Bones</title>
+
+  <!-- Favicons -->
+  <link href="../../assets/img/favicon.png" rel="icon" />
+  <link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Vendor CSS Files -->
+  <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <link href="../../assets/vendor/aos/aos.css" rel="stylesheet" />
+  <link href="../../assets/css/main.css" rel="stylesheet" />
+
+  <style>
+    body {
+      padding-top: 90px;
+    }
+
+    .algorithm-hero {
+      background: linear-gradient(90deg, #4ca1af, #c4e0e5);
+      padding: 60px 0;
+      text-align: center;
+      color: #fff;
+    }
+
+    .algorithm-hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .algorithm-section {
+      padding: 60px 0;
+    }
+
+    .algorithm-section h2 {
+      color: #3399ff;
+      font-weight: 700;
+      font-size: 32px;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    .algorithm-section p {
+      margin-bottom: 15px;
+      line-height: 1.8;
+    }
+
+    .sidebar-nav {
+      position: sticky;
+      top: 100px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+    }
+
+    .sidebar-nav h5 {
+      font-weight: bold;
+    }
+
+    .sidebar-nav ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .sidebar-nav li {
+      margin-bottom: 8px;
+    }
+
+    .sidebar-nav a {
+      text-decoration: none;
+      color: #3399ff;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="../../index.html" class="logo d-flex align-items-center">
+        <img src="../../assets/img/logo.png" alt="" />
+        <span class="sitename">Rag-n-Bones</span>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="requirements.html">Requirements</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="src/pages/algorithm.html">Algorithm</a></li>
+          <li><a href="system-design.html">System Design</a></li>
+          <li><a href="implements.html">Implements</a></li>
+          <li><a href="testing.html">Testing</a></li>
+          <li><a href="evaluation.html">Evaluation</a></li>
+          <li><a href="algorithm.html" class="active">Algorithm</a></li>
+          <li><a href="appendix.html">Appendix</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <a class="btn-getstarted" href="../../index.html">Get Started</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="algorithm-hero">
+    <div class="container" data-aos="fade-up">
+      <h1>Algorithm</h1>
+      <p class="lead">An overview of our core algorithmic processes and data flows</p>
+    </div>
+  </section>
+
+  <section class="algorithm-section">
+    <div class="container">
+      <div class="row">
+        <!-- Main Content -->
+        <div class="col-lg-9" data-aos="fade-up">
+          <h2 id="algorithm">Algorithm</h2>
+  
+          <h3>Experiment on Fine-tuning</h3>
+          <p>We were thinking of improving accuracy and relevancy, so we planned to fine-tune a language model to achieve better performance. However, due to various reasons such as GPU limitation, cost limitation, time limitation, we stopped implementing. The fine-tuning code is available in our GitHub, called model_agent in backend. And here is the process of how we did.</p>
+  
+          <p>There are three files, <code>upload_pdfs.py</code>, <code>fine_tune_model.py</code>, and <code>try_model.py</code>. First of all, <code>upload_pdfs.py</code> is responsible for loading PDF files, cleaning the text, splitting the data like what we do in the regular pipeline. However, there’s an additional step, preparing the training and testing datasets, and saving it into CSV files.</p>
+  
+          <p>We prepare the dataset by pairing X as input medical papers and Y as output systematic reviews into a Pandas data frame. We created the dataset manually by looking up systematic reviews (Y) online and getting their reference papers (X). Then, we split the data into training and testing datasets with 80% for training and 20% for testing. After all these, we save them into <code>training_data.csv</code> and <code>testing_data.csv</code>.</p>
+  
+          <p>Then, <code>fine_tune_model.py</code> explains the process of fine-tuning a pre-trained T5-small model (from hugging face) on the prepared dataset. After loading the <code>training_data.csv</code>, X and Y are extracted. We then create a custom TensorFlow dataset class to tokenize the input X and target Y texts. After initializing the model, we compile it with optimizer and computes the loss function. Then the model is trained on the dataset in batches of 8 for 3 epochs. The model is then evaluated on the same dataset (we did not have time to create a validation dataset). Finally, the fine-tuned model and tokenizer are saved to the <code>fine-tuned-model</code> directory.</p>
+  
+          <p>Last step is testing the model, where <code>try_model.py</code> runs the fine-tuned model on the testing dataset and generates a review. First is load the model from <code>fine-tuned-model</code> directory and load the <code>testing_data.csv</code> file with X_test and Y_test extracted. Again, create a custom TensorFlow dataset class to tokenize X_test and Y_test texts. Compile, compute loss, and evaluate, where the test loss is printed. Finally, the model generates predictions for the testing dataset and printed out in terminal.</p>
+  
+          <p>Unfortunately, the result output was some sentences that aren’t even grammatically correct, many sentences were nonsensical and lack coherence. As the model failed to produce meaningful systematic reviews, we did not conduct any measurement evaluations like BLEU scores. Overall, it is an interesting experience, especially the fine-tuning process for transformer models. Also, we understand that there is a lot of challenges beside writing the code itself, such as data quality, pre-trained model itself, etc. If given more time and computational resources, we could try this on a larger dataset and better language model, potentially achieving higher quality results.</p>
+  
+          <p>Here’s the comparison between output from our fine-tuned model, and our current application output.</p>
+          <p><code>[fine-tuning-output.txt] [RAG-app-generate-review.txt]</code></p>
+  
+          <h3 class="mt-5">Experiment of Crawling Similar Articles</h3>
+          <h5>Experiment System Description</h5>
+          <p>The system improves content quality through structured literature collection and processing, implemented in three key phases:</p>
+  
+          <ol>
+            <li><strong>Precise Keyword Extraction</strong><br />
+            Local PDF documents (e.g., research papers) are analyzed using text segmentation. Each section undergoes automated term identification (e.g., extracting "Covid-19"). This ensures subsequent searches remain focused on core themes.</li>
+  
+            <li><strong>Multi-Source Literature Collection</strong><br />
+            Based on extracted keywords, the system:
+              <ul>
+                <li>Searches PubMed for related paper IDs (PMIDs)</li>
+                <li>Converts PMIDs to accessible PMC IDs (open-access papers) or DOI codes (paywalled content)</li>
+                <li>Retrieves full texts via PMC, PDFs through Sci-Hub, or abstracts as fallback</li>
+              </ul>
+              <p>In test cases targeting 10 papers:</p>
+              <ul>
+                <li>4 full texts obtained from PMC</li>
+                <li>3 PDFs acquired via Sci-Hub</li>
+                <li>2 abstracts stored</li>
+                <li>1 paper flagged as unavailable</li>
+              </ul>
+            </li>
+  
+            <li><strong>Content Standardization</strong><br />
+            All collected texts undergo:
+              <ul>
+                <li>Hyphenation correction (e.g., "reha-<br />bilitation" → "rehabilitation")</li>
+                <li>Removal of non-essential symbols (†, ‡, etc.)</li>
+                <li>Reference section deletion</li>
+                <li>Whitespace normalization</li>
+              </ul>
+            </li>
+          </ol>
+  
+          <h5>Future Enhancements</h5>
+          <p>To further improve output quality, planned upgrades include:</p>
+          <ul>
+            <li><strong>Expanded Source Integration:</strong> Add connections to Crossref, Google Scholar, and preprint repositories</li>
+            <li><strong>Structured Data Extraction:</strong> Develop modules to preserve tables, equations, and figures from PDFs</li>
+            <li><strong>Literature Prioritization:</strong> Implement filters for publication date (prioritizing last 5 years) and journal credibility metrics</li>
+            <li><strong>Cross-Domain Linking:</strong> Build keyword relationship maps to identify relevant studies across disciplines</li>
+          </ul>
+  
+          <p>This system constructs verified academic databases for content generation, avoiding unsubstantiated claims. Ongoing development focuses on increasing literature coverage depth and contextual relevance to support evidence-based writing.</p>
+        </div>
+  
+        <!-- Right Sidebar -->
+        <div class="col-lg-3" data-aos="fade-left">
+          <aside class="sidebar-nav">
+            <h5>On This Page</h5>
+            <ul>
+              <li><a href="#algorithm">Algorithm</a></li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer text-white position-relative" style="background: linear-gradient(to right, #4b6cb7, #182848);">
+    <div class="container pt-5">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6">
+          <h3 class="fw-bold">Site Info</h3>
+          <p>This is the website for UCL Year2 COMP106B Team4, introducing the team project and containing all portfolios.</p>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h3 class="fw-bold">Site Menu</h3>
+          <ul class="list-unstyled">
+            <li><a href="../../index.html" class="text-white text-decoration-none">Home</a></li>
+            <li><a href="requirements.html" class="text-white text-decoration-none">Requirements</a></li>
+            <li><a href="testing.html" class="text-white text-decoration-none">Testing</a></li>
+            <li><a href="evaluation.html" class="text-white text-decoration-none">Evaluation</a></li>
+            <li><a href="algorithm.html" class="text-white text-decoration-none">Algorithm</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-12">
+          <h3 class="fw-bold">Project Supporters</h3>
+          <p class="mb-1">Avanade</p>
+          <p class="mb-3">UCL</p>
+          <p class="mb-0">Special thanks to our partner Avanade and Mr. Kenza 404.</p>
+        </div>
+      </div>
+      <hr class="my-4" />
+      <div class="text-center pb-3">
+        <p class="mb-0">© 2025 All Rights Reserved</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- JS Files -->
+  <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/vendor/aos/aos.js"></script>
+  <script src="../../assets/js/main.js"></script>
+
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>

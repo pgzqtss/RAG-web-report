@@ -1,227 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Requirements - QuickStart Bootstrap Template</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Evaluation - RAG-n-Bones</title>
 
   <!-- Favicons -->
-  <link href="../../assets/img/favicon.png" rel="icon">
-  <link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="../../assets/img/favicon.png" rel="icon" />
+  <link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <!-- Vendor CSS Files -->
-  <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../../assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <link href="../../assets/vendor/aos/aos.css" rel="stylesheet" />
 
   <!-- Main CSS File -->
-  <link href="../../assets/css/main.css" rel="stylesheet">
+  <link href="../../assets/css/main.css" rel="stylesheet" />
 
-  <!-- 你可以在此处写一些页面专属的样式 -->
   <style>
-    /* Hero 区域的简易渐变背景示例 */
-    .requirements-hero {
-      background: linear-gradient(90deg, #f7672f 0%, #6f2fb8 100%);
+    body {
+      padding-top: 90px;
+    }
+
+    .testing-hero {
+      background: linear-gradient(90deg, #4ca1af, #c4e0e5);
       padding: 60px 0;
       text-align: center;
       color: #fff;
     }
-    .requirements-hero h1 {
-      margin-bottom: 10px;
-      font-weight: 700;
+
+    .testing-hero h1 {
       font-size: 48px;
-    }
-    .requirements-hero .breadcrumbs {
-      font-size: 14px;
-    }
-    .requirements-hero .breadcrumbs a {
-      color: #fff;
-      text-decoration: underline;
-    }
-    .requirements-hero .breadcrumbs .current {
-      color: #fff;
-      opacity: 0.8;
+      font-weight: 700;
+      margin-bottom: 10px;
     }
 
-    /* 主体内容区域示例 */
-    .requirements-content {
+    .testing-section {
       padding: 60px 0;
     }
-    .requirements-content h2 {
+
+    .testing-section h2 {
+      color: #3399ff;
       font-weight: 700;
-      margin-bottom: 20px;
       font-size: 32px;
+      margin-top: 40px;
+      margin-bottom: 20px;
     }
-    .requirements-content p {
+
+    .testing-section p {
       margin-bottom: 15px;
       line-height: 1.8;
     }
-    .requirements-content h4 {
-      margin-top: 40px;
-      font-weight: 600;
+
+    .sidebar-nav {
+      position: sticky;
+      top: 100px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+    }
+
+    .sidebar-nav h5 {
+      font-weight: bold;
+    }
+
+    .sidebar-nav ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .sidebar-nav li {
+      margin-bottom: 8px;
+    }
+
+    .sidebar-nav a {
+      text-decoration: none;
+      color: #3399ff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+
+    table th,
+    table td {
+      border: 1px solid #ccc;
+      padding: 0.75rem;
+      text-align: center;
+    }
+
+    table thead {
+      background-color: #f1f7ff;
     }
   </style>
-
 </head>
 <body>
-
-<!-- ======= Header (与 index.html 相同) ======= -->
-<header id="header" class="header d-flex align-items-center fixed-top">
-  <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
-    <!-- LOGO -->
-    <a href="../../index.html" class="logo d-flex align-items-center me-auto">
-      <img src="assets/img/logo.png" alt="">
-      <h1 class="sitename">Rag-n-Bones</h1>
-    </a>
-
-    <!-- 导航菜单 -->
-    <nav id="navmenu" class="navmenu">
-      <ul>
-        <!-- 你可以在此修改导航，让 Requirements 高亮，比如加个 .active -->
-        <li><a href="../../index.html">Home</a></li>
-        <li><a href="requirements.html" class="active">Requirements</a></li>
-        <li><a href="research.html">Research</a></li>
-        <li><a href="hci.html">HCI</a></li>
-        <li><a href="system-design.html">System Design</a></li>
-        <li><a href="implements.html">Implements</a></li>
-        <li><a href="testing.html">Testing</a></li>
-        <li><a href="evaluation.html">Evaluation</a></li>
-        <li><a href="appendix.html">Appendix</a></li>
-      </ul>
-      <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-    </nav>
-    <!-- /导航菜单 -->
-
-    <a class="btn-getstarted" href="../../index.html">Get Started</a>
-
-  </div>
-</header>
-<!-- /Header -->
-
-<main id="main">
-
-  <!-- ======= Hero (Requirements) ======= -->
-  <section class="requirements-hero">
-    <div class="container" data-aos="fade-up">
-      <h1>REQUIREMENTS</h1>
-      <nav class="breadcrumbs">
-        <ol>
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="../../index.html" class="logo d-flex align-items-center">
+        <img src="../../assets/img/logo.png" alt="" />
+        <span class="sitename">Rag-n-Bones</span>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
           <li><a href="../../index.html">Home</a></li>
-          <li class="current">Requirements</li>
-        </ol>
+          <li><a href="requirements.html">Requirements</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="src/pages/algorithm.html">Algorithm</a></li>
+          <li><a href="system-design.html">System Design</a></li>
+          <li><a href="implements.html">Implements</a></li>
+          <li><a href="testing.html">Testing</a></li>
+          <li><a href="evaluation.html" class="active">Evaluation</a></li>
+          <li><a href="appendix.html">Appendix</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
+      <a class="btn-getstarted" href="../../index.html">Get Started</a>
     </div>
-  </section>
-  <!-- /Hero -->
+  </header>
 
-  <!-- ======= Main Content ======= -->
-  <section class="requirements-content">
+  <!-- Hero Section -->
+  <section class="testing-hero">
     <div class="container" data-aos="fade-up">
-      <h2>Project Background</h2>
-      <p>
-        （在这里放你项目的背景描述、需求说明等）
-      </p>
-      <p>
-        Recent Covid-19 crisis has changed people’s working style. With remote-working being trendy in most companies...
-      </p>
-      <h4>PAIN POINTS</h4>
-      <p>
-        - Pain point 1...<br>
-        - Pain point 2...
-      </p>
-      <h4>AVABOT CURES</h4>
-      <p>
-        - Cure 1...<br>
-        - Cure 2...
-      </p>
-      <!-- 你可以继续添加更多自定义内容，如图文并排、卡片、表格等 -->
+      <h1>Evaluation</h1>
+      <p class="lead">A reflection on functionality, contributions, and final results</p>
     </div>
   </section>
-  <!-- /Main Content -->
 
-</main>
-
-<!-- ======= Footer (与 index.html 相同) ======= -->
-<footer id="footer" class="footer text-white position-relative" style="background: linear-gradient(to right, #4b6cb7, #182848);">
-
-    <!-- 这里是一个波浪形 SVG，用来装饰顶部。如果不需要波浪形，可删除此 div -->
-    <div class="wave-shape" style="position: absolute; top: -100px; left: 0; width: 100%; overflow: hidden; line-height: 0; transform: rotate(180deg);">
-      <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="position: relative; display: block; width: calc(100% + 1.3px); height: 100px;">
-        <path d="M-2.19,29.63 C149.99,150.00 321.41,-49.99 502.54,44.96 L500.00,0.00 L0.00,0.00 Z"
-              style="stroke: none; fill: #ffffff;"></path>
-      </svg>
-    </div>
+  <!-- Main Content -->
+  <section class="testing-section">
+    <div class="container">
+      <div class="row">
+        <!-- Main Column -->
+        <div class="col-lg-9" data-aos="fade-up">
+          <h2 id="achievement">Achievement Table</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Requirement</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Contributors</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="5"><strong>Key Functionalities (Must + Should Have)</strong></td></tr>
+              <tr><td>1</td><td>Upload PDF</td><td>Must</td><td>Completed</td><td>All</td></tr>
+              <tr><td>2</td><td>Systematic Review Generation</td><td>Must</td><td>Completed</td><td>All</td></tr>
+              <tr><td>3</td><td>Save History</td><td>Should</td><td>Completed</td><td>All</td></tr>
+              <tr><td colspan="5"><strong>Optional Functionalities (Could Have)</strong></td></tr>
+              <tr><td>4</td><td>PDF Download</td><td>Could</td><td>Completed</td><td>Yiwei</td></tr>
+              <tr><td>5</td><td>Multiple File Upload</td><td>Could</td><td>Completed</td><td>Yiwei</td></tr>
+            </tbody>
+          </table>
   
-    <div class="container pt-5" style="position: relative; z-index: 1;">
+          <h2 id="bugs">Known Bugs</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Bug Description</th>
+                <th>Priority</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>Slow response on chart rendering</td><td>Medium</td></tr>
+              <tr><td>2</td><td>PDF viewer not working properly on Safari</td><td>Low</td></tr>
+            </tbody>
+          </table>
+
+
+          <h2 id="system-contribution">Individual Contribution - System Artefact</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Work Packages</th>
+              <th>Wing Ho Yeung</th>
+              <th>Jennifer Zhang</th>
+              <th>Yiwei Wang</th>
+              <th>Kevin Jin</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Research and Experiments</td><td>20</td><td>40</td><td>20</td><td>20</td></tr>
+            <tr><td>UI Design</td><td>100</td><td>0</td><td>0</td><td>0</td></tr>
+            <tr><td>Coding</td><td>25</td><td>25</td><td>25</td><td>25</td></tr>
+            <tr><td>Testing</td><td>0</td><td>20</td><td>40</td><td>40</td></tr>
+            <tr><td><strong>Overall Contribution (%)</strong></td><td>36.25</td><td>21.25</td><td>21.25</td><td>21.25</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="web-contribution">Individual Contribution - Website Report</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Work Packages</th>
+              <th>Wing Ho Yeung</th>
+              <th>Jennifer Zhang</th>
+              <th>Yiwei Wang</th>
+              <th>Kevin Jin</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Website Template and Setup</td><td>0</td><td>0</td><td>100</td><td>0</td></tr>
+            <tr><td>Home</td><td>10</td><td>45</td><td>45</td><td>0</td></tr>
+            <tr><td>Video</td><td>0</td><td>0</td><td>0</td><td>100</td></tr>
+            <tr><td>Requirement</td><td>0</td><td>80</td><td>0</td><td>20</td></tr>
+            <tr><td>Research</td><td>0</td><td>80</td><td>0</td><td>20</td></tr>
+            <tr><td>UI Design</td><td>30</td><td>40</td><td>0</td><td>30</td></tr>
+            <tr><td>System Design</td><td>50</td><td>20</td><td>10</td><td>20</td></tr>
+            <tr><td>Implementation</td><td>70</td><td>0</td><td>0</td><td>30</td></tr>
+            <tr><td>Testing</td><td>0</td><td>0</td><td>100</td><td>0</td></tr>
+            <tr><td>Evaluation and Future Work</td><td>0</td><td>80</td><td>20</td><td>0</td></tr>
+            <tr><td>User and Deployment Manuals</td><td>80</td><td>0</td><td>0</td><td>20</td></tr>
+            <tr><td>Legal Issues</td><td>0</td><td>30</td><td>0</td><td>70</td></tr>
+            <tr><td>Blog and Monthly Video</td><td>80</td><td>0</td><td>20</td><td>0</td></tr>
+            <tr><td><strong>Overall Contribution (%)</strong></td><td>24.6</td><td>28.8</td><td>22.7</td><td>23.9</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="critical">Critical Evaluation</h2>
+        <p><strong>User Interface and Experience:</strong> We aim to create a simple, clean and effective user interface, which is easily navigable even for users that are not familiar with computers or AI. Key features include history tracking of generated systematic reviews, clickable input PDFs, and download options for reviews. These enhance user experience, and general feedback was positive.</p>
+
+        <p><strong>Functionality:</strong> All features were successfully implemented. No major issues were reported regarding core functionality.</p>
+
+        <p><strong>Stability:</strong> The application performs reliably, although improvements could be made to enhance long-term maintainability of the codebase.</p>
+
+        <p><strong>Efficiency:</strong> [Section left unfilled in original content]</p>
+
+        <p><strong>Compatibility:</strong> The system currently only runs locally. We plan to deploy it to the cloud in future to enhance accessibility and portability.</p>
+
+        <p><strong>Maintainability:</strong> Project files are well-organized with modular structure. This helped identify and fix bugs more efficiently.</p>
+
+        <p><strong>Project Management:</strong> We maintained good communication via WhatsApp and GitHub. GitHub was used extensively for issue tracking, pull requests, and branching workflows. Regular weekly meetings with and without the client kept progress on track. These practices improved teamwork and version control.</p>
+
+        <p>While overall collaboration was smooth, we believe starting coding earlier could have allowed us to implement more features and experiments.</p>
+
+        <h2 id="quality">Quality Evaluation</h2>
+        <p>We often faced the question: “Why use RAG-n-Bones instead of ChatGPT directly?” To address this, we conducted a user survey comparing outputs of both systems using the same prompt. Ratings ranged from 1 (ChatGPT better) to 10 (RAG-n-Bones better):</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Evaluation Criteria</th>
+              <th>Average Score</th>
+              <th>Interpretation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Relevance and Accuracy</td>
+              <td>7</td>
+              <td>Better than expected — despite using same model, users found our results more relevant.</td>
+            </tr>
+            <tr>
+              <td>Response Speed</td>
+              <td>1</td>
+              <td>Significantly slower than ChatGPT due to embedding & document processing overhead.</td>
+            </tr>
+            <tr>
+              <td>Response Structure</td>
+              <td>10</td>
+              <td>RAG-n-Bones generates better-structured reviews, aiding comprehension.</td>
+            </tr>
+            <tr>
+              <td>Reduction of Hallucinations</td>
+              <td>5</td>
+              <td>No significant difference — both use GPT-3.5 and are similarly prone to hallucination.</td>
+            </tr>
+            <tr>
+              <td>Overall Preference for Systematic Review Generation</td>
+              <td>7</td>
+              <td>Despite latency, users preferred our system for accuracy and structure.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p><strong>Example Comparison:</strong> Given the prompt: <em>“Write me a systematic review for efficacy of COVID-19 vaccines by the attached research papers.”</em> — both our system and ChatGPT used GPT-3.5. The differences in formatting and coherence were apparent.</p>
+
+        <p>Example files:<br>
+        [RAG-app-generate-review.txt]<br>
+        [RAG-ChatGPT-review.txt]</p>
+
+        </div>
+      </div>
+    </div>
+  </section>        
+
+  <!-- Footer -->
+  <footer class="footer text-white position-relative" style="background: linear-gradient(to right, #4b6cb7, #182848);">
+    <div class="container pt-5">
       <div class="row gy-4">
-        <!-- 左侧：Site Info -->
         <div class="col-lg-4 col-md-6">
           <h3 class="fw-bold">Site Info</h3>
-          <p>
-            This is the website for UCL Year2 2020-2023 COMP106B Team4 Avanade’s COVID19 changes,  
-            which introduces the team project and contains all the portfolios.
-          </p>
+          <p>This is the website for UCL Year2 COMP106B Team4, introducing the team project and containing all portfolios.</p>
         </div>
-        <!-- 中间：Site Menu -->
         <div class="col-lg-4 col-md-6">
           <h3 class="fw-bold">Site Menu</h3>
           <ul class="list-unstyled">
             <li><a href="../../index.html" class="text-white text-decoration-none">Home</a></li>
             <li><a href="requirements.html" class="text-white text-decoration-none">Requirements</a></li>
-            <li><a href="research.html" class="text-white text-decoration-none">Research</a></li>
-            <li><a href="hci.html" class="text-white text-decoration-none">HCI</a></li>
-            <li><a href="system-design.html" class="text-white text-decoration-none">System Design</a></li>
-            <li><a href="implements.html" class="text-white text-decoration-none">Implements</a></li>
             <li><a href="testing.html" class="text-white text-decoration-none">Testing</a></li>
             <li><a href="evaluation.html" class="text-white text-decoration-none">Evaluation</a></li>
-            <li><a href="appendix.html" class="text-white text-decoration-none">Appendix</a></li>
           </ul>
         </div>
-        <!-- 右侧：Project Supporters -->
         <div class="col-lg-4 col-md-12">
           <h3 class="fw-bold">Project Supporters</h3>
           <p class="mb-1">Avanade</p>
           <p class="mb-3">UCL</p>
-          <p class="mb-0">
-            A lot of thanks to our company partner Avanade and Mr. Kenza 404 especially.
-          </p>
+          <p class="mb-0">Special thanks to our partner Avanade and Mr. Kenza 404.</p>
         </div>
       </div>
-  
-      <!-- 底部版权信息 -->
-      <hr class="my-4">
+      <hr class="my-4" />
       <div class="text-center pb-3">
-        <p class="mb-0">© 2021 All Rights Reserved</p>
+        <p class="mb-0">© 2025 All Rights Reserved</p>
       </div>
     </div>
   </footer>
-<!-- /Footer -->
 
-<!-- Scroll Top -->
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-<!-- Preloader -->
-<div id="preloader"></div>
+  <!-- Preloader -->
+  <div id="preloader"></div>
 
-<!-- Vendor JS Files -->
-<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../../assets/vendor/php-email-form/validate.js"></script>
-<script src="../../assets/vendor/aos/aos.js"></script>
-<script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <!-- JS Files -->
+  <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/vendor/aos/aos.js"></script>
+  <script src="../../assets/js/main.js"></script>
 
-<!-- Main JS File -->
-<script src="../../assets/js/main.js"></script>
-
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>
