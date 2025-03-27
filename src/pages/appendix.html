@@ -14,236 +14,342 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Mono:wght@400;500&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="../../assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../../assets/vendor/glightbox/js/glightbox.min.css" rel="stylesheet">
   <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
   <link href="../../assets/css/main.css" rel="stylesheet">
 
-  <!-- ============== Appendix页面专属样式 ============== -->
+  <!-- Enhanced Styles -->
   <style>
-    /* 1. Hero 区域风格，与类似于 Requirements / Research */
-    .appendix-hero {
-      background: linear-gradient(90deg, #f7672f 0%, #6f2fb8 100%);
-      padding: 60px 0;
-      text-align: center;
-      color: #fff;
+    :root {
+      --primary-color: #6f2fb8;
+      --secondary-color: #f4f6f8;
+      --text-color: #2d3748;
+      --light-bg: #f8f9fa;
+      --lighter-bg: #f1f3f5;
+      --card-shadow: 0 12px 24px -8px rgba(111, 47, 184, 0.1);
+      --card-hover-shadow: 0 16px 32px -8px rgba(111, 47, 184, 0.15);
     }
-    .appendix-hero h1 {
-      margin-bottom: 10px;
-      font-weight: 700;
-      font-size: 48px;
-    }
-    .appendix-hero .breadcrumbs {
-      font-size: 14px;
-    }
-    .appendix-hero .breadcrumbs a {
-      color: #fff;
-      text-decoration: underline;
-    }
-    .appendix-hero .breadcrumbs .current {
-      color: #fff;
-      opacity: 0.8;
+    
+    body {
+      background: linear-gradient(135deg, var(--light-bg) 0%, var(--lighter-bg) 100%);
+      font-family: 'Inter', sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+      font-size: 1.05rem;
     }
 
-    /* 2. 注解系统容器样式（两张“User Manual”示例图片 + 注释） */
+    p, li {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #4a5568;
+      margin-bottom: 1.2rem;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-top: 1.5em;
+      margin-bottom: 0.8em;
+      line-height: 1.3;
+    }
+    
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.75rem; }
+    h4 { font-size: 1.5rem; }
+    
+    /* Hero Section */
+    .appendix-hero {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      padding: 6rem 0 4rem;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .appendix-hero::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      transform: translate(-25%, -50%);
+    }
+
+    .appendix-hero h1 {
+      font-size: 2.8rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      animation: fadeInUp 0.8s ease;
+      color: white;
+      margin-bottom: 1rem;
+    }
+    
+    .breadcrumbs {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.8);
+    }
+    
+    .breadcrumbs a {
+      color: white;
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+    
+    .breadcrumbs a:hover {
+      opacity: 0.8;
+    }
+    
+    .breadcrumbs .current {
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* Content Cards */
+    .content-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      margin: 2.5rem 0;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .content-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--card-hover-shadow);
+    }
+    
+    /* Headings */
+    h2 {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+    }
+
+    h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.25em;
+      height: 1.4em;
+      width: 5px;
+      background: var(--primary-color);
+      border-radius: 3px;
+    }
+    
+    h3 {
+      color: #374151;
+      margin-top: 2.5rem;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    
+    h4 {
+      color: #4b5563;
+      margin-top: 2rem;
+      font-size: 1.3rem;
+    }
+
+    /* Code Blocks */
+    .code-block {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      font-family: 'Roboto Mono', monospace;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      border-left: 4px solid var(--secondary-color);
+    }
+
+    .code-block pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      tab-size: 2;
+    }
+    
+    /* Lists */
+    ul, ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    li {
+      margin-bottom: 0.6rem;
+    }
+    
+    /* Section Navigation */
+    .section-nav {
+      position: sticky;
+      top: 120px;
+      max-height: calc(100vh - 140px);
+      overflow-y: auto;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      background: white;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    body.scrolled-to-bottom .section-nav {
+      position: absolute;
+      bottom: 0;
+      top: auto;
+      transform: translateY(-20px);
+    }
+
+    .section-nav ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .section-nav li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .section-nav a {
+      color: #4b5563;
+      text-decoration: none;
+      transition: color 0.2s;
+      font-size: 0.95rem;
+    }
+    
+    .section-nav a:hover {
+      color: var(--primary-color);
+    }
+    
+
     .annotation-container {
       position: relative;
-      min-height: 100vh; 
-      background-color: #f9f9f9;
-      margin: 6rem 0;
-      padding: 2rem 0;
+      min-height: 50vh;
+      margin: 2rem 0;
+      padding: 1rem 0;
       background-repeat: no-repeat;
       background-position: center top;
       background-size: contain;
     }
+
     .annotation {
+      min-width: 160px;
+      max-width: 220px;
       position: absolute;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease;
-      max-width: 280px;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));
       z-index: 10;
     }
-    .annotation.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+
     .annotation-arrow {
-      position: relative;
-      width: 24px;
-      height: 24px;
-      margin-bottom: 8px;
-    }
-    .annotation-arrow::before {
-      content: '';
       position: absolute;
-      top: var(--arrow-top, 4px);
-      left: var(--arrow-left, 4px);
-      width: 16px;
-      height: 16px;
+      width: 8px;
+      height: 8px;
       background: #4a90e2;
       transform: rotate(45deg);
-      box-shadow: -2px 2px 4px rgba(0,0,0,0.1);
-    }
-    .annotation[right] .annotation-arrow::before {
-      left: auto;
-      right: var(--arrow-right, 4px);
-    }
-    .annotation-content {
-      background: #fff;
-      padding: 1rem 1.25rem;
-      border-radius: 12px;
-      border: 1px solid #e0e7ff;
-      box-shadow: 0 6px 20px -4px rgba(108, 99, 255, 0.1);
-      position: relative;
-    }
-    .annotation-content::before {
-      content: '';
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      background: inherit;
-      border-left: inherit;
-      border-bottom: inherit;
-      top: 14px;
-      left: -6px;
-      transform: rotate(45deg);
-      z-index: -1;
-    }
-    .annotation[right] .annotation-content::before {
-      left: auto;
-      right: -6px;
-      transform: rotate(-45deg);
-    }
-    .annotation-content p {
-      margin: 0;
-      color: #2d3748;
-      font-size: 0.875rem;
-      line-height: 1.5;
-      font-weight: 500;
-    }
-
-    /* ======= 内容区块，与“Research”页面类似 ======= */
-    .content-section {
-      padding: 4rem 0;
-      background: linear-gradient(to bottom right, #f8f9fa, #ffffff);
-    }
-    .content-card {
-      background: #fff;
-      border-radius: 1rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      padding: 2.5rem;
-      margin-bottom: 2rem;
-      transition: transform 0.3s ease;
-    }
-    .content-card:hover {
-      transform: translateY(-5px);
-    }
-    .bg-blue {
-      background: #f0f8ff;
-    }
-    .bg-gray {
-      background: #f8f9fa;
-    }
-
-    /* 列表、代码块、等细节样式，与之前一致 */
-    .prereq-list li {
-      padding: 0.8rem;
-      background: rgba(74, 144, 226, 0.05);
-      border-left: 3px solid #4a90e2;
-      margin-bottom: 0.5rem;
-    }
-    .step-list {
-      counter-reset: step;
-    }
-    .step-list li {
-      position: relative;
-      padding-left: 2.5rem;
-      margin-bottom: 1.5rem;
-    }
-    .step-list li:before {
-      content: counter(step);
-      counter-increment: step;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 24px;
-      height: 24px;
-      background: #4a90e2;
-      color: white;
-      border-radius: 50%;
-      text-align: center;
-      line-height: 24px;
-    }
-    .code-block {
-      background: #1e1e1e;
-      color: #d4d4d4;
-      padding: 1rem;
-      border-radius: 6px;
-      margin: 0.5rem 0;
-      font-family: 'Courier New', monospace;
-      position: relative;
-    }
-    .code-block span {
-      color: #569cd6;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-
-    /* 复制按钮 */
-    .code-copy {
-      position: absolute;
-      top: 6px;
-      right: 10px;
-      color: #858585;
+      box-shadow: -1px 1px 3px rgba(0,0,0,0.1);
       cursor: pointer;
-      transition: color 0.3s ease;
-      z-index: 2;
-    }
-    .code-copy:hover {
-      color: #4a90e2;
+      transition: all 0.2s ease;
     }
 
-    /* 其余细节（legal, privacy...） */
-    .legal-content .effective-date {
-      font-style: italic;
-      margin-bottom: 0.5rem;
+    .annotation:hover .annotation-arrow {
+      background: #3a7bc8;
     }
-    .restriction-list li {
-      list-style-type: none;
-      margin-bottom: 0.5rem;
-    }
-    .privacy-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin-top: 1rem;
-    }
-    .privacy-item {
-      text-align: center;
-      padding: 1rem;
-      border: 1px solid #eee;
-      border-radius: 6px;
+
+
+    .annotation-content {
+      display: none;
+      position: absolute;
       background: #fff;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      border: 1px solid #e0e7ff;
+      box-shadow: 0 4px 12px -4px rgba(108, 99, 255, 0.1);
+      max-width: 220px;
+      z-index: 20;
+      animation: fadeIn 0.2s ease;
+      font-size: 0.7rem;
     }
+
+
+    .annotation:hover .annotation-content {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    #anno1 .annotation-arrow { top: 0; left: 0; }
+    #anno1 .annotation-content { top: 20px; left: 0; }
+
+    #anno2 .annotation-arrow { top: 0; left: 0; }
+    #anno2 .annotation-content { top: 20px; left: 0; }
+
     @media (max-width: 768px) {
-      .content-card {
-        padding: 1.5rem;
+      .annotation-container {
+        min-height: 35vh;
+        background-size: 85%;
       }
-      .privacy-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+      
+      .annotation-content {
+        max-width: 160px;
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        font-size: 0.7rem;
       }
     }
 
+    @media (max-width: 992px) {
+      .appendix-hero { padding: 5rem 0 3rem; }
+      .appendix-hero h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.8rem; }
+      h3 { font-size: 1.5rem; }
+    }
+    
+    @media (max-width: 768px) {
+      .appendix-hero { padding: 4rem 0 2.5rem; }
+      .appendix-hero h1 { font-size: 2rem; }
+      .content-card { padding: 1.5rem; }
+      h2 { font-size: 1.6rem; }
+      h3 { font-size: 1.4rem; }
+      
+      .section-nav {
+        display: none;
+      }
+    
+    }
+    
+    @media (max-width: 576px) {
+      .appendix-hero h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.5rem; }
+      h3 { font-size: 1.3rem; }
+    }
+    
+    @media (max-width: 991.98px) {
+      .section-nav {
+        position: static;
+        order: -1; 
+        margin-bottom: 2rem;
+        width: 100%;
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 
@@ -262,7 +368,7 @@
         <li><a href="../../index.html">Home</a></li>
         <li><a href="requirements.html">Requirements</a></li>
         <li><a href="research.html">Research</a></li>
-        <li><a href="algorithm.html">Algorithm</a></li>
+        <li><a href="hci.html">HCI</a></li>
         <li><a href="system-design.html">System Design</a></li>
         <li><a href="implements.html">Implements</a></li>
         <li><a href="testing.html">Testing</a></li>
@@ -275,415 +381,322 @@
     <a class="btn-getstarted" href="../../index.html">Get Started</a>
   </div>
 </header>
-<!-- /Header -->
 
 <main id="main">
-
-  <!-- ======= Hero 区 ======= -->
+  <!-- Hero Section -->
   <section class="appendix-hero">
     <div class="container" data-aos="fade-up">
       <h1>APPENDIX</h1>
       <nav class="breadcrumbs">
-        <ol>
-          <li><a href="../../index.html">Home</a></li>
-          <li class="current">Appendix</li>
-        </ol>
       </nav>
     </div>
   </section>
-  <!-- /Hero -->
 
-  <!-- ======= 第一张“User Manual”图片 + 注解系统 ======= -->
-  <section class="annotation-container" data-aos="fade-up"
-          style="background-image: url('../../assets/img/user_page.png');">
-    <div class="annotation" id="anno1" style="top: 2%; left: 20%;">
-      <div class="annotation-arrow"></div>
-      <div class="annotation-content">
-        <p>Toggle sidebar navigation</p>
-      </div>
-    </div>
-    <div class="annotation" id="anno2" style="top: 8%; left: 12%;">
-      <div class="annotation-arrow"></div>
-      <div class="annotation-content">
-        <p>Start new research workflow</p>
-      </div>
-    </div>
-    <div class="annotation" id="anno3" style="top: 20%; left: 18%;">
-      <div class="annotation-arrow"></div>
-      <div class="annotation-content">
-        <p>Click the 3 dots (...) toopen a menu to delete</p>
-      </div>
-    </div>
-    <div class="annotation" id="anno4" style="top: 34%; left: 12%;">
-      <div class="annotation-arrow"></div>
-      <div class="annotation-content">
-        <p>Access previous research outputs</p>
-      </div>
-    </div>
-    <div class="annotation" id="anno5" style="top: 45%; left: 50%;">
-      <div class="annotation-arrow"></div>
-      <div class="annotation-content">
-        <p>Input research question here</p>
-      </div>
-    </div>
-    <div class="annotation" id="anno6" style="top: 50%; left: 43%;">
-      <div class="annotation-arrow"></div>
-      <div class="annotation-content">
-        <p>Upload supporting documents</p>
-      </div>
-    </div>
-    <div class="annotation" id="anno7" style="top: 50%; right: 17%;">
-      <div class="annotation-arrow"></div>
-      <div class="annotation-content">
-        <p>Generate systematic review</p>
-      </div>
-    </div>
-    <div class="annotation" id="anno8" style="top: 4%; right: 0%;" right>
-      <div class="annotation-arrow"></div>
-      <div class="annotation-content">
-        <p>User account settings</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======= 第二张“User Manual”图片 + 注解系统 ======= -->
-  <section class="annotation-container" data-aos="fade-up"
-           style="background-image: url('../../assets/img/second_user_page.png');">
-    <div class="annotation" id="anno9" style="top: 7%; left: 26%;">
-      <div class="annotation-arrow" style="--arrow-top: 50px; --arrow-left: 260px;"></div>
-      <div class="annotation-content">
-        <p>Click to toggle theinput files used</p>
-      </div>
-    </div>
-    <div class="annotation" id="anno10" style="top: 8%; right: 13%;" right>
-      <div class="annotation-arrow" style="--arrow-top: 50px; --arrow-right: 30px;"></div>
-      <div class="annotation-content">
-        <p>Click to view thequality check graphs.</p>
-      </div>
-    </div>
-    <div class="annotation" id="anno11" style="top: 15%; left: 27%;">
-      <div class="annotation-arrow" style="--arrow-top: 30px; --arrow-left: 260px;"></div>
-      <div class="annotation-content">
-        <p>Click to open the PDF in another tab</p>
-      </div>
-    </div>
-    <div class="annotation" id="anno12" style="top: 13%; right: 23%;" right>
-      <div class="annotation-arrow"></div>
-      <div class="annotation-content">
-        <p>Click to export thesystematic review as a PDF</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======= 主要内容区块 (不再有左侧“Guides”导航) ======= -->
-  <section class="content-section">
+  <!-- Content Section -->
+  <section class="system-content">
     <div class="container" data-aos="fade-up">
-      
-      <!-- 部署说明 -->
-      <div id="deployment" class="content-card bg-blue">
-        <h2>Deployment Instructions</h2>
-        
-        <!-- Prerequisites -->
-        <div class="step-list">
-          <li>
-            <strong>Prerequisites</strong>
-            <ul class="prereq-list mt-2">
-              <li><i class="bi bi-check-circle"></i> Latest version of pip is installed</li>
-              <li><i class="bi bi-database"></i> MySQL installed (database)</li>
-              <li><i class="bi bi-file-code"></i> Node.js and npm installed (frontend)</li>
-            </ul>
-          </li>
-        </div>
+      <div class="row flex-lg-nowrap">
+        <!-- Main Content Area -->
+        <div class="col-lg-8 order-2 order-lg-1">
+          <!-- Introduction -->
+          <div class="content-card">
+            <p class="lead">This section contains supplementary materials including deployment instructions, legal documentation, and user manuals for our systematic review generation system.</p>
+          </div>
+          
+          <!-- User Manual Annotations -->
+          <div class="content-card" id="user-manual">
+            <h2>User Manual</h2>
+              <div class="content-card">
+                <p>
+                  This tool helps researchers quickly create systematic reviews. 
+                  Type your research question, upload PDFs, and generate summaries. 
+                  Manage files with quick actions (delete, organize), review past projects, 
+                  and export results as PDF. Check report quality with automated graphs. 
+                  Supports multiple papers. Simple and efficient.
+                </p>
+              </div>
 
-        <div class="step-list">
-          <li>
-            <strong>Install all dependencies</strong>
-            <p>Clone the repository:</p>
-            <div class="code-block">
-              <button class="code-copy bi bi-clipboard"></button>
-              <code>
-~ git clone https://github.com/pgzqtss/RAG-project.git
-~ cd RAG-project
-              </code>
-            </div>
-            <p>Install all dependencies (Backend / Frontend):</p>
-            <div class="code-block">
-              <button class="code-copy bi bi-clipboard"></button>
-              <code>
-Backend:
-~ cd backend
-~ pip install -r requirements.txt
+              <section class="annotation-container" data-aos="fade-up"
+                      style="background-image: url('../../assets/img/user_page.png');">
+                <div class="annotation" id="anno1" style="top: 2%; left: 12%;">
+                  <div class="annotation-arrow"></div>
+                  <div class="annotation-content">
+                    <p>sidebar navigation</p>
+                  </div>
+                </div>
+                <div class="annotation" id="anno2" style="top: 8%; left: 12%;">
+                  <div class="annotation-arrow"></div>
+                  <div class="annotation-content">
+                    <p>Start new research workflow</p>
+                  </div>
+                </div>
+                <div class="annotation" id="anno3" style="top: 19%; left: 13%;">
+                  <div class="annotation-arrow"></div>
+                  <div class="annotation-content">
+                    <p>Click the 3 dots (...) toopen a menu to delete</p>
+                  </div>
+                </div>
+                <div class="annotation" id="anno4" style="top: 30%; left: 10%;">
+                  <div class="annotation-arrow"></div>
+                  <div class="annotation-content">
+                    <p>Access previous research outputs</p>
+                  </div>
+                </div>
+                <div class="annotation" id="anno5" style="top: 45%; left: 50%;">
+                  <div class="annotation-arrow"></div>
+                  <div class="annotation-content">
+                    <p>Input research question here</p>
+                  </div>
+                </div>
+                <div class="annotation" id="anno6" style="top: 50%; left: 43%;">
+                  <div class="annotation-arrow"></div>
+                  <div class="annotation-content">
+                    <p>Upload supporting documents</p>
+                  </div>
+                </div>
+                <div class="annotation" id="anno7" style="top: 50%; right: 7%;">
+                  <div class="annotation-arrow"></div>
+                  <div class="annotation-content">
+                    <p>Generate systematic review</p>
+                  </div>
+                </div>
+                <div class="annotation" id="anno8" style="top: 4%; right: 0%;" right>
+                  <div class="annotation-arrow"></div>
+                  <div class="annotation-content">
+                    <p>User account settings</p>
+                  </div>
+                </div>
+              </section>
 
-Frontend:
-~ cd frontend
-~ npm install
-              </code>
-            </div>
-          </li>
-          <li>
-            <strong>Create a .env file</strong>  
-            In the root directory using .env.environment as a template.
-            <table class="table table-bordered mt-3">
-              <thead>
-                <tr>
-                  <th>Environment Variable</th>
-                  <th>Description</th>
-                  <th>Source</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>PINECONE_API_KEY</td>
-                  <td>API key for using Pinecone as a vector database</td>
-                  <td>Pinecone</td>
-                </tr>
-                <tr>
-                  <td>OPENAI_API_KEY</td>
-                  <td>API key for use of OpenAI's GPT 3.5 Turbo model</td>
-                  <td>OpenAI API Platform</td>
-                </tr>
-                <tr>
-                  <td>MYSQL_PASSWORD</td>
-                  <td>Personal password for MySQL database (empty if none)</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-          </li>
-          <li>
-            <strong>Modify config.py as needed</strong>  
-            The config.py file in /backend manages key settings for the application, including:
+              <!-- ======= 第二张"User Manual"图片 + 注解系统 ======= -->
+              <section class="annotation-container" data-aos="fade-up"
+                      style="background-image: url('../../assets/img/second_user_page.png');">
+                <div class="annotation" id="anno9" style="top: 12%; left: 40%;">
+                  <div class="annotation-arrow" style="--arrow-top: 50px; --arrow-left: 260px;"></div>
+                  <div class="annotation-content">
+                    <p>Click to toggle theinput files used</p>
+                  </div>
+                </div>
+                <div class="annotation" id="anno10" style="top: 13%; right: 14%;" right>
+                  <div class="annotation-arrow" style="--arrow-top: 50px; --arrow-right: 30px;"></div>
+                  <div class="annotation-content">
+                    <p>Click to view thequality check graphs.</p>
+                  </div>
+                </div>
+                <div class="annotation" id="anno11" style="top: 18%; left: 40%;">
+                  <div class="annotation-arrow" style="--arrow-top: 30px; --arrow-left: 260px;"></div>
+                  <div class="annotation-content">
+                    <p>Click to open the PDF in another tab</p>
+                  </div>
+                </div>
+                <div class="annotation" id="anno12" style="top: 13%; right: 8%;" right>
+                  <div class="annotation-arrow"></div>
+                  <div class="annotation-content">
+                    <p>Click to export thesystematic review as a PDF</p>
+                  </div>
+                </div>
+              </section>
+          </div>
+
+          <!-- Deployment Instructions -->
+          <div class="content-card" id="deployment">
+            <h2>Deployment Instructions</h2>
+            
+            <h3>Prerequisites</h3>
             <ul>
-              <li>Pinecone initialisation for vector storage and retrieval.</li>
-              <li>MySQL configuration for database connectivity.</li>
-              <li>Embedding and OpenAI model settings for text processing and generation.</li>
+              <li>Latest version of pip installed</li>
+              <li>MySQL installed (database)</li>
+              <li>Node.js and npm installed (frontend)</li>
             </ul>
-          </li>
-          <li>
-            <strong>Start MySQL server</strong>
-            <p>Mac</p>
-            <div class="code-block">
-              <button class="code-copy bi bi-clipboard"></button>
-              <code>brew services start mysql</code>
-            </div>
-            <p>Windows</p>
-            <div class="code-block">
-              <button class="code-copy bi bi-clipboard"></button>
-              <code>net start mysql</code>
-            </div>
-          </li>
-          <li>
-            <strong>Create the MySQL database</strong>
-            <div class="code-block">
-              <button class="code-copy bi bi-clipboard"></button>
-              <code>
-~ cd backend
-~ mysql -u root -p < schema.sql
-              </code>
-            </div>
-          </li>
-          <li>
-            <strong>Run the backend</strong>
-            <div class="code-block">
-              <button class="code-copy bi bi-clipboard"></button>
-              <code>
-~ cd backend
-~ python3 app.py
-              </code>
-            </div>
-          </li>
-          <li>
-            <strong>Run the frontend</strong>
-            <div class="code-block">
-              <button class="code-copy bi bi-clipboard"></button>
-              <code>
-~ cd frontend
-~ npm run dev
-              </code>
-            </div>
-            <p>The Next.js app will run on http://localhost:3000</p>
-          </li>
+            
+            <h3>Installation Steps</h3>
+            <ol>
+              <li>
+                <p>Clone the repository:</p>
+                <div class="code-block">
+                  <pre>git clone https://github.com/pgzqtss/RAG-project.git
+cd RAG-project</pre>
+                </div>
+              </li>
+              <li>
+                <p>Install backend dependencies:</p>
+                <div class="code-block">
+                  <pre>cd backend
+pip install -r requirements.txt</pre>
+                </div>
+              </li>
+              <li>
+                <p>Install frontend dependencies:</p>
+                <div class="code-block">
+                  <pre>cd frontend
+npm install</pre>
+                </div>
+              </li>
+              <li>
+                <p>Create a .env file in the root directory using .env.environment as a template</p>
+              </li>
+            </ol>
+            
+            <h3>Running the Application</h3>
+            <ol>
+              <li>
+                <p>Start MySQL server:</p>
+                <div class="code-block">
+                  <pre># Mac
+brew services start mysql
+
+# Windows
+net start mysql</pre>
+                </div>
+              </li>
+              <li>
+                <p>Create the MySQL database:</p>
+                <div class="code-block">
+                  <pre>cd backend
+mysql -u root -p < schema.sql</pre>
+                </div>
+              </li>
+              <li>
+                <p>Run the backend and the frontend at the same time</p>
+                <div class="code-block">
+                  <pre>cd backend
+python3 app.py</pre>
+<p>(Could run in terminal)</p>
+                </div>
+              </li>
+              <li>
+                <p>Run the frontend:</p>
+                <div class="code-block">
+                  <pre>cd frontend
+npm run dev</pre>
+<p>(Could run in Command Prompt (cmd) for Window)</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Legal Documentation -->
+          <div class="content-card" id="legal">
+            <h2>Legal Documentation</h2>
+            
+            <h3>End-User License Agreement (EULA)</h3>
+            <p><strong>Last Updated: March 24, 2025</strong></p>
+            
+            <h4>License</h4>
+            <p>Group29 grants You a revocable, non-exclusive, non-transferable, limited license to download, install, and use the Application solely for personal, non-commercial purposes strictly in accordance with this Agreement.</p>
+            
+            <h4>License Restrictions</h4>
+            <ul>
+              <li>Modify, copy, or create derivative works based on the Application.</li>
+              <li>Reverse-engineer, decompile, or disassemble the Application.</li>
+              <li>Remove, alter, or obscure any proprietary notices.</li>
+              <li>Sublicense, lease, sell, rent, loan, or otherwise distribute the Application.</li>
+            </ul>
+            
+            <h4>Intellectual Property</h4>
+            <p>All intellectual property rights related to the Application developed under this project are owned by UCL, as agreed upon between UCL, Group29, and CarefulAI Limited.</p>
+          </div>
+
+          <!-- Data Privacy -->
+          <div class="content-card" id="privacy">
+            <h2>Data Privacy and Protection</h2>
+            
+            <h3>Data Collection and Processing</h3>
+            <ul>
+              <li>Our app only collects the necessary data for its functionality</li>
+              <li>All data processing activities are conducted lawfully, fairly and transparently</li>
+            </ul>
+            
+            <h3>User Rights</h3>
+            <ul>
+              <li>Users have the right to access and delete their data</li>
+            </ul>
+            
+            <h3>Data Security</h3>
+            <ul>
+              <li>Data is encrypted during transmission</li>
+              <li>Passwords are securely hashed using industry-standard algorithms</li>
+            </ul>
+          </div>
         </div>
-
-        <h3 class="mt-5">Testing Instructions</h3>
-        <p><strong>Backend</strong></p>
-        <ol class="step-list">
-          <li>Navigate to the backend directory:
-            <div class="code-block">
-              <button class="code-copy bi bi-clipboard"></button>
-              <code>cd backend</code>
-            </div>
-          </li>
-          <li>Install the dependencies if not already installed:
-            <div class="code-block">
-              <button class="code-copy bi bi-clipboard"></button>
-              <code>pip install -r requirements.txt</code>
-            </div>
-          </li>
-          <li>Run the tests using pytest:
-            <div class="code-block">
-              <button class="code-copy bi bi-clipboard"></button>
-              <code>pytest</code>
-            </div>
-            This will execute all the tests in the tests directory and provide a summary of the results.
-          </li>
-        </ol>
-      </div>
-
-      <!-- 法律条款 -->
-      <div id="legal" class="content-card bg-gray">
-        <h2>Legal Issues and Processes</h2>
-        <div class="legal-section">
-          <h3>Application End-User License Agreement (EULA)</h3>
-          <p><strong>Last Updated: March 24, 2025</strong></p>
-          <p>This End-User License Agreement (\"Agreement\") is a legal document between You and Group29 (\"Company\", \"We\", \"Us\", \"Our\") concerning your use of this Application.</p>
-
-          <h4>Definitions</h4>
-          <p><strong>Application</strong> refers to the software provided by Group29 downloaded by You to a Device.</p>
-          <p><strong>Group29</strong> refers to the development group responsible for the creation and provision of this Application.</p>
-          <p><strong>Device</strong> means any device capable of accessing the Application, including computers, mobile phones, or tablets.</p>
-          <p><strong>Content</strong> means all text, images, data, and other materials available via the Application.</p>
-          <p><strong>Third-Party Services</strong> refers to any third-party software, services, or content integrated with or accessible through the Application.</p>
-          <p><strong>You</strong> refers to the individual or entity accessing or using the Application.</p>
-          <p><strong>UCL</strong> refers to University College London.</p>
-          <p><strong>CarefulAI Limited</strong> refers to the collaborating client organization associated with this project.</p>
-
-          <h4>Acknowledgment</h4>
-          <p>By installing, accessing, or using the Application, You agree to be bound by this Agreement. If You do not agree to these terms, You must not install or use the Application.</p>
-          <p>The Application is licensed, not sold, to You by Group29 strictly under this Agreement.</p>
-
-          <h4>License</h4>
-          <p><strong>Scope of License</strong><br>
-             Group29 grants You a revocable, non-exclusive, non-transferable, limited license to download, install, and use the Application solely for personal, non-commercial purposes strictly in accordance with this Agreement.</p>
-
-          <p><strong>License Restrictions</strong><br>
-            You shall not:
-          </p>
-          <ul>
-            <li>Modify, copy, or create derivative works based on the Application.</li>
-            <li>Reverse-engineer, decompile, or disassemble the Application.</li>
-            <li>Remove, alter, or obscure any proprietary notices, including copyright or trademark notices.</li>
-            <li>Sublicense, lease, sell, rent, loan, or otherwise distribute the Application.</li>
-          </ul>
-
-          <h4>Intellectual Property</h4>
-          <p>All intellectual property rights related to the Application developed under this project are owned by UCL, as agreed upon between UCL, Group29, and CarefulAI Limited. Group29 licenses the Application under terms consistent with the MIT License, subject to UCL’s ownership of the underlying intellectual property (\"Studentship IP\").</p>
-
-          <h4>Third-Party Services</h4>
-          <p>The Application may include or provide links to third-party services. Group29 assumes no responsibility or liability for Third-party Services and makes no representations regarding their accuracy, legality, or quality.</p>
-
-          <h4>Termination</h4>
-          <p>This Agreement remains effective until terminated by either You or Group29. Group29 may terminate this Agreement without notice if You breach any of its terms. Upon termination, You must cease use and delete all copies of the Application.</p>
-
-          <h4>Indemnification</h4>
-          <p>You agree to indemnify Group29, UCL, CarefulAI Limited, and their affiliates, employees, agents, and partners from any claims or damages arising from Your use of the Application or breach of this Agreement.</p>
-
-          <h4>No Warranties</h4>
-          <p>The Application is provided \"AS IS\" without warranties of any kind. Group29 disclaims all implied warranties, including merchantability, fitness for a particular purpose, and non-infringement.</p>
-
-          <h4>Limitation of Liability</h4>
-          <p>To the fullest extent permitted by law, Group29, UCL, and CarefulAI Limited shall not be liable for any indirect, incidental, consequential damages, including lost profits, data loss, or business interruption arising from or related to your use of the Application.</p>
-
-          <h4>Governing Law</h4>
-          <p>This Agreement is governed by the laws of the United Kingdom, excluding its conflict of law provisions.</p>
-
-          <h4>Severability and Waiver</h4>
-          <p>If any provision of this Agreement is deemed invalid or unenforceable, that provision shall be modified to reflect its intended effect to the greatest extent possible, and all other provisions remain effective.</p>
-          <p>Failure to enforce any right or provision under this Agreement shall not constitute a waiver of future enforcement.</p>
-
-          <h4>Changes to this Agreement</h4>
-          <p>Group29 reserves the right to modify this Agreement at any time. Notice of significant changes will be provided within the Application. Continued use of the Application after changes constitutes acceptance of the revised Agreement.</p>
-
-          <h4>Contact</h4>
-          <p>By installing, accessing, or using the Application, You acknowledge that You have read, understood, and agreed to be bound by the terms of this Agreement.</p>
-        </div>
-      </div>
-
-      <!-- 数据隐私 -->
-      <div id="privacy" class="content-card bg-white">
-        <h2>Data Privacy and Protection</h2>
-        <p>This project is designed to comply with the General Data Protection Regulation (GDPR) and other relevant data protection laws. The following measures have been implemented to ensure the privacy and security of user data:</p>
         
-        <h4>Data Collection and Processing:</h4>
-        <ul>
-          <li>Our app only collects the necessary data for its functionality, such as usernames, passwords (hashed), and upload files.</li>
-          <li>All data processing activities are conducted lawfully, fairly and transparently.</li>
-        </ul>
-
-        <h4>User Rights:</h4>
-        <ul>
-          <li>Users have the right to access and delete their data.</li>
-        </ul>
-
-        <h4>Data Security:</h4>
-        <ul>
-          <li>Data is encrypted during transmission.   xv<br>
-              4’ <br>
-              x Perform a hypothesis using 𝑟2, such that ρ=0,</li>
-          <li>Passwords are securely hashed using industry-standard algorithms.</li>
-        </ul>
-
-        <h4>Third-Party Services:</h4>
-        <ul>
-          <li>Any third-party services or libraries used in the project, including OpenAI and Pinecone, are comply with GDPR and other relevant data protection regulations.</li>
-          <li>Data shared with third parties is anonymized.</li>
-        </ul>
-
-        <h4>Costing</h4>
-        <p>Our app is totally free to use. However, users will need to have their own API keys for OpenAI and Pinecone, leading to the problem of pricing with OpenAI GPT-4o-mini, for which the model costs $0.04 per run</p>
+        <!-- Side Navigation -->
+        <div class="col-lg-4 order-1 order-lg-2 ps-lg-4">
+          <div class="section-nav">
+            <h5>Page Sections</h5>
+            <ul class="list-unstyled">
+              <li><a href="#user-manual" class="d-block py-2">User Manual</a></li>
+              <li><a href="#deployment" class="d-block py-2">Deployment Instructions</a></li>
+              <li><a href="#legal" class="d-block py-2">Legal Documentation</a></li>
+              <li><a href="#privacy" class="d-block py-2">Data Privacy</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-
     </div>
   </section>
-
 </main>
 
 <!-- ======= Footer ======= -->
 <footer id="footer" class="footer text-white position-relative" style="background: linear-gradient(to right, #4b6cb7, #182848);">
-  <!-- 波浪形装饰 -->
-  <div class="wave-shape" style="position: absolute; top: -100px; left: 0; width: 100%; overflow: hidden; line-height: 0; transform: rotate(180deg);">
-    <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="width: calc(100% + 1.3px); height: 100px;">
-      <path d="M-2.19,29.63 C149.99,150.00 321.41,-49.99 502.54,44.96 L500.00,0.00 L0.00,0.00 Z"
-            style="stroke: none; fill: #ffffff;"></path>
-    </svg>
-  </div>
-  <div class="container pt-5" style="position: relative; z-index: 1;">
-    <div class="row gy-4">
-      <div class="col-lg-4 col-md-6">
-        <h3 class="fw-bold">Site Info</h3>
-        <p>Academic research platform for systematic review automation</p>
+
+    <!-- Wave Shape SVG -->
+    <div class="wave-shape" style="position: absolute; top: -100px; left: 0; width: 100%; overflow: hidden; line-height: 0; transform: rotate(180deg);">
+      <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="position: relative; display: block; width: calc(100% + 1.3px); height: 100px;">
+        <path d="M-2.19,29.63 C149.99,150.00 321.41,-49.99 502.54,44.96 L500.00,0.00 L0.00,0.00 Z"
+              style="stroke: none; fill: #ffffff;"></path>
+      </svg>
+    </div>
+  
+    <div class="container pt-5" style="position: relative; z-index: 1;">
+      <div class="row gy-4">
+        <!-- Left: Site Info -->
+        <div class="col-lg-4 col-md-6">
+          <h3 class="fw-bold">Site Info</h3>
+          <p>
+            This is the website for UCL Year2 2020-2023 COMP106B Team4 Avanade's COVID19 changes,  
+            which introduces the team project and contains all the portfolios.
+          </p>
+        </div>
+        <!-- Middle: Site Menu -->
+        <div class="col-lg-4 col-md-6">
+          <h3 class="fw-bold">Site Menu</h3>
+          <ul class="list-unstyled">
+            <li><a href="../../index.html" class="text-white text-decoration-none">Home</a></li>
+            <li><a href="requirements.html" class="text-white text-decoration-none">Requirements</a></li>
+            <li><a href="research.html" class="text-white text-decoration-none">Research</a></li>
+            <li><a href="hci.html" class="text-white text-decoration-none">HCI</a></li>
+            <li><a href="system-design.html" class="text-white text-decoration-none">System Design</a></li>
+            <li><a href="implements.html" class="text-white text-decoration-none">Implementation</a></li>
+            <li><a href="testing.html" class="text-white text-decoration-none">Testing</a></li>
+            <li><a href="evaluation.html" class="text-white text-decoration-none">Evaluation</a></li>
+            <li><a href="appendix.html" class="text-white text-decoration-none">Appendix</a></li>
+          </ul>
+        </div>
+        <!-- Right: Project Supporters -->
+        <div class="col-lg-4 col-md-12">
+          <h3 class="fw-bold">Project Supporters</h3>
+          <p class="mb-1">Avanade</p>
+          <p class="mb-3">UCL</p>
+          <p class="mb-0">
+            A lot of thanks to our company partner Avanade and Mr. Kenza 404 especially.
+          </p>
+        </div>
       </div>
-      <div class="col-lg-4 col-md-6">
-        <h3 class="fw-bold">Site Menu</h3>
-        <ul class="list-unstyled">
-          <li><a href="../../index.html" class="text-white text-decoration-none">Home</a></li>
-          <li><a href="requirements.html" class="text-white text-decoration-none">Requirements</a></li>
-          <li><a href="research.html" class="text-white text-decoration-none">Research</a></li>
-          <li><a href="algorithm.html" class="text-white text-decoration-none">Algorithm</a></li>
-          <li><a href="system-design.html" class="text-white text-decoration-none">System Design</a></li>
-          <li><a href="implements.html" class="text-white text-decoration-none">Implements</a></li>
-          <li><a href="testing.html" class="text-white text-decoration-none">Testing</a></li>
-          <li><a href="evaluation.html" class="text-white text-decoration-none">Evaluation</a></li>
-          <li><a href="appendix.html" class="text-white text-decoration-none">Appendix</a></li>
-        </ul>
-      </div>
-      <div class="col-lg-4 col-md-12">
-        <h3 class="fw-bold">Acknowledgements</h3>
-        <p>Special thanks to our industry partners and academic advisors</p>
+  
+      <!-- Copyright Info -->
+      <hr class="my-4">
+      <div class="text-center pb-3">
+        <p class="mb-0">© 2021 All Rights Reserved</p>
       </div>
     </div>
-    <hr class="my-4">
-    <div class="text-center pb-3">
-      <p class="mb-0">© 2023 All Rights Reserved</p>
-    </div>
-  </div>
-</footer>
+  </footer>
 <!-- /Footer -->
 
-<!-- Scroll Top & Preloader（可自行移除） -->
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
-  <i class="bi bi-arrow-up-short"></i>
-</a>
+<!-- Scroll Top -->
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Preloader -->
 <div id="preloader"></div>
 
 <!-- Vendor JS Files -->
@@ -696,7 +709,7 @@ Frontend:
 <!-- Main JS File -->
 <script src="../../assets/js/main.js"></script>
 
-<!-- 注解系统交互脚本 -->
+<!-- Annotation System Script -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const observer = new IntersectionObserver((entries) => {
@@ -712,7 +725,7 @@ document.addEventListener('DOMContentLoaded', () => {
     rootMargin: '0px 0px -100px 0px'
   });
 
-  // 注解顺序
+  // Annotation order
   const annotationOrder = [
     '#anno1','#anno2','#anno3','#anno4','#anno5','#anno6',
     '#anno7','#anno8','#anno9','#anno10','#anno11','#anno12'
@@ -725,7 +738,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-<!-- 复制代码功能脚本 -->
+<!-- Code Copy Functionality -->
 <script>
 document.querySelectorAll('.code-copy').forEach(button => {
   button.addEventListener('click', (e) => {
@@ -741,6 +754,34 @@ document.querySelectorAll('.code-copy').forEach(button => {
   });
 });
 </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.annotation-arrow').forEach(arrow => {
+      arrow.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const annotation = arrow.closest('.annotation');
+        
+        document.querySelectorAll('.annotation').forEach(item => {
+          if (item !== annotation) {
+            item.classList.remove('active');
+          }
+        });
+        
+
+        annotation.classList.toggle('active');
+      });
+    });
+  
+
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.annotation').forEach(item => {
+        item.classList.remove('active');
+      });
+    });
+  });
+  </script>
+
 
 </body>
 </html>
