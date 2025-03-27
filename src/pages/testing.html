@@ -225,10 +225,105 @@
         <p>We leveraged the pytest-cov plugin to generate test coverage reports, ensuring that our automated test suite comprehensively covered the RAG system’s codebase. The coverage report indicated that 90% of our codebase was covered by automated tests. We strategically excluded certain third-party integration points (e.g., direct interactions with Pinecone or external APIs) from our unit testing coverage report, as these were covered via dedicated integration tests.</p>
         <p>Although there were inherent challenges in covering certain interactions (such as external API dependencies or file-system constraints), we are satisfied with the achieved high coverage rate, ensuring a strong foundation for ongoing development and stability of the project.</p>
 
-        <img src="../../assets/img/testing-example.png" alt="Testing Example" class="img-fluid mt-3 rounded shadow" />
+        
 
-        <h2 id="acceptance">User Acceptance</h2>
-        <p>We conducted user testing among team members and non-technical users. Feedback was gathered through surveys and direct interviews, and we iterated based on the results.</p>
+        <section class="testing-section" id="acceptance">
+          <div class="container" data-aos="fade-up">
+            <h2>User Acceptance Testing</h2>
+        
+            <p>To gain a general understanding of how our application performs and to identify potential areas for improvement, we invited four individuals from diverse backgrounds to test our application. Their feedback was recorded and analyzed to inform future enhancements.</p>
+        
+            <h5 class="mt-4">TESTERS</h5>
+            <p>The testers include:</p>
+            <ul>
+              <li>Alice - 18 years old student</li>
+              <li>Brian - 25 years old bank employee</li>
+              <li>Cathy - 39 years old doctor</li>
+              <li>David - 45 years old Researcher</li>
+            </ul>
+            <p><em>Note: These are all real-world testers, however, their identities have been made anonymous.</em></p>
+        
+            <h5 class="mt-4">TEST CASE</h5>
+            <p>We divided the test into 4 cases, the testers would go through each case and give feedbacks. The feedbacks were based on the acceptance requirements given to the testers, where they would rate each requirement at Likert Scale as well as leave custom comments.</p>
+        
+            <p><strong>Test Case 1:</strong> We asked the testers to login and provided testers with 3 to 5 medical research papers in PDF format and asked them to upload the documents using the system interface.</p>
+            <p><strong>Test Case 2:</strong> Testers were instructed to input a valid prompt or any questions related to the papers and generate a systematic review.</p>
+            <p><strong>Test Case 3:</strong> Once the review was generated, testers were asked to save it and review both the written summary and the accompanying visualizations.</p>
+            <p><strong>Test Case 4:</strong> We also provided testers with intentionally flawed input, such as blank PDFs or vague prompts to simulate some extreme use cases.</p>
+        
+            <h5 class="mt-4">Feedback from Users</h5>
+<div class="table-responsive">
+  <table class="table table-bordered align-middle text-center">
+    <thead class="table-light">
+      <tr>
+        <th class="text-start">Acceptance Requirement</th>
+        <th>Strongly Disagree</th>
+        <th>Disagree</th>
+        <th>Agree</th>
+        <th>Strongly Agree</th>
+        <th class="text-start">Comments</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="text-start">Is the UI navigation easy?</td>
+        <td>0</td><td>0</td><td>0</td><td>4</td>
+        <td class="text-start">+ The navigation bar makes it easy.</td>
+      </tr>
+      <tr>
+        <td class="text-start">Interface is clean and workflow is clear</td>
+        <td>0</td><td>0</td><td>0</td><td>4</td>
+        <td class="text-start">+ The layout is intuitive.</td>
+      </tr>
+      <tr>
+        <td class="text-start">Clear response to every user action</td>
+        <td>0</td><td>1</td><td>3</td><td>0</td>
+        <td class="text-start">+ Suggest adding animations or visual cues</td>
+      </tr>
+      <tr>
+        <td class="text-start">Attachments can be uploaded successfully</td>
+        <td>0</td><td>0</td><td>0</td><td>4</td>
+        <td class="text-start">+ Single and multiple PDFs both worked</td>
+      </tr>
+      <tr>
+        <td class="text-start">Systematic review output is well-structured</td>
+        <td>0</td><td>0</td><td>0</td><td>4</td>
+        <td class="text-start">+ Surprisingly coherent across prompt styles</td>
+      </tr>
+      <tr>
+        <td class="text-start">Cross-browser compatibility</td>
+        <td>0</td><td>0</td><td>0</td><td>4</td>
+        <td class="text-start">+ Chrome and Edge tested successfully</td>
+      </tr>
+      <tr>
+        <td class="text-start">System response speed</td>
+        <td>0</td><td>2</td><td>2</td><td>0</td>
+        <td class="text-start">- Chart rendering takes slightly longer</td>
+      </tr>
+      <tr>
+        <td class="text-start">Save history and view past reviews</td>
+        <td>0</td><td>0</td><td>0</td><td>4</td>
+        <td class="text-start">+ Convenient to access previous Q&A</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+        
+            <h5 class="mt-4">Overall Feedback & Advice</h5>
+            <blockquote class="blockquote">
+              “It would be nice if it can be not only used in medical papers, but also in legal documents or more fields.”
+            </blockquote>
+            <blockquote class="blockquote">
+              “It is nice and impressive. The review and charts can save huge amounts of time compared with reading through all papers.”
+            </blockquote>
+            <blockquote class="blockquote">
+              “Compared with using GPT, this system can generate conclusions more well-structured and the text is richer in content. It is helpful for me to understand the papers quickly and in-depth.”
+            </blockquote>
+        
+            <h5 class="mt-4">Conclusion</h5>
+            <p>Testers have expressed satisfaction with the tool and overall interface. However, there is room for improvement in generation speed and scope of use.</p>
+          </div>
+        </section>
       </div>
 
       <!-- Right Column Nav -->
@@ -238,6 +333,7 @@
           <li><a href="#strategy">Testing Strategy</a></li>
           <li><a href="#unit-testing">Unit Testing</a></li>
           <li><a href="#integration-testing">Integration Testing</a></li>  
+          <li><a href="#test-coverage">Test Coverge</a></li>
           <li><a href="#acceptance">User Acceptance</a></li>
         </ul>
       </aside>
