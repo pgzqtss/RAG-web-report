@@ -222,10 +222,16 @@
           </div>
         </div>
         <h2 id="test-coverage">Test Coverage</h2>
-        <p>We leveraged the pytest-cov plugin to generate test coverage reports, ensuring that our automated test suite comprehensively covered the RAG system’s codebase. The coverage report indicated that 90% of our codebase was covered by automated tests. We strategically excluded certain third-party integration points (e.g., direct interactions with Pinecone or external APIs) from our unit testing coverage report, as these were covered via dedicated integration tests.</p>
+        <p>We used pytest for unit testing and used pytest-cov plugin to generate a test coverage report as below. The coverage report indicated that 86% of our codebase is covered by tests.</p>
         <p>Although there were inherent challenges in covering certain interactions (such as external API dependencies or file-system constraints), we are satisfied with the achieved high coverage rate, ensuring a strong foundation for ongoing development and stability of the project.</p>
 
-        
+
+        <div class="row mt-4">
+          <div class="col-12">
+            <img src="../assets/test_coverage.png" alt="Test Coverage Report" class="img-fluid rounded shadow mb-4">
+          </div>
+        </div>
+
 
         <section class="testing-section" id="acceptance">
           <div class="container" data-aos="fade-up">
@@ -277,7 +283,7 @@
       </tr>
       <tr>
         <td class="text-start">Clear response to every user action</td>
-        <td>0</td><td>1</td><td>3</td><td>0</td>
+        <td>0</td><td>0</td><td>1</td><td>3</td>
         <td class="text-start">+ Suggest adding animations or visual cues</td>
       </tr>
       <tr>
@@ -297,7 +303,7 @@
       </tr>
       <tr>
         <td class="text-start">System response speed</td>
-        <td>0</td><td>2</td><td>2</td><td>0</td>
+        <td>0</td><td>0</td><td>2</td><td>2</td>
         <td class="text-start">- Chart rendering takes slightly longer</td>
       </tr>
       <tr>
