@@ -436,81 +436,6 @@
               </div>
             </div>
             
-            <div class="mt-5" id="implementation-libraries">
-              <h3>Implementation Libraries</h3>
-              
-              <div class="row g-4 mt-3">
-                <div class="col-md-6">
-                  <div class="tech-card">
-                    <div class="d-flex align-items-center mb-3">
-                      <i class="bi bi-file-pdf me-3" style="color: #dc3545;"></i>
-                      <h4>PyMuPDF</h4>
-                    </div>
-                    <p>Converts PDF documents into raw text for easier processing by the system.</p>
-                  </div>
-                </div>
-          
-                <div class="col-md-6">
-                  <div class="tech-card">
-                    <div class="d-flex align-items-center mb-3">
-                      <i class="bi bi-text-paragraph me-3" style="color: #0d6efd;"></i>
-                      <h4>LangChain</h4>
-                    </div>
-                    <p>Handles text processing including text splitting and human message management.</p>
-                  </div>
-                </div>
-          
-                <div class="col-md-6">
-                  <div class="tech-card">
-                    <div class="d-flex align-items-center mb-3">
-                      <i class="bi bi-table me-3" style="color: #198754;"></i>
-                      <h4>Pandas</h4>
-                    </div>
-                    <p>Used for data manipulation and analysis, creating data frames for quality check visualizations.</p>
-                  </div>
-                </div>
-          
-                <div class="col-md-6">
-                  <div class="tech-card">
-                    <div class="d-flex align-items-center mb-3">
-                      <i class="bi bi-bar-chart-line me-3" style="color: #fd7e14;"></i>
-                      <h4>Matplotlib</h4>
-                    </div>
-                    <p>Generates visualized graphs for data analysis and quality checks.</p>
-                  </div>
-                </div>
-          
-                <div class="col-md-6">
-                  <div class="tech-card">
-                    <div class="d-flex align-items-center mb-3">
-                      <i class="bi bi-gear me-3" style="color: #0dcaf0;"></i>
-                      <h4>Flask</h4>
-                    </div>
-                    <p>Web framework handling backend operations, HTTP requests, and API endpoints.</p>
-                  </div>
-                </div>
-          
-                <div class="col-md-6">
-                  <div class="tech-card">
-                    <div class="d-flex align-items-center mb-3">
-                      <i class="bi bi-shield-lock me-3" style="color: #6f42c1;"></i>
-                      <h4>Bcrypt</h4>
-                    </div>
-                    <p>Secures user passwords through hashing before database storage.</p>
-                  </div>
-                </div>
-          
-                <div class="col-md-6">
-                  <div class="tech-card">
-                    <div class="d-flex align-items-center mb-3">
-                      <i class="bi bi-database me-3" style="color: #6c757d;"></i>
-                      <h4>MySQL</h4>
-                    </div>
-                    <p>Database system storing user authentication details and usage history.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
           
             <div class="mt-5" id="technical-decisions">
               <h3>Technical Decisions Summary</h3>
@@ -563,7 +488,6 @@
                 <ul class="list-unstyled">
                   <li class="sub-item"><a href="#pinecone" class="d-block py-2">Pinecone Vector DB</a></li>
                   <li class="sub-item"><a href="#openai" class="d-block py-2">OpenAI GPT-4o mini</a></li>
-                  <li class="sub-item"><a href="#implementation-libraries" class="d-block py-2">Implementation Libraries</a></li>
                   <li class="sub-item"><a href="#technical-decisions" class="d-block py-2">Technical Decisions</a></li>
                 </ul>
               </li>
@@ -657,14 +581,11 @@ document.addEventListener('DOMContentLoaded', function() {
   
   if (!footer || !nav) return;
   
-  // 设置IntersectionObserver来检测footer
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // 当footer进入视口时，添加scrolled-to-bottom类
         body.classList.add('scrolled-to-bottom');
       } else {
-        // 当footer离开视口时，移除scrolled-to-bottom类
         body.classList.remove('scrolled-to-bottom');
       }
     });
@@ -672,7 +593,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   observer.observe(footer);
   
-  // 确保导航栏在页面加载时位置正确
+
   function checkNavPosition() {
     const scrollBottom = window.innerHeight + window.scrollY;
     const docHeight = document.body.offsetHeight;
@@ -685,10 +606,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  // 初始检查
+  
   checkNavPosition();
   
-  // 滚动时检查
+  
   window.addEventListener('scroll', checkNavPosition);
 });
 </script>
