@@ -26,6 +26,9 @@
     body {
       padding-top: 90px;
     }
+    h2[id], h3[id], h4[id] {
+      scroll-margin-top: 100px; /* 留出 header 空间 */
+    }
 
     .testing-hero {
       background: linear-gradient(90deg, #4ca1af, #c4e0e5);
@@ -139,30 +142,10 @@
   <section class="testing-section">
     <div class="container">
       <div class="row">
-        <!-- Main Column -->
+        <!-- Main Content -->
         <div class="col-lg-9" data-aos="fade-up">
-          <h2 id="achievement">Achievement Table</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Requirement</th>
-                <th>Priority</th>
-                <th>Status</th>
-                <th>Contributors</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td colspan="5"><strong>Key Functionalities (Must + Should Have)</strong></td></tr>
-              <tr><td>1</td><td>Upload PDF</td><td>Must</td><td>Completed</td><td>All</td></tr>
-              <tr><td>2</td><td>Systematic Review Generation</td><td>Must</td><td>Completed</td><td>All</td></tr>
-              <tr><td>3</td><td>Save History</td><td>Should</td><td>Completed</td><td>All</td></tr>
-              <tr><td colspan="5"><strong>Optional Functionalities (Could Have)</strong></td></tr>
-              <tr><td>4</td><td>PDF Download</td><td>Could</td><td>Completed</td><td>Yiwei</td></tr>
-              <tr><td>5</td><td>Multiple File Upload</td><td>Could</td><td>Completed</td><td>Yiwei</td></tr>
-            </tbody>
-          </table>
   
+
           <h2 id="bugs">Known Bugs</h2>
           <table>
             <thead>
@@ -313,10 +296,12 @@
             a systematic review, whereas ChatGPT only provides a general overview with extracted information.
         </div>
 
+
         </div>
       </div>
     </div>
-  </section>        
+  </section>
+  
 
   <!-- Footer -->
   <footer class="footer text-white position-relative" style="background: linear-gradient(to right, #4b6cb7, #182848);">
