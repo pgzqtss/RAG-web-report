@@ -29,7 +29,7 @@
   <!-- Enhanced Styles -->
   <style>
     :root {
-      --primary-color: #6f2fb8;
+      --primary-color: #14d4b8;
       --secondary-color: #f4f6f8;
       --text-color: #2d3748;
       --light-bg: #f8f9fa;
@@ -67,6 +67,15 @@
     h3 { font-size: 1.75rem; }
     h4 { font-size: 1.5rem; }
     
+    .diagram-container {
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .accordion-button {
+      background-color: #9be8dc !important;
+    }
+
     /* Hero Section */
     .appendix-hero {
       background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
@@ -280,7 +289,6 @@
       animation: fadeIn 0.2s ease;
       font-size: 0.7rem;
     }
-
 
     .annotation:hover .annotation-content {
       display: block;
@@ -574,6 +582,409 @@ npm run dev</pre>
             </ol>
           </div>
 
+          <div class="content-card" id="blogs">
+            <h2>Blogs</h2>
+            <div class="accordion">
+              <div class="accordion-item">
+                <p class="accordion-header" id="h1">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c1" aria-expanded="true" aria-controls="c1">
+                    October 1
+                  </button>
+                </p>
+                <div id="c1" class="accordion-collapse collapse" aria-labelledby="h1">
+                  <div class="accordion-body">
+                    <p>
+                      Hello!
+                    </p>
+                    <p>
+                      This is the beginning of our development blogs where we will discuss our progress with the project as we move forward.
+                      Unfortunately, we have not yet been told what our project is. Instead, we have been learning the fundamentals of human-computer interactions. This includes discovering the requirements of users, sketching and prototyping through personas. 
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item">
+                <p class="accordion-header" id="h2">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c2" aria-expanded="true" aria-controls="c2">
+                    October 2
+                  </button>
+                </p>
+                <div id="c2" class="accordion-collapse collapse" aria-labelledby="h2">
+                  <div class="accordion-body">
+                    <p>We were finally assigned to a project and were given our requirements for it by our client. Our team have begun discussing and researching how we should tackle each requirement.</p>
+                    <p>
+                      During this process, we’ve sketched up a prototype for what our final product might look like, including the signup pages, the page for attaching PDFs and showing the result. Also, we created two personas that are akin to our project’s target users, including their backgrounds and how they might use our tool.
+                    </p>
+                    <div class="diagram-container">
+                      <!-- Replace with your actual image path -->
+                      <img src="../../assets/img/oct-21.pdf" height='500' alt="System Architecture Diagram">
+                      <p><em>Figure 1: Persona displaying a doctor and her behaviours</em></p>
+                    </div>
+                    <p>
+                      Using the personas and sketches, we made a digital prototype and sequence diagrams of our product, which we can later refer to to help develop the final product for our end-users.
+                    </p>
+                    <div class="diagram-container">
+                      <!-- Replace with your actual image path -->
+                      <img src="../../assets/img/oct-24.png" height='400' alt="System Architecture Diagram">
+                      <p><em>Figure 2: Prototype for the web application design</em></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="accordion-item">
+                <p class="accordion-header" id="h3">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c3" aria-expanded="true" aria-controls="c3">
+                    November 1
+                  </button>
+                </p>
+                <div id="c3" class="accordion-collapse collapse" aria-labelledby="h3">
+                  <div class="accordion-body">
+                    <p>
+                      At the start of the month, we finished creating our HCI report and can now begin developing our project beyond the design phase. Our main focus for this month is to finalise all our requirements as desired by the client through online meetings, as well as adapting our previous plans accordingly.
+                    </p>
+                    <p>
+                      We have created a MoSCoW document that outlines the importance of each specified requirement from highest to lowest priorities. This document will provide us guidance throughout the project to determine if we are on track as well as future steps.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="accordion-item">
+                <p class="accordion-header" id="h4">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c4" aria-expanded="true" aria-controls="c4">
+                    November 2
+                  </button>
+                </p>
+                <div id="c4" class="accordion-collapse collapse" aria-labelledby="h4">
+                  <div class="accordion-body">
+                    <p>In the latter half of the month, we began experiments on the backend pipeline for generating a full systematic review from PDFs of papers. We utilised a tool called Pipedream to test pipelines, which we can later implement as Python code. </p>
+                    <div class="diagram-container">
+                      <!-- Replace with your actual image path -->
+                      <img src="../../assets/img/nov-2.png" height='500' alt="System Architecture Diagram">
+                      <p><em>Figure 3: Pipedream pipeline diagram for the review generation process</em></p>
+                    </div>
+                    <p>
+                      Our tests found that we should be extracting text from PDFs into chunks, embedding those chunks with OpenAI’s embedding models, and then uploading them into Pinecone’s vector database. We can then fetch those chunks and generate a review using OpenAI’s LLM model.
+                    </p>
+                    <p>
+                      By the end, we managed to retrieve text from PDFs and also upsert those text chunks into the vector database using the long-chain libraries in Python.
+                    </p>
+                    <div class="code-block">
+                      <pre>
+embeddings = OpenAIEmbeddings(openai_api_key="openapikey")
+# initialize pinecone
+pc = Pinecone(
+    api_key = "pineconeapikey",
+)
+
+if 'my-index' not in pc.list_indexes().names():
+    pc.create_index(
+        name='my-index',
+        dimension=1536,
+        metric='cosine',
+        spec=ServerlessSpec(
+            cloud='aws',
+            region='us-east-1',
+        )
+    )
+index_name = "my-index"
+
+docsearch = LangchainPinecone.from_texts([t.page_content for t in texts], embeddings, index_name = index_name)
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="accordion-item">
+                <p class="accordion-header" id="h5">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c5" aria-expanded="true" aria-controls="c5">
+                    December 1
+                  </button>
+                </p>
+                <div id="c5" class="accordion-collapse collapse" aria-labelledby="h5">
+                  <div class="accordion-body">
+                    <p>From our last development blog, we have managed to make good progress on the project. We have been able to generate a summary of our sample research papers in PDF format using our pipeline. Our pipeline involved generating questions based on the user’s input on a review topic and then generating an answer for each question for each paper. Based on those answers per paper, we could generate a summary of each paper, and then combine them to generate a systematic review.</p>
+                    <div class='code-block'>
+                      <pre>
+def main():
+    # Get questions used for a systematic review
+    questions = generate_review_questions(model=model)
+
+    # Get all answers from each paper
+    answers = generate_answers(questions=questions, namespaces=namespaces)
+
+    # Get summary of each paper
+    summaries = generate_summaries(answers=answers, namespaces=namespaces)
+
+    # Filter each summary by accuracy
+    filtered_summaries, scores = filter_low_accuracy_papers(summaries, model=model)
+
+    # Generate systematic review from summaries
+    systematic_review = generate_systematic_review(summaries=filtered_summaries, 
+                                                    query=review_question,
+                                                    model=model)
+
+    print(f'Systematic Review: {systematic_review}')
+
+                      </pre>
+                    </div>
+                    <p>
+                      We have found that the output produced is not very accurate and leaves out a lot of detail that the user would’ve found useful. Therefore, we will need to modify the existing pipeline or implement a new pipeline soon.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="accordion-item">
+                <p class="accordion-header" id="h6">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c6" aria-expanded="true" aria-controls="c6">
+                    December 2
+                  </button>
+                </p>
+                <div id="c6" class="accordion-collapse collapse" aria-labelledby="h6">
+                  <div class="accordion-body">
+                    <p>During the Christmas holiday, we rested following the first term of university. Consequently, there have been no updates since the previous blog during the break.</p>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="accordion-item">
+                <p class="accordion-header" id="h7">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c7" aria-expanded="true" aria-controls="c7">
+                    January 1
+                  </button>
+                </p>
+                <div id="c7" class="accordion-collapse collapse" aria-labelledby="h7">
+                  <div class="accordion-body">
+                    <p>After returning from the Christmas holidays, we decided to discuss how we were going to implement the frontend that users can easily navigate, as well as some features we will focus on. </p>
+                    <p>
+                      Currently, we’ve experimented with methods of counting the number of authors in each paper, which we could use to compare the validity of the inputted papers. Furthermore, we’ve experimented with finding articles from an existing database and fetching them using API calls. The reasoning behind this is to potentially grab similar articles to a user’s input and generate a better systematic review.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="accordion-item">
+                <p class="accordion-header" id="h8">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c8" aria-expanded="true" aria-controls="c8">
+                    January 2
+                  </button>
+                </p>
+                <div id="c8" class="accordion-collapse collapse" aria-labelledby="h8">
+                  <div class="accordion-body">
+                    <p>We’ve finally reached the end of the first month of 2025! We have made significant progress towards the completion of this project. We’ve used Next.js, a React framework, to create the basic UI for our website because it contains useful functionalities from React as well as being very responsive. So far, there is a sidebar to show previous reviews and an area to input PDFs and the prompt. Currently, there is no functionality, but we aim to soon implement those features as well as a login system for the user. </p>
+                    <div class="diagram-container">
+                      <!-- Replace with your actual image path -->
+                      <img src="../../assets/img/jan-2.png" height='300' alt="System Architecture Diagram">
+                      <p><em>Figure 4: Basic UI for the Rag-n-Bones website</em></p>
+                    </div>
+                    <p>In addition, we have experimented with fine-tuning an existing open-source NLP model with medical data that we could use instead of using OpenAI’s GPT 3.5-turbo model. We’ve used Google’s t5-small model from HuggingFace as our base model because it has a high potential for text summarisation despite being a small NLP model. We are currently at the stage of testing to see if it can generate systematic reviews at a higher quality than the OpenAI model.</p>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="accordion-item">
+                <p class="accordion-header" id="h9">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c9" aria-expanded="true" aria-controls="c9">
+                    February 1
+                  </button>
+                </p>
+                <div id="c9" class="accordion-collapse collapse" aria-labelledby="h9">
+                  <div class="accordion-body">
+                    <p>Welcome back to our development blog for our project Rag-n-Bones!</p>
+                    <p>
+                      Over the past two weeks, we have been able to implement features of the backend into the frontend using Flask. Flask is a web framework that allows us to handle HTTP requests from the frontend and return responses back. 
+                    </p>
+                    <p>
+                      In terms of functionality, we have added the ability to login and sign up, display systematic reviews, and view the history of reviews linked with the user. We chose to use MySQL as our relational database to store user details and systematic reviews to easily retrieve data using id values.
+                    </p>
+                    <div class="diagram-container">
+                      <!-- Replace with your actual image path -->
+                      <img src="../../assets/img/er_diagram.png" height='200' alt="System Architecture Diagram">
+                      <p><em>Figure 5: Entity-relationship diagram (ER) showing the SQL database</em></p>
+                    </div>
+                    <p>
+                      For each function, there are assigned Flask routes (API endpoints) that receive HTTP requests and return a response to the frontend using a JSON format. This implementation allows us to scale the project further with more functionality as we progress further.
+                    </p>
+                    <div class='code-block'>
+                      <pre>
+@app.route('/api/login', methods=['POST'])
+def login():
+    data = request.json
+    username = data.get('username')
+    password = data.get('password')
+# Authenticate username with password then return success or fail in JSON format.
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="accordion-item">
+                <p class="accordion-header" id="h10">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c10" aria-expanded="true" aria-controls="c10">
+                    February 2
+                  </button>
+                </p>
+                <div id="c10" class="accordion-collapse collapse" aria-labelledby="h10">
+                  <div class="accordion-body">
+                    <p>The focus for the latter half of February month was to create a new pipeline for generating systematic reviews as there were several inaccuracies in the existing pipeline as mentioned in a previous development blog. Our solution to creating a more accurate and informative review was to generate each section of the review separately, including:</p>
+                    <ul class="list-unstyled">
+                      <li>Introduction</li>
+                      <li>Methods</li>
+                      <li>Results</li>
+                      <li>Discussion</li>
+                      <li>Conclusion</li>
+                    </ul>
+                    <p>
+                      First, we would split the text of each PDF into smaller chunks and categorise them into each section of the review using OpenAI’s LLM model. Each chunked text, alongside its category, is uploaded to a Pinecone vector database. For each section, the relevant text chunks are retrieved and put into the prompt to generate text with previous sections (except for the Introduction) as context data. We concatenate each section and then return the completed systematic review.
+                    </p>
+                    <div class="diagram-container">
+                      <!-- Replace with your actual image path -->
+                      <img src="../../assets/img/feb-2.png" height='700' alt="System Architecture Diagram">
+                      <p><em>Figure 6: Flowchart for the new modified pipeline</em></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="accordion-item">
+                <p class="accordion-header" id="h11">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c11" aria-expanded="true" aria-controls="c11">
+                    March 1
+                  </button>
+                </p>
+                <div id="c11" class="accordion-collapse collapse" aria-labelledby="h11">
+                  <div class="accordion-body">
+                    <p>Welcome to our last month in this development blog!</p>
+                    <p>
+                      We are finally in the last home stretch and are finalising the small details of the project. This has included being able to export the systematic review as a PDF, being able to view the original PDFs used to generate and quality checks for the final generated review. 
+                    </p>
+                    <p>
+                      For the quality checks, we have generated graphs and diagrams for the following: most frequent authors, thematic area map, cosine similarity, TF-IDF and BLEU score for the papers. These give an idea for the quality of the output when compared to the original input.
+                    </p>
+                    <div class="diagram-container">
+                      <!-- Replace with your actual image path -->
+                      <img src="../../assets/img/march-12.png" height='400' alt="System Architecture Diagram">
+                      <p><em>Figure 7: Cosine similarity graph to compare paper similarity</em></p>
+                    </div>
+                    <p>
+                      During a lab session, we had the great opportunity to show off our project to IXN partners and get some feedback on the current state and what we could potentially work on if we had more time allocated for the project. The session also served as the conclusion of our project as we passed our GitHub over to the client, who was pleased with our work. 
+                    </p>
+                    <div class="diagram-container">
+                      <!-- Replace with your actual image path -->
+                      <img src="../../assets/img/march-11.HEIC" height='400' alt="System Architecture Diagram">
+                      <p><em>Figure 8: Picture of our client, Joseph Connor, interacting with our product</em></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="accordion-item">
+                <p class="accordion-header" id="h12">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c12" aria-expanded="true" aria-controls="c12">
+                    March 2
+                  </button>
+                </p>
+                <div id="c12" class="accordion-collapse collapse" aria-labelledby="h12">
+                  <div class="accordion-body">
+                    <p>Welcome back to our last development blog for the project.</p>
+                    <p>
+                      During this time, we have been working hard to create a website report for the whole project. This includes the requirements, research, algorithm, UI design, system design, implementation, testing and evaluation. This gives a strong perspective on our design and development process throughout the project. Many thanks to our partner, Joseph Connor, from CarefulAI for assisting us throughout.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="content-card" id="videos">
+            <h2>Monthly Videos</h2>
+            <div class="accordion">
+              <div class="accordion-item">
+                <p class="accordion-header" id="h13">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c13" aria-expanded="true" aria-controls="c13">
+                    October
+                  </button>
+                </p>
+                <div id="c13" class="accordion-collapse collapse" aria-labelledby="h13">
+                  <div class="accordion-body">
+                    <p><a href='https://liveuclac-my.sharepoint.com/:v:/g/personal/wegmwhy_ucl_ac_uk/EWyRMVHnNpxOhkNXEUzZfkEB8IiPQ0bax83Rf-8DP8_wxw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=pX7jG9'>October Update</a></p>
+                    <iframe src="https://liveuclac-my.sharepoint.com/personal/wegmwhy_ucl_ac_uk/_layouts/15/embed.aspx?UniqueId=5131916c-36e7-4e9c-8643-57114cd97e41&embed=%7B%22hvm%22%3Atrue%2C%22ust%22%3Atrue%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create" width="748" height="420" frameborder="0" scrolling="no" allowfullscreen title="October Update.mov"></iframe>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <p class="accordion-header" id="h2">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c14" aria-expanded="true" aria-controls="c14">
+                    November
+                  </button>
+                </p>
+                <div id="c14" class="accordion-collapse collapse" aria-labelledby="h2">
+                  <div class="accordion-body">
+                    <p><a href='https://liveuclac-my.sharepoint.com/:v:/g/personal/wegmwhy_ucl_ac_uk/EcCLKssJ5D5Hmh_TIp-hau0BA1BfVqG0_uj6W1Mnphkvlw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=pbs54m'>November Update</a></p>
+                    <iframe src="https://liveuclac-my.sharepoint.com/personal/wegmwhy_ucl_ac_uk/_layouts/15/embed.aspx?UniqueId=cb2a8bc0-e409-473e-9a1f-d3229fa16aed&embed=%7B%22hvm%22%3Atrue%2C%22ust%22%3Atrue%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create" width="748" height="420" frameborder="0" scrolling="no" allowfullscreen title="November Update.mov"></iframe>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <p class="accordion-header" id="h15">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c15" aria-expanded="true" aria-controls="c15">
+                    December
+                  </button>
+                </p>
+                <div id="c15" class="accordion-collapse collapse" aria-labelledby="h15">
+                  <div class="accordion-body">
+                    <p><a href='https://liveuclac-my.sharepoint.com/:v:/g/personal/wegmwhy_ucl_ac_uk/ERG5TZpAEB5JqctzA6AQpPUBXPL9ZlowGjIiCibD5E30Cg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=BKwNJC'>December Update</a></p>
+                    <iframe src="https://liveuclac-my.sharepoint.com/personal/wegmwhy_ucl_ac_uk/_layouts/15/embed.aspx?UniqueId=9a4db911-1040-491e-a9cb-7303a010a4f5&embed=%7B%22hvm%22%3Atrue%2C%22ust%22%3Atrue%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create" width="748" height="420" frameborder="0" scrolling="no" allowfullscreen title="December Update.mov"></iframe>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <p class="accordion-header" id="h16">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c16" aria-expanded="true" aria-controls="c16">
+                    January
+                  </button>
+                </p>
+                <div id="c16" class="accordion-collapse collapse" aria-labelledby="h16">
+                  <div class="accordion-body">
+                    <p><a href='https://liveuclac-my.sharepoint.com/:v:/g/personal/wegmwhy_ucl_ac_uk/EbQofPsDk5RLpHYIyKV1_vgBP2vcvWEYzyD69ob3Vp1GSA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=n222oe'>January Update</a></p>
+                    <iframe src="https://liveuclac-my.sharepoint.com/personal/wegmwhy_ucl_ac_uk/_layouts/15/embed.aspx?UniqueId=fb7c28b4-9303-4b94-a476-08c8a575fef8&embed=%7B%22hvm%22%3Atrue%2C%22ust%22%3Atrue%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create" width="748" height="420" frameborder="0" scrolling="no" allowfullscreen title="January Update.mov"></iframe>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <p class="accordion-header" id="h17">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c17" aria-expanded="true" aria-controls="c17">
+                    February
+                  </button>
+                </p>
+                <div id="c17" class="accordion-collapse collapse" aria-labelledby="h17">
+                  <div class="accordion-body">
+                    <p><a href='https://liveuclac-my.sharepoint.com/:v:/g/personal/wegmwhy_ucl_ac_uk/EclRnP_GPTNNrinHw1DtEUoB0tp_OAsgwIqKroUks8zWpg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=H8urKf'>February Update</a></p>
+                    <iframe src="https://liveuclac-my.sharepoint.com/personal/wegmwhy_ucl_ac_uk/_layouts/15/embed.aspx?UniqueId=ff9c51c9-3dc6-4d33-ae29-c7c350ed114a&embed=%7B%22hvm%22%3Atrue%2C%22ust%22%3Atrue%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create" width="748" height="420" frameborder="0" scrolling="no" allowfullscreen title="February Update.mov"></iframe>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <p class="accordion-header" id="h18">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c18" aria-expanded="true" aria-controls="c18">
+                    March
+                  </button>
+                </p>
+                <div id="c18" class="accordion-collapse collapse" aria-labelledby="h18">
+                  <div class="accordion-body">
+                    <p><a href='https://liveuclac-my.sharepoint.com/:v:/g/personal/wegmwhy_ucl_ac_uk/EcTJr2iT8BFBqGX-aCYSswsBBbcAsXOgKGpcq_HV_cwjiA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=b665g9'>March Update</a></p>
+                    <iframe src="https://liveuclac-my.sharepoint.com/personal/wegmwhy_ucl_ac_uk/_layouts/15/embed.aspx?UniqueId=68afc9c4-f093-4111-a865-fe682612b30b&embed=%7B%22hvm%22%3Atrue%2C%22ust%22%3Atrue%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create" width="748" height="420" frameborder="0" scrolling="no" allowfullscreen title="March Update.mov"></iframe>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Legal Documentation -->
           <div class="content-card" id="legal">
             <h2>Legal Issues and Processes</h2>
@@ -673,6 +1084,8 @@ npm run dev</pre>
             <ul class="list-unstyled">
               <li><a href="#user-manual" class="d-block py-2">User Manual</a></li>
               <li><a href="#deployment" class="d-block py-2">Deployment Instructions</a></li>
+              <li><a href="#blogs" class="d-block py-2">Blogs</a></li>
+              <li><a href="#videos" class="d-block py-2">Monthly Videos</a></li>
               <li><a href="#legal" class="d-block py-2">Legal Documentation</a></li>
               <li><a href="#privacy" class="d-block py-2">Data Privacy</a></li>
               <li><a href="#costing" class="d-block py-2">Costing</a></li>
@@ -684,62 +1097,64 @@ npm run dev</pre>
   </section>
 </main>
 
-<!-- ======= Footer ======= -->
-<footer id="footer" class="footer text-white position-relative" style="background: linear-gradient(to right, #4b6cb7, #182848);">
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer text-white position-relative" style="background: linear-gradient(to right, #4b6cb7, #182848);">
 
-  <!-- 波浪形 SVG -->
-  <div class="wave-shape" style="position: absolute; top: -100px; left: 0; width: 100%; overflow: hidden; line-height: 0; transform: rotate(180deg);">
-    <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="position: relative; display: block; width: calc(100% + 1.3px); height: 100px;">
-      <path d="M-2.19,29.63 C149.99,150.00 321.41,-49.99 502.54,44.96 L500.00,0.00 L0.00,0.00 Z"
-            style="stroke: none; fill: #ffffff;"></path>
-    </svg>
-  </div>
 
-  <div class="container pt-5" style="position: relative; z-index: 1;">
-    <div class="row gy-4">
-      <!-- 左侧：Site Info -->
-      <div class="col-lg-4 col-md-6">
-        <h3 class="fw-bold">Site Info</h3>
-        <p>
-          This is the website for UCL Year2 2023-2026 COMPoo16 Team29 Rag-n-Bones,  
-          which introduces the team project and contains all the portfolios.
-        </p>
+    <!-- 波浪形 SVG -->
+    <div class="wave-shape" style="position: absolute; top: -100px; left: 0; width: 100%; overflow: hidden; line-height: 0; transform: rotate(180deg);">
+      <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="position: relative; display: block; width: calc(100% + 1.3px); height: 100px;">
+        <path d="M-2.19,29.63 C149.99,150.00 321.41,-49.99 502.54,44.96 L500.00,0.00 L0.00,0.00 Z"
+              style="stroke: none; fill: #ffffff;"></path>
+      </svg>
+    </div>
+  
+    <div class="container pt-5" style="position: relative; z-index: 1;">
+      <div class="row gy-4">
+        <!-- 左侧：Site Info -->
+        <div class="col-lg-4 col-md-6">
+          <h3 class="fw-bold">Site Info</h3>
+          <p>
+            This is the website for UCL Year 2 COMP0016 Team 29 RAG-n-Bones, introducing the team project and containing all portfolios.
+          </p>
+        </div>
+        <!-- 中间：Site Menu -->
+        <div class="col-lg-4 col-md-6">
+          <h3 class="fw-bold">Site Menu</h3>
+          <ul class="list-unstyled">
+            <li><a href="../../index.html" class="text-white text-decoration-none">Home</a></li>
+            <li><a href="requirements.html" class="text-white text-decoration-none">Requirements</a></li>
+            <li><a href="research.html" class="text-white text-decoration-none">Research</a></li>
+            <li><a href="algorithm.html" class="text-white text-decoration-none">Algorithm</a></li>
+            <li><a href="ui-design.html" class="text-white text-decoration-none">UI Design</a></li>
+            <li><a href="system-design.html" class="text-white text-decoration-none">System Design</a></li>
+            <li><a href="implements.html" class="text-white text-decoration-none">Implementation</a></li>
+            <li><a href="testing.html" class="text-white text-decoration-none">Testing</a></li>
+            <li><a href="evaluation.html" class="text-white text-decoration-none">Evaluation</a></li>
+            <li><a href="appendix.html" class="text-white text-decoration-none">Appendices</a></li>
+          </ul>
+        </div>
+        <!-- 右侧：Project Supporters -->
+        <div class="col-lg-4 col-md-12">
+          <h3 class="fw-bold">Project Supporters</h3>
+          <p class="mb-1">Joseph Connor, CarefulAI</p>
+          <p class="mb-3">UCL</p>
+          <p class="mb-0">
+            A lot of thanks to our company partner Joseph Connor, CarefulAI.
+          </p>
+        </div>
       </div>
-      <!-- 中间：Site Menu -->
-      <div class="col-lg-4 col-md-6">
-        <h3 class="fw-bold">Site Menu</h3>
-        <ul class="list-unstyled">
-          <li><a href="../../index.html" class="text-white text-decoration-none">Home</a></li>
-          <li><a href="requirements.html" class="text-white text-decoration-none">Requirements</a></li>
-          <li><a href="research.html" class="text-white text-decoration-none">Research</a></li>
-          <li><a href="algorithm.html" class="text-white text-decoration-none">Algorithm</a></li>
-          <li><a href="system-design.html" class="text-white text-decoration-none">System Design</a></li>
-          <li><a href="implements.html" class="text-white text-decoration-none">Implementation</a></li>
-          <li><a href="testing.html" class="text-white text-decoration-none">Testing</a></li>
-          <li><a href="evaluation.html" class="text-white text-decoration-none">Evaluation</a></li>
-          <li><a href="appendix.html" class="text-white text-decoration-none">Appendix</a></li>
-        </ul>
-      </div>
-      <!-- 右侧：Project Supporters -->
-      <div class="col-lg-4 col-md-12">
-        <h3 class="fw-bold">Project Supporters</h3>
-        <p class="mb-1">NHS</p>
-        <p class="mb-3">UCL</p>
-        <p class="mb-0">
-          A lot of thanks to our company partner NHS and Mr. Joseph especially.
-        </p>
+  
+      <!-- 底部版权信息 -->
+      <hr class="my-4">
+      <div class="text-center pb-3">
+        <p class="mb-0">© 2025 All Rights Reserved</p>
       </div>
     </div>
+  </footer>
+  <!-- /Footer -->
 
-    <!-- 底部版权信息 -->
-    <hr class="my-4">
-    <div class="text-center pb-3">
-      <p class="mb-0">© 2025 All Rights Reserved</p>
-    </div>
-  </div>
-</footer>
-<!-- /Footer -->
-<!-- /Footer -->
+
 
 <!-- Scroll Top -->
 <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

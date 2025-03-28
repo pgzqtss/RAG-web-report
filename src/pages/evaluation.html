@@ -54,7 +54,14 @@
       margin-top: 40px;
       margin-bottom: 20px;
     }
+    .clickable-file {
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
 
+    .clickable-file:hover {
+      background-color: #f8f9fa;
+    }
     .testing-section p {
       margin-bottom: 15px;
       line-height: 1.8;
@@ -66,6 +73,15 @@
       padding: 20px;
       background: #f8f9fa;
       border-radius: 10px;
+    }
+    
+    .code-block {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      font-family: 'Roboto Mono', monospace;
+      border-left: 4px solid var(--secondary-color); 
     }
 
     .sidebar-nav h5 {
@@ -109,7 +125,6 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
       <a href="../../index.html" class="logo d-flex align-items-center">
-        <img src="../../assets/img/logo.png" alt="" />
         <span class="sitename">Rag-n-Bones</span>
       </a>
       <nav id="navmenu" class="navmenu">
@@ -133,8 +148,7 @@
   <!-- Hero Section -->
   <section class="testing-hero">
     <div class="container" data-aos="fade-up">
-      <h1>Evaluation</h1>
-      <p class="lead">A reflection on functionality, contributions, and final results</p>
+      <h1>EVALUATION</h1>
     </div>
   </section>
 
@@ -144,7 +158,33 @@
       <div class="row">
         <!-- Main Content -->
         <div class="col-lg-9" data-aos="fade-up">
-  
+          <h2 id="bugs">Achievement Table</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Requirement</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Contributors</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="5"><strong>Key Functionalities (Must + Should Have)</strong></td></tr>
+              <tr><td>1</td><td>User can input PDFs</td><td>Must</td><td>Completed</td><td>All</td></tr>
+              <tr><td>2</td><td>User can enter a prompt to define the systematic review</td><td>Must</td><td>Completed</td><td>All</td></tr>
+              <tr><td>3</td><td>Systematic review is displayed to the user</td><td>Must</td><td>Completed</td><td>Wing Ho</td></tr>
+              <tr><td>4</td><td>Vector database integration</td><td>Must</td><td>Completed</td><td>All</td></tr>
+              <tr><td>5</td><td>LLM-powered section generation</td><td>Must</td><td>Completed</td><td>Wing Ho, Yiwei</td></tr>
+              <tr><td>6</td><td>User authentication system</td><td>Should</td><td>Completed</td><td>Wing Ho, Kevin</td></tr>
+              <tr><td>7</td><td>Review history tracking for users</td><td>Should</td><td>Completed</td><td>Wing Ho, Kevin</td></tr>
+              <tr><td>8</td><td>Quality assessment visualisation of the review through graphs</td><td>Should</td><td>Completed</td><td>Kevin, Jennifer</td></tr>
+              <tr><td colspan="5"><strong>Optional Functionalities (Could Have)</strong></td></tr>
+              <tr><td>9</td><td>Users can view the source files of each review</td><td>Could</td><td>Completed</td><td>Wing Ho</td></tr>
+              <tr><td>10</td><td>PDFs of the systematic review can be exported</td><td>Could</td><td>Completed</td><td>Wing Ho</td></tr>
+              <tr><td>11</td><td>Medical paper database integration</td><td>Could</td><td>Not Completed</td><td>n/a</td></tr>
+            </tbody>
+          </table>
 
           <h2 id="bugs">Known Bugs</h2>
           <table>
@@ -156,8 +196,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>1</td><td>Slow response on chart rendering</td><td>Medium</td></tr>
-              <tr><td>2</td><td>PDF viewer not working properly on Safari</td><td>Low</td></tr>
+              <tr><td>1</td><td>Entering an ID into the URL causes the generation process with no files or prompt</td><td>Medium</td></tr>
+              <tr><td>2</td><td>Ocassional markdown rendering issues with HTML of the review</td><td>Low</td></tr>
             </tbody>
           </table>
 
@@ -175,10 +215,10 @@
           </thead>
           <tbody>
             <tr><td>Research and Experiments</td><td>20</td><td>40</td><td>20</td><td>20</td></tr>
-            <tr><td>UI Design</td><td>100</td><td>0</td><td>0</td><td>0</td></tr>
+            <tr><td>UI Design</td><td>80</td><td>0</td><td>0</td><td>20</td></tr>
             <tr><td>Coding</td><td>25</td><td>25</td><td>25</td><td>25</td></tr>
             <tr><td>Testing</td><td>0</td><td>20</td><td>40</td><td>40</td></tr>
-            <tr><td><strong>Overall Contribution (%)</strong></td><td>36.25</td><td>21.25</td><td>21.25</td><td>21.25</td></tr>
+            <tr><td><strong>Overall Contribution (%)</strong></td><td>31.25</td><td>21.25</td><td>21.25</td><td>26.25</td></tr>
           </tbody>
         </table>
 
@@ -195,19 +235,20 @@
           </thead>
           <tbody>
             <tr><td>Website Template and Setup</td><td>0</td><td>0</td><td>100</td><td>0</td></tr>
-            <tr><td>Home</td><td>10</td><td>45</td><td>45</td><td>0</td></tr>
+            <tr><td>Home</td><td>10</td><td>55</td><td>35</td><td>0</td></tr>
             <tr><td>Video</td><td>0</td><td>0</td><td>0</td><td>100</td></tr>
             <tr><td>Requirement</td><td>0</td><td>80</td><td>0</td><td>20</td></tr>
-            <tr><td>Research</td><td>0</td><td>80</td><td>0</td><td>20</td></tr>
+            <tr><td>Research</td><td>0</td><td>70</td><td>0</td><td>30</td></tr>
+            <tr><td>Algorithm</td><td>0</td><td>50</td><td>20</td><td>30</td></tr>
             <tr><td>UI Design</td><td>30</td><td>40</td><td>0</td><td>30</td></tr>
-            <tr><td>System Design</td><td>50</td><td>20</td><td>10</td><td>20</td></tr>
-            <tr><td>Implementation</td><td>70</td><td>0</td><td>0</td><td>30</td></tr>
+            <tr><td>System Design</td><td>60</td><td>20</td><td>0</td><td>20</td></tr>
+            <tr><td>Implementation</td><td>60</td><td>20</td><td>0</td><td>20</td></tr>
             <tr><td>Testing</td><td>0</td><td>0</td><td>100</td><td>0</td></tr>
             <tr><td>Evaluation and Future Work</td><td>0</td><td>80</td><td>20</td><td>0</td></tr>
-            <tr><td>User and Deployment Manuals</td><td>80</td><td>0</td><td>0</td><td>20</td></tr>
+            <tr><td>User and Deployment Manuals</td><td>70</td><td>0</td><td>0</td><td>30</td></tr>
             <tr><td>Legal Issues</td><td>0</td><td>30</td><td>0</td><td>70</td></tr>
-            <tr><td>Blog and Monthly Video</td><td>80</td><td>0</td><td>20</td><td>0</td></tr>
-            <tr><td><strong>Overall Contribution (%)</strong></td><td>24.6</td><td>28.8</td><td>22.7</td><td>23.9</td></tr>
+            <tr><td>Blog and Monthly Video</td><td>100</td><td>0</td><td>0</td><td>0</td></tr>
+            <tr><td><strong>Overall Contribution (%)</strong></td><td>23.6</td><td>31.8</td><td>19.6</td><td>25</td></tr>
           </tbody>
         </table>
 
@@ -218,7 +259,7 @@
 
         <p><strong>Stability:</strong> The application performs reliably, although improvements could be made to enhance long-term maintainability of the codebase.</p>
 
-        <p><strong>Efficiency:</strong> [Section left unfilled in original content]</p>
+        <p><strong>Efficiency:</strong> The application's efficiency is inadequate due to the time required to upsert vectors and process the LLM. This criterion will be prioritized in future work.</p>
 
         <p><strong>Compatibility:</strong> The system currently only runs locally. We plan to deploy it to the cloud in future to enhance accessibility and portability.</p>
 
@@ -275,15 +316,17 @@
             Here's the comparison between output from our application and ChatGPT with a query we typed in: “Write me a systematic review for efficacy of COVID-19 vaccines by the attached research papers."
           </p>
           
-          <div class="code-block clickable-file" data-filepath="../../assets/content/RAG-app-generate-review.txt">
+          <div class="code-block clickable-file" 
+          data-filepath="../../assets/content/RAG-app-generate-review.txt">
             <strong>RAG App Generated Review:</strong><br>
-            <span class="file-content">Click to view RAG-app-generate-review.txt</span>
-          </div>
-          
-          <div class="code-block clickable-file" data-filepath="../../assets/content/RAG-ChatGPT-review.txt">
-            <strong>ChatGPT Generated Review:</strong><br>
-            <span class="file-content">Click to view RAG-ChatGPT-review.txt</span>
-          </div>
+          <span class="file-content">Click to view RAG-app-generate-review.txt</span>
+        </div>
+        
+        <div class="code-block clickable-file" 
+              data-filepath="../../assets/content/RAG-ChatGPT-review.txt">
+          <strong>ChatGPT Generated Review:</strong><br>
+          <span class="file-content">Click to view RAG-ChatGPT-review.txt</span>
+        </div>
           <p>
             <br>The comparison shows that review generated via our application focuses on the efficacy of 
             RBD-based Covid-19 vaccines. It provides an in-depth systematic review of studies on this vaccine
@@ -303,60 +346,61 @@
   </section>
   
 
-  <!-- Footer -->
-  <footer id="footer" class="footer text-white position-relative" style="background: linear-gradient(to right, #4b6cb7, #182848);">
+<!-- ======= Footer ======= -->
+<footer id="footer" class="footer text-white position-relative" style="background: linear-gradient(to right, #4b6cb7, #182848);">
 
-    <!-- 波浪形 SVG -->
-    <div class="wave-shape" style="position: absolute; top: -100px; left: 0; width: 100%; overflow: hidden; line-height: 0; transform: rotate(180deg);">
-      <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="position: relative; display: block; width: calc(100% + 1.3px); height: 100px;">
-        <path d="M-2.19,29.63 C149.99,150.00 321.41,-49.99 502.54,44.96 L500.00,0.00 L0.00,0.00 Z"
-              style="stroke: none; fill: #ffffff;"></path>
-      </svg>
-    </div>
-  
-    <div class="container pt-5" style="position: relative; z-index: 1;">
-      <div class="row gy-4">
-        <!-- 左侧：Site Info -->
-        <div class="col-lg-4 col-md-6">
-          <h3 class="fw-bold">Site Info</h3>
-          <p>
-            This is the website for UCL Year2 2023-2026 COMPoo16 Team29 Rag-n-Bones,  
-            which introduces the team project and contains all the portfolios.
-          </p>
-        </div>
-        <!-- 中间：Site Menu -->
-        <div class="col-lg-4 col-md-6">
-          <h3 class="fw-bold">Site Menu</h3>
-          <ul class="list-unstyled">
-            <li><a href="../../index.html" class="text-white text-decoration-none">Home</a></li>
-            <li><a href="requirements.html" class="text-white text-decoration-none">Requirements</a></li>
-            <li><a href="research.html" class="text-white text-decoration-none">Research</a></li>
-            <li><a href="algorithm.html" class="text-white text-decoration-none">Algorithm</a></li>
-            <li><a href="system-design.html" class="text-white text-decoration-none">System Design</a></li>
-            <li><a href="implements.html" class="text-white text-decoration-none">Implementation</a></li>
-            <li><a href="testing.html" class="text-white text-decoration-none">Testing</a></li>
-            <li><a href="evaluation.html" class="text-white text-decoration-none">Evaluation</a></li>
-            <li><a href="appendix.html" class="text-white text-decoration-none">Appendix</a></li>
-          </ul>
-        </div>
-        <!-- 右侧：Project Supporters -->
-        <div class="col-lg-4 col-md-12">
-          <h3 class="fw-bold">Project Supporters</h3>
-          <p class="mb-1">NHS</p>
-          <p class="mb-3">UCL</p>
-          <p class="mb-0">
-            A lot of thanks to our company partner NHS and Mr. Joseph especially.
-          </p>
-        </div>
+  <!-- 波浪形 SVG -->
+  <div class="wave-shape" style="position: absolute; top: -100px; left: 0; width: 100%; overflow: hidden; line-height: 0; transform: rotate(180deg);">
+    <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="position: relative; display: block; width: calc(100% + 1.3px); height: 100px;">
+      <path d="M-2.19,29.63 C149.99,150.00 321.41,-49.99 502.54,44.96 L500.00,0.00 L0.00,0.00 Z"
+            style="stroke: none; fill: #ffffff;"></path>
+    </svg>
+  </div>
+
+  <div class="container pt-5" style="position: relative; z-index: 1;">
+    <div class="row gy-4">
+      <!-- 左侧：Site Info -->
+      <div class="col-lg-4 col-md-6">
+        <h3 class="fw-bold">Site Info</h3>
+        <p>
+          This is the website for UCL Year 2 COMP0016 Team 29 RAG-n-Bones, introducing the team project and containing all portfolios.
+        </p>
       </div>
-  
-      <!-- 底部版权信息 -->
-      <hr class="my-4">
-      <div class="text-center pb-3">
-        <p class="mb-0">© 2025 All Rights Reserved</p>
+      <!-- 中间：Site Menu -->
+      <div class="col-lg-4 col-md-6">
+        <h3 class="fw-bold">Site Menu</h3>
+        <ul class="list-unstyled">
+          <li><a href="../../index.html" class="text-white text-decoration-none">Home</a></li>
+          <li><a href="requirements.html" class="text-white text-decoration-none">Requirements</a></li>
+          <li><a href="research.html" class="text-white text-decoration-none">Research</a></li>
+          <li><a href="algorithm.html" class="text-white text-decoration-none">Algorithm</a></li>
+          <li><a href="ui-design.html" class="text-white text-decoration-none">UI Design</a></li>
+          <li><a href="system-design.html" class="text-white text-decoration-none">System Design</a></li>
+          <li><a href="implements.html" class="text-white text-decoration-none">Implementation</a></li>
+          <li><a href="testing.html" class="text-white text-decoration-none">Testing</a></li>
+          <li><a href="evaluation.html" class="text-white text-decoration-none">Evaluation</a></li>
+          <li><a href="appendix.html" class="text-white text-decoration-none">Appendices</a></li>
+        </ul>
+      </div>
+      <!-- 右侧：Project Supporters -->
+      <div class="col-lg-4 col-md-12">
+        <h3 class="fw-bold">Project Supporters</h3>
+        <p class="mb-1">Joseph Connor, CarefulAI</p>
+        <p class="mb-3">UCL</p>
+        <p class="mb-0">
+          A lot of thanks to our company partner Joseph Connor, CarefulAI.
+        </p>
       </div>
     </div>
-  </footer>
+
+    <!-- 底部版权信息 -->
+    <hr class="my-4">
+    <div class="text-center pb-3">
+      <p class="mb-0">© 2025 All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+
 <!-- /Footer -->
 
   <!-- Scroll Top -->
@@ -369,6 +413,24 @@
   <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../../assets/vendor/aos/aos.js"></script>
   <script src="../../assets/js/main.js"></script>
+
+
+  <script>
+    AOS.init();
+  
+    document.addEventListener("DOMContentLoaded", function () {
+      const clickableFiles = document.querySelectorAll(".clickable-file");
+  
+      clickableFiles.forEach(function (block) {
+        block.addEventListener("click", function () {
+          const filePath = block.getAttribute("data-filepath");
+          if (filePath) {
+            window.open(filePath, "_blank");
+          }
+        });
+      });
+    });
+  </script>
 
   <script>
     AOS.init();
