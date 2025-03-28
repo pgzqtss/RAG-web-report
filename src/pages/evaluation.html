@@ -125,7 +125,6 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
       <a href="../../index.html" class="logo d-flex align-items-center">
-        <img src="../../assets/img/logo.png" alt="" />
         <span class="sitename">Rag-n-Bones</span>
       </a>
       <nav id="navmenu" class="navmenu">
@@ -149,8 +148,7 @@
   <!-- Hero Section -->
   <section class="testing-hero">
     <div class="container" data-aos="fade-up">
-      <h1>Evaluation</h1>
-      <p class="lead">A reflection on functionality, contributions, and final results</p>
+      <h1>EVALUATION</h1>
     </div>
   </section>
 
@@ -160,7 +158,33 @@
       <div class="row">
         <!-- Main Content -->
         <div class="col-lg-9" data-aos="fade-up">
-  
+          <h2 id="bugs">Achievement Table</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Requirement</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Contributors</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="5"><strong>Key Functionalities (Must + Should Have)</strong></td></tr>
+              <tr><td>1</td><td>User can input PDFs</td><td>Must</td><td>Completed</td><td>All</td></tr>
+              <tr><td>2</td><td>User can enter a prompt to define the systematic review</td><td>Must</td><td>Completed</td><td>All</td></tr>
+              <tr><td>3</td><td>Systematic review is displayed to the user</td><td>Must</td><td>Completed</td><td>Wing Ho</td></tr>
+              <tr><td>4</td><td>Vector database integration</td><td>Must</td><td>Completed</td><td>All</td></tr>
+              <tr><td>5</td><td>LLM-powered section generation</td><td>Must</td><td>Completed</td><td>Wing Ho, Yiwei</td></tr>
+              <tr><td>6</td><td>User authentication system</td><td>Should</td><td>Completed</td><td>Wing Ho, Kevin</td></tr>
+              <tr><td>7</td><td>Review history tracking for users</td><td>Should</td><td>Completed</td><td>Wing Ho, Kevin</td></tr>
+              <tr><td>8</td><td>Quality assessment visualisation of the review through graphs</td><td>Should</td><td>Completed</td><td>Kevin, Jennifer</td></tr>
+              <tr><td colspan="5"><strong>Optional Functionalities (Could Have)</strong></td></tr>
+              <tr><td>9</td><td>Users can view the source files of each review</td><td>Could</td><td>Completed</td><td>Wing Ho</td></tr>
+              <tr><td>10</td><td>PDFs of the systematic review can be exported</td><td>Could</td><td>Completed</td><td>Wing Ho</td></tr>
+              <tr><td>11</td><td>Medical paper database integration</td><td>Could</td><td>Not Completed</td><td>n/a</td></tr>
+            </tbody>
+          </table>
 
           <h2 id="bugs">Known Bugs</h2>
           <table>
@@ -172,8 +196,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>1</td><td>Slow response on chart rendering</td><td>Medium</td></tr>
-              <tr><td>2</td><td>PDF viewer not working properly on Safari</td><td>Low</td></tr>
+              <tr><td>1</td><td>Entering an ID into the URL causes the generation process with no files or prompt</td><td>Medium</td></tr>
+              <tr><td>2</td><td>Ocassional markdown rendering issues with HTML of the review</td><td>Low</td></tr>
             </tbody>
           </table>
 
@@ -191,7 +215,7 @@
           </thead>
           <tbody>
             <tr><td>Research and Experiments</td><td>20</td><td>40</td><td>20</td><td>20</td></tr>
-            <tr><td>UI Design</td><td>100</td><td>0</td><td>0</td><td>20</td></tr>
+            <tr><td>UI Design</td><td>80</td><td>0</td><td>0</td><td>20</td></tr>
             <tr><td>Coding</td><td>25</td><td>25</td><td>25</td><td>25</td></tr>
             <tr><td>Testing</td><td>0</td><td>20</td><td>40</td><td>40</td></tr>
             <tr><td><strong>Overall Contribution (%)</strong></td><td>31.25</td><td>21.25</td><td>21.25</td><td>26.25</td></tr>
@@ -350,6 +374,7 @@
           <li><a href="requirements.html" class="text-white text-decoration-none">Requirements</a></li>
           <li><a href="research.html" class="text-white text-decoration-none">Research</a></li>
           <li><a href="algorithm.html" class="text-white text-decoration-none">Algorithm</a></li>
+          <li><a href="ui-design.html" class="text-white text-decoration-none">UI Design</a></li>
           <li><a href="system-design.html" class="text-white text-decoration-none">System Design</a></li>
           <li><a href="implements.html" class="text-white text-decoration-none">Implementation</a></li>
           <li><a href="testing.html" class="text-white text-decoration-none">Testing</a></li>
