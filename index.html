@@ -47,7 +47,7 @@
           <li><a href="src/pages/implements.html">Implements</a></li>
           <li><a href="src/pages/testing.html">Testing</a></li>
           <li><a href="src/pages/evaluation.html">Evaluation</a></li>
-          <li><a href="src/pages/appendix.html">Appendices</a></li>
+          <li><a href="src/pages/appendix.html">Appendix</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -67,17 +67,22 @@
 
           <!-- 文字内容在左侧 -->
           <div class="col-lg-6" data-aos="fade-right">
-            <h2 class="tagline">Best AI assistant for medical professionals</h2>
+            <h2 class="tagline">Summarize. Review. Save Lives.</h2>
             <p class="hero-subtext">
-            Speed up your research workflow with RAG-n-Bones. <br>We help you generate AI systematic reviews from dozens of medical papers in seconds.
+            Speed up your research workflow with AI-generated systematic reviews – crafted from dozens of medical papers in seconds.
             </p>
+            <div class="mt-4 d-flex flex-column align-items-start">
+              <a href="https://youtu.be/6KkLbOQWV60" class="glightbox btn-watch-video d-flex align-items-center">
+                <i class="bi bi-play-circle"></i><span>Watch Video</span>
+              </a>
+            </div>
           </div>
 
 
 
           <!-- 图片在右侧 -->
           <div class="col-lg-6 text-center" data-aos="fade-left">
-            <img src="assets/img/logo.png" class="img-fluid hero-img" alt="">
+            <img src="assets/img/HERO.png" class="img-fluid hero-img" alt="">
           </div>
 
         </div>
@@ -104,21 +109,21 @@
             </div>
           </div>
 
-          <!-- CarefulAI -->
-          <div class="col-xl-4 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="sponsor-item position-relative text-center">
-              <img src="assets/img/sponsors/carefulai.jpeg" alt="CarefulAI" class="img-fluid mb-3" style="max-height: 80px;">
-              <h5>CarefulAI</h5>
-              <a href="https://www.carefulai.com" target="_blank" class="stretched-link"></a>
-            </div>
-          </div>
-
           <!-- NHS -->
           <div class="col-xl-4 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="sponsor-item position-relative text-center">
               <img src="assets/img/sponsors/nhs.jpeg" alt="NHS" class="img-fluid mb-3" style="max-height: 80px;">
               <h5>NHS</h5>
               <a href="https://www.nhs.uk" target="_blank" class="stretched-link"></a>
+            </div>
+          </div>
+
+          <!-- CarefulAI -->
+          <div class="col-xl-4 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="sponsor-item position-relative text-center">
+              <img src="assets/img/sponsors/carefulai.jpeg" alt="CarefulAI" class="img-fluid mb-3" style="max-height: 80px;">
+              <h5>CarefulAI</h5>
+              <a href="https://www.carefulai.com" target="_blank" class="stretched-link"></a>
             </div>
           </div>
 
@@ -161,14 +166,25 @@
 
             <ul class="nav nav-tabs" data-aos="fade-up" data-aos-delay="100">
               <li class="nav-item">
+                <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
+                  <i class="bi bi-binoculars"></i>
+                  <div>
+                    <h4 class="d-none d-lg-block">Upsert Chunks into Vector Database</h4>
+                    <p>
+                      Medical research papers are split into smaller chunks, embedded into vector 
+                      representations, and stored in a vector database to enable efficient semantic search.
+                    </p>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
                   <i class="bi bi-box-seam"></i>
                   <div>
                     <h4 class="d-none d-lg-block">Generate Systematic Review</h4>
                     <p>
                       Given a research question or prompt, the system retrieves relevant context from the papers and
-                       uses an LLM to generate a structured systematic review with sections like background, methods, 
-                       and conclusions.
+                       uses an LLM to generate a structured systematic review with sections like background, methods, and conclusions.
                     </p>
                   </div>
                 </a>
@@ -179,8 +195,8 @@
                   <div>
                     <h4 class="d-none d-lg-block">Quality Check</h4>
                     <p>
-                      Measurements like cosine similarity, TF-IDF, and BLEU score, assists users in evaluating the quality of the output review.
-                      They are visualised in the form of graphs and tables, with a word cloud showing thematic areas and a bar chart of contributed authors.
+                      Using cosine similarity bar chart, TF-IDF heatmap, and BLEU score bar chart assess the relevance, key thematic alignment, and linguistic quality of the generated text 
+                      in comparison to user input medical papers. Additionally, a word-cloud visualization highlights thematic areas for quick and intuitive validation.
                     </p>
                   </div>
                 </a>
@@ -214,6 +230,25 @@
 
     </section><!-- /Features Section -->
 
+    <section id="video" class="py-5">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title text-center mb-4">
+          <h2>Video</h2>
+        </div>
+        <div class="mx-auto" style="max-width: 720px;">
+          <div class="ratio ratio-16x9">
+            <iframe 
+              src="https://www.youtube.com/embed/6KkLbOQWV60" 
+              title="Demo Video"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+    
 
     <!-- Team Section -->
     <section id="team" class="team section-bg py-5">
@@ -231,7 +266,7 @@
               <div>
                 <h5 class="fw-bold">Wing Ho Yeung</h5>
                 <p class="text-muted mb-1">Programmer / Designer</p>
-                <p>Wing is a Year 2 MEng Computer Science Student.</p>
+                <p>Wing is a Year 2 Computer Science Student.</p>
                 <div class="d-flex gap-2">
                   <a href="mailto:wing@example.com" target="_blank"><i class="bi bi-envelope fs-5"></i></a>
                   <a href="https://www.linkedin.com/in/wing" target="_blank"><i class="bi bi-linkedin fs-5"></i></a>
@@ -244,13 +279,13 @@
           <!-- Member 2 -->
           <div class="col-lg-5 d-flex">
             <div class="member d-flex align-items-start bg-white shadow rounded p-4 w-100">
-              <img src="src/assets/jennifer.jpg" class="img-fluid rounded-circle me-4" style="width: 100px; height: 100px;" alt="Jennifer Zhang">
+              <img src="assets/img/team/jennifer.jpg" class="img-fluid rounded-circle me-4" style="width: 100px; height: 100px;" alt="Jennifer Zhang">
               <div>
                 <h5 class="fw-bold">Jennifer Zhang</h5>
                 <p class="text-muted mb-1">Programmer / Researcher</p>
-                <p>Jennifer is a Year 2 MEng Computer Science Student.</p>
+                <p>Jennifer is a Year 2 Computer Science Student.</p>
                 <div class="d-flex gap-2">
-                  <a href="mailto:znkjennifer58@gmail.com" target="_blank"><i class="bi bi-envelope fs-5"></i></a>
+                  <a href="znkjennifer58@gmail.com" target="_blank"><i class="bi bi-envelope fs-5"></i></a>
                   <a href="https://www.linkedin.com/in/jennifer-zhang-43a936192/" target="_blank"><i class="bi bi-linkedin fs-5"></i></a>
                   <a href="https://github.com/pgzqtss" target="_blank"><i class="bi bi-github fs-5"></i></a>
                 </div>
@@ -264,12 +299,12 @@
               <img src="assets/img/team/yiwei.jpg" class="img-fluid rounded-circle me-4" style="width: 100px; height: 100px;" alt="Yiwei Wang">
               <div>
                 <h5 class="fw-bold">Yiwei Wang</h5>
-                <p class="text-muted mb-1">Programmer / Full Stack</p>
+                <p class="text-muted mb-1">Programmer / Tester</p>
                 <p>Yiwei is a Year 2 BSc Computer Science Student.</p>
                 <div class="d-flex gap-2">
-                  <a href="mailto:yiwei@example.com" target="_blank"><i class="bi bi-envelope fs-5"></i></a>
-                  <a href="https://www.linkedin.com/in/yiwei" target="_blank"><i class="bi bi-linkedin fs-5"></i></a>
-                  <a href="https://github.com/yiwei" target="_blank"><i class="bi bi-github fs-5"></i></a>
+                  <a href="fredrake23@gmail.com" target="_blank"><i class="bi bi-envelope fs-5"></i></a>
+                  <a href="https://www.linkedin.com/in/yiwei-wang-060646352?trk=contact-info" target="_blank"><i class="bi bi-linkedin fs-5"></i></a>
+                  <a href="https://github.com/Fredrake96" target="_blank"><i class="bi bi-github fs-5"></i></a>
                 </div>
               </div>
             </div>
@@ -284,14 +319,22 @@
                 <p class="text-muted mb-1">Programmer / Tester</p>
                 <p>Kevin is a Year 2 MEng Computer Science Student.</p>
                 <div class="d-flex gap-2">
-                  <a href="mailto:kevin@example.com" target="_blank"><i class="bi bi-envelope fs-5"></i></a>
-                  <a href="https://www.linkedin.com/in/kevin" target="_blank"><i class="bi bi-linkedin fs-5"></i></a>
-                  <a href="https://github.com/kevin" target="_blank"><i class="bi bi-github fs-5"></i></a>
+                  <a href="zcabinf@ucl.ac.uk" target="_blank"><i class="bi bi-envelope fs-5"></i></a>
+                  <a href="www.linkedin.com/in/yaokai-jin-8b9903330" target="_blank"><i class="bi bi-linkedin fs-5"></i></a>
+                  <a href="https://github.com/KJL52" target="_blank"><i class="bi bi-github fs-5"></i></a>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="team-photo-section py-5">
+      <div class="container text-center" data-aos="fade-up">
+        <h2 class="mb-4">Team & Sponsor</h2>
+        <p class="mb-4">A memorable group photo with our sponsor Josepher</p>
+        <img src="assets/img/team/groupphoto.jpg" class="img-fluid rounded shadow" alt="Group photo with sponsor Josepher" style="max-width: 800px;">
       </div>
     </section>
     <!--Video Section-->
@@ -354,7 +397,7 @@
             <li><a href="src/pages/implements.html" class="text-white text-decoration-none">Implements</a></li>
             <li><a href="src/pages/testing.html" class="text-white text-decoration-none">Testing</a></li>
             <li><a href="src/pages/evaluation.html" class="text-white text-decoration-none">Evaluation</a></li>
-            <li><a href="src/pages/appendix.html" class="text-white text-decoration-none">Appendices</a></li>
+            <li><a href="src/pages/appendix.html" class="text-white text-decoration-none">Appendix</a></li>
           </ul>
         </div>
         <!-- 右侧：Project Supporters -->
