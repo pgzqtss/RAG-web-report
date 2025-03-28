@@ -24,6 +24,23 @@
     body {
       padding-top: 90px;
     }
+    .section-nav {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      border-radius: 0.75rem;
+      background: #fff;
+      padding: 1.5rem;
+      border: 1px solid #f1f1f1;
+    }
+    .section-nav h5 {
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    .section-nav .sub-item {
+      border-left: 2px solid #e5e7eb;
+      padding-left: 1rem;
+      margin-left: 0.5rem;
+    }
 
     .algorithm-hero {
       background: linear-gradient(90deg, #4ca1af, #c4e0e5);
@@ -350,12 +367,11 @@
           <li><a href="../../index.html">Home</a></li>
           <li><a href="requirements.html">Requirements</a></li>
           <li><a href="research.html">Research</a></li>
-          <li><a href="algorithm.html">Algorithm</a></li>
+          <li><a href="algorithm.html"class="active">Algorithm</a></li>
           <li><a href="system-design.html">System Design</a></li>
           <li><a href="implements.html">Implements</a></li>
           <li><a href="testing.html">Testing</a></li>
           <li><a href="evaluation.html">Evaluation</a></li>
-          <li><a href="algorithm.html" class="active">Algorithm</a></li>
           <li><a href="appendix.html">Appendix</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -376,8 +392,9 @@
     <div class="container">
       <div class="row">
         <!-- Main Content -->
-        <div class="content-card implementation-section">
-          <h2 class="section-title">Implementation</h2>
+        <div class="col-lg-8">
+        <div class="content-card implementation-section"id="algorithm">
+          <h2 class="section-title"id="Implementation">Implementation</h2>
           
           <div class="experiment-intro">
             <h3 class="subsection-title">Experiment on Fine-tuning</h3>
@@ -455,7 +472,7 @@
           </div>
         </div>
       
-        <div class="results-section">
+        <div class="results-section"id ="results">
           <h4 class="results-title">Results and Comparison</h4>
           <div class="results-content">
             <p class="results-text">
@@ -471,7 +488,7 @@
             </p>
           </div>
           
-          <div class="comparison-section">
+          <div class="comparison-section"id="comparison">
             <h5 class="comparison-title">Comparison Between Outputs</h5>
             <p class="comparison-description">
               Here's the comparison between output from our fine-tuned model, and our current application output:
@@ -494,66 +511,85 @@
         </div>
       </div>
   
-          <h3 class="mt-5">Experiment of Crawling Similar Articles</h3>
-          <h5>Experiment System Description</h5>
-          <p>The system improves content quality through structured literature collection and processing, implemented in three key phases:</p>
-  
-          <ol>
-            <li><strong>Precise Keyword Extraction</strong><br />
-            Local PDF documents (e.g., research papers) are analyzed using text segmentation. Each section undergoes automated term identification (e.g., extracting "Covid-19"). This ensures subsequent searches remain focused on core themes.</li>
-  
-            <li><strong>Multi-Source Literature Collection</strong><br />
-            Based on extracted keywords, the system:
-              <ul>
-                <li>Searches PubMed for related paper IDs (PMIDs)</li>
-                <li>Converts PMIDs to accessible PMC IDs (open-access papers) or DOI codes (paywalled content)</li>
-                <li>Retrieves full texts via PMC, PDFs through Sci-Hub, or abstracts as fallback</li>
-              </ul>
-              <p>In test cases targeting 10 papers:</p>
-              <ul>
-                <li>4 full texts obtained from PMC</li>
-                <li>3 PDFs acquired via Sci-Hub</li>
-                <li>2 abstracts stored</li>
-                <li>1 paper flagged as unavailable</li>
-              </ul>
-            </li>
-  
-            <li><strong>Content Standardization</strong><br />
-            All collected texts undergo:
-              <ul>
-                <li>Hyphenation correction (e.g., "reha-<br />bilitation" → "rehabilitation")</li>
-                <li>Removal of non-essential symbols (†, ‡, etc.)</li>
-                <li>Reference section deletion</li>
-                <li>Whitespace normalization</li>
-              </ul>
-            </li>
-          </ol>
-  
-          <h5>Future Enhancements</h5>
-          <p>To further improve output quality, planned upgrades include:</p>
-          <ul>
-            <li><strong>Expanded Source Integration:</strong> Add connections to Crossref, Google Scholar, and preprint repositories</li>
-            <li><strong>Structured Data Extraction:</strong> Develop modules to preserve tables, equations, and figures from PDFs</li>
-            <li><strong>Literature Prioritization:</strong> Implement filters for publication date (prioritizing last 5 years) and journal credibility metrics</li>
-            <li><strong>Cross-Domain Linking:</strong> Build keyword relationship maps to identify relevant studies across disciplines</li>
-          </ul>
-  
-          <p>This system constructs verified academic databases for content generation, avoiding unsubstantiated claims. Ongoing development focuses on increasing literature coverage depth and contextual relevance to support evidence-based writing.</p>
-        </div>
+      <h3 class="subsection-title mt-5"id="Crawling">Experiment of Crawling Similar Articles</h3>
 
+      <div class="content-card" data-aos="fade-up">
+        <h5>System Description</h5>
+        <p class="intro-text">
+          This subsystem enhances content quality by systematically acquiring and refining literature in three main stages:
+        </p>
+      
+        <div class="output-cards">
+          <div class="output-card">
+            <div class="output-header">
+              <strong>1. Keyword Extraction</strong>
+              <span class="file-indicator">Automated</span>
+            </div>
+            <p class="output-preview">
+              <i class="bi bi-search"></i> Extracts domain-relevant terms (e.g., "Covid-19") from segmented PDF sections to guide focused literature retrieval.
+            </p>
+          </div>
+      
+          <div class="output-card">
+            <div class="output-header">
+              <strong>2. Literature Collection</strong>
+              <span class="file-indicator">Multi-source</span>
+            </div>
+            <p class="output-preview">
+              <i class="bi bi-journal-text"></i> Searches PubMed → PMC/DOI, retrieves full texts or abstracts via PMC/Sci-Hub.
+            </p>
+            <ul class="steps-list">
+              <li>4 full texts from PMC</li>
+              <li>3 PDFs via Sci-Hub</li>
+              <li>2 abstracts used</li>
+              <li>1 unavailable</li>
+            </ul>
+          </div>
+      
+          <div class="output-card">
+            <div class="output-header">
+              <strong>3. Content Standardization</strong>
+              <span class="file-indicator">Preprocessing</span>
+            </div>
+            <p class="output-preview">
+              <i class="bi bi-wrench-adjustable-circle"></i> Cleans and normalizes collected data:
+            </p>
+            <ul class="steps-list">
+              <li>Fixes hyphenation (e.g., "reha-<br />bilitation")</li>
+              <li>Removes non-essential symbols (†, ‡, etc.)</li>
+              <li>Deletes reference sections</li>
+              <li>Normalizes whitespace</li>
+            </ul>
+          </div>
+        </div>
+      
+        <h5 class="mt-4">Future Enhancements</h5>
+        <ul>
+          <li><strong>Expanded Sources:</strong> Integrate Crossref, Google Scholar, preprint servers</li>
+          <li><strong>Structured Extraction:</strong> Preserve tables, figures, and equations</li>
+          <li><strong>Literature Prioritization:</strong> Add filters for recency and journal credibility</li>
+          <li><strong>Cross-domain Linking:</strong> Use keyword maps for inter-discipline relevance</li>
+        </ul>
+      
+        <p class="additional-info">
+          This system is key to building a reliable, academically-grounded database that supports accurate and responsible content generation. Future iterations will aim to deepen literature coverage and context relevance for systematic review tasks.
+        </p>
+      </div>
+    </div> 
         
   
-        <!-- Right Sidebar -->
-        <div class="col-lg-3" data-aos="fade-left">
-          <aside class="sidebar-nav">
-            <h5>On This Page</h5>
-            <ul>
-              <li><a href="#algorithm">Algorithm</a></li>
-            </ul>
-          </aside>
-        </div>
+    <div class="col-lg-4 d-none d-lg-block">
+      <div class="section-nav">
+        <h5>Page Sections</h5>
+        <ul class="list-unstyled">
+          <li><a href="#implementation">Implementation</a></li>
+          <li><a href="#results">Results & Comparison</a></li>
+          <li><a href="#crawling">Crawling Articles</a></li>
+        </ul>
       </div>
     </div>
+    </div>
+  </div> 
   </section>
 
   <!-- Footer -->
