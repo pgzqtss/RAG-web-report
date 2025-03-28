@@ -71,7 +71,15 @@
       margin-bottom: 15px;
       line-height: 1.8;
     }
+    .clickable-file {
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
 
+    .clickable-file:hover {
+      background-color: #f8f9fa;
+    }
+    
     .sidebar-nav {
       position: sticky;
       top: 100px;
@@ -248,28 +256,6 @@
       background: var(--primary-color);
       border-radius: 3px;
     }
-    .code-block {
-    background: #f5f5f5;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 1em;
-    font-family: monospace;
-    white-space: pre;
-    overflow-x: auto;
-    }
-    h3 {
-      color: #374151;
-      margin-top: 2.5rem;
-      margin-bottom: 1.2rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid #e5e7eb;
-    }
-    
-    h4 {
-      color: #4b5563;
-      margin-top: 2rem;
-      font-size: 1.3rem;
-    }
     
     .code-block {
       background: #1e1e1e;
@@ -376,7 +362,7 @@
           <li><a href="testing.html">Testing</a></li>
           <li><a href="evaluation.html">Evaluation</a></li>
 
-          <li><a href="appendix.html">Appendices</a></li>
+          <li><a href="appendix.html">Appendix</a></li>
 
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -498,7 +484,6 @@
             <p class="comparison-description">
               Here's the comparison between output from our fine-tuned model, and our current application output:
             </p>
-            <!-- Replace with your actual file paths -->
             <div class="code-block clickable-file" data-filepath="../../assets/content/fine-tuning-output.txt">
               <strong>Fine-tuned Model Output:</strong><br>
               <span class="file-content">Click to view fine-tuning output file</span>
@@ -641,19 +626,18 @@
   <script>
     AOS.init();
   
-  document.addEventListener("DOMContentLoaded", function () {
-    const clickableFiles = document.querySelectorAll(".clickable-file");
-
-    clickableFiles.forEach(function (block) {
-      block.addEventListener("click", function () {
-        const filePath = block.getAttribute("data-filepath");
-        if (filePath) {
-          window.open(filePath, "_blank");
-        }
+    document.addEventListener("DOMContentLoaded", function () {
+      const clickableFiles = document.querySelectorAll(".clickable-file");
+  
+      clickableFiles.forEach(function (block) {
+        block.addEventListener("click", function () {
+          const filePath = block.getAttribute("data-filepath");
+          if (filePath) {
+            window.open(filePath, "_blank");
+          }
+        });
       });
     });
-  });
-
   </script>
 </body>
 </html>
