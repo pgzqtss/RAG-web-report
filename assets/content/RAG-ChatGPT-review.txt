@@ -1,0 +1,44 @@
+**Systematic Review: Efficacy of COVID-19 Vaccines**
+
+**Abstract**
+The rapid development and distribution of COVID-19 vaccines have played a crucial role in controlling the pandemic. This systematic review evaluates the efficacy of various COVID-19 vaccines based on the data from three research papers. The vaccines analyzed include the Oxford-AstraZeneca vaccine, the BNT162b2 mRNA vaccine (Pfizer-BioNTech), and the ZF2001 protein subunit vaccine. The review focuses on vaccine efficacy in preventing symptomatic and severe COVID-19, efficacy across different demographic groups, and their real-world effectiveness.
+
+**Introduction**
+Vaccination remains the primary strategy to mitigate the spread and severity of COVID-19. Multiple vaccines have been developed using different platforms, including mRNA, viral vector, and protein subunit technologies. Understanding their efficacy across various populations and against different variants is essential for public health strategies. This review summarizes efficacy data from clinical trials and observational studies.
+
+**Methodology**
+The studies included in this review were selected based on their clinical trial data assessing vaccine efficacy. The reviewed papers provide insights into the Oxford-AstraZeneca, Pfizer-BioNTech, and ZF2001 vaccines. Data were extracted on vaccine efficacy against symptomatic COVID-19, severe disease, and asymptomatic infection.
+
+**Results**
+
+**Oxford-AstraZeneca Vaccine**
+- Conducted in the UK, South Africa, and Brazil, this study included 11,636 participants.
+- The overall efficacy against symptomatic COVID-19 was 70.4% (95.8% CI 54.8 to 80.6)【11:0†source】.
+- A higher efficacy of 90% was observed in a subset that received a lower first dose and a standard second dose, compared to 62.1% efficacy in the standard dosing group【11:8†source】.
+- The vaccine prevented all hospitalizations and severe cases in the vaccinated group.
+- The efficacy against asymptomatic infection was lower (3.8% in the standard dose group and 58.9% in the low/standard dose group), suggesting limited impact on transmission【11:8†source】.
+
+**Pfizer-BioNTech Vaccine (BNT162b2)**
+- A phase 3 trial included 43,548 participants.
+- Vaccine efficacy against symptomatic COVID-19 was 95% (95% CI 90.3 to 97.6)【11:1†source】.
+- The vaccine was effective across various subgroups, including age, sex, race, ethnicity, and individuals with coexisting conditions【11:6†source】.
+- Protection was observed as early as 12 days after the first dose, with 52% efficacy between the first and second dose.
+- Among severe cases, only one was recorded in the vaccine group compared to nine in the placebo group【11:6†source】.
+
+**ZF2001 Protein Subunit Vaccine**
+- This vaccine was tested in a multinational phase 3 trial.
+- The efficacy against the Alpha variant was 92.7%, against Delta was 81.4%, and against Kappa was 84.8%【11:7†source】.
+- A three-dose regimen provided better protection than a two-dose schedule.
+- Older participants experienced fewer adverse reactions than younger groups【11:11†source】.
+
+**Discussion**
+The reviewed vaccines demonstrated high efficacy in preventing symptomatic COVID-19, with the Pfizer-BioNTech vaccine showing the highest efficacy at 95%. The Oxford-AstraZeneca vaccine displayed lower efficacy but still provided significant protection against severe outcomes. The ZF2001 protein subunit vaccine showed promising efficacy against variants of concern. Factors such as vaccine storage requirements, cost, and availability influence global distribution and usage. The vaccines showed variable efficacy in preventing asymptomatic transmission, indicating that public health measures beyond vaccination remain necessary.
+
+**Conclusion**
+COVID-19 vaccines have demonstrated high efficacy in preventing symptomatic and severe disease. While mRNA vaccines offer superior efficacy, vector-based and protein subunit vaccines provide viable alternatives, especially in regions with limited cold-chain infrastructure. Continuous monitoring of vaccine effectiveness against emerging variants remains crucial for global pandemic control.
+
+**References**
+- Paper 1: Clinical trial data on ZF2001 vaccine.
+- Paper 2: Oxford-AstraZeneca vaccine efficacy study.
+- Paper 3: Pfizer-BioNTech vaccine efficacy study.
+

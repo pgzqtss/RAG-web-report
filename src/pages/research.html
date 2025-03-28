@@ -333,16 +333,15 @@
         <li><a href="requirements.html">Requirements</a></li>
         <li><a href="research.html" class="active">Research</a></li>
         <li><a href="algorithm.html">Algorithm</a></li>
+        <li><a href="ui-design.html">UI Design</a></li>
         <li><a href="system-design.html">System Design</a></li>
-        <li><a href="implements.html">Implements</a></li>
+        <li><a href="implements.html">Implementation</a></li>
         <li><a href="testing.html">Testing</a></li>
         <li><a href="evaluation.html">Evaluation</a></li>
-        <li><a href="appendix.html">Appendix</a></li>
+        <li><a href="appendix.html">Appendices</a></li>
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>
-
-    <a class="btn-getstarted" href="../../index.html">Get Started</a>
   </div>
 </header>
 
@@ -394,7 +393,23 @@
                     <i class="bi bi-database me-3" style="color: var(--primary-color);"></i>
                     <h4>Pinecone Vector DB</h4>
                   </div>
-                  <p>Pinecone is a vector database designed for managing high-dimensional vector data. Having a vector database is definitely useful when it comes up to high-dimensional vector embeddings, which is a must operation in RAG and LLMs. The reason why we chose Pinecone includes scalability, allowing real-time search, allowing semantic search. Pinecone is built to handle large-scale vector data, which maximizes the limit of input files. Pinecone provides real-time search, which allows quick response. Pinecone performs semantic searches, retrieving results that are contextually relevant rather than just keyword matches, which leads to higher accuracy and relevance.</p>
+                  <p>Pinecone is a vector database designed for managing high-dimensional vector data. 
+                    Having a vector database is definitely important and useful when it comes up to high-dimensional 
+                    vector embeddings, which is a must operation in RAG and LLMs. 
+                    <br><br> The reason why we chose Pinecone includes scalability, allowing real-time 
+                    search, and allowing semantic search. Pinecone is built to handle large-scale vector
+                     data, which maximizes the limit of input files. Pinecone provides real-time search, 
+                     which allows quick response. Lastly, Pinecone performs semantic searches, retrieving 
+                     results that are contextually relevant rather than just keyword matches, which leads 
+                     to higher consistency and relevancy.
+                     <br><br> Why Pinecone over other vector databases? We thought about using Weaviate,
+                     however, Pinecone has a larger scalability without the need of manually configuring 
+                     the database. Scalability is a key factor in our project, as instead of chat bot or 
+                     other RAG applications, we are specifically dealing with large
+                     number of papers. Pinecone is also easier to use, as it provides a managed service
+                      that does not require any maintenance or configuration, while Weaviate is open-sourced.
+                      We wont consider Weaviate as it requires more time and effort to set up and maintain.
+                    </p>
                 </div>
               </div>
               
@@ -402,88 +417,25 @@
                 <div class="tech-card">
                   <div class="d-flex align-items-center mb-3">
                     <i class="bi bi-cpu me-3" style="color: var(--secondary-color);"></i>
-                    <h4>OpenAI GPT-3.5</h4>
+                    <h4>OpenAI GPT-4o Mini</h4>
                   </div>
-                  <p>We used OpenAI GPT-3.5 as the LLM of our prototype. An LLM plays a very important role in RAG system. It is used to process the text and generate the sections of the review, which then is combined to a full systematic review. The reason we chose GPT-3.5 as the model, was because it performs decently in understanding the prompt and generates a middle quality result. We were not able to invest in better models or fine-tuning due to the pricing of those models, such as GPT-4o.</p>
+                  <p>We used OpenAI GPT-4o Mini as the Large Language Model (LLM) of our prototype. 
+                    The LLM plays a crucial role in a RAG system. It 
+                    processes the embedded text to generate sections of 
+                    a review, that are then combined into a full systematic review. 
+                    <br><br> The reason we why chose GPT-4o Mini as the model 
+                    was because its good understanding with the prompt
+                    and generates a decent quality result output. We were not able to 
+                    invest in a better models like GPT-4.5 or fine-tuning 
+                    pre-trained LLM due to the resource and pricing problems.
+                    <br><br> So how is GPT-4o Mini better than GPT-3.5? 
+                    GPT-4o Mini supports up to 128k tokens, whereas GPT-3.5 only supports up to 16.4k tokens.
+                    Larger number of tokens allows us to generate longer text with better quality.
+                    Moreover, GPT-4o Mini has a more recent knowledge cut-off(Oct 2023) comparing to GPT-3.5(Sept 2021).
                 </div>
               </div>
             </div>
             
-            <div class="mt-5" id="implementation-libraries">
-              <h3>Implementation Libraries</h3>
-              
-              <div class="row g-4 mt-3">
-                <div class="col-md-6">
-                  <div class="tech-card">
-                    <div class="d-flex align-items-center mb-3">
-                      <i class="bi bi-file-pdf me-3" style="color: #dc3545;"></i>
-                      <h4>PyMuPDF</h4>
-                    </div>
-                    <p>Converts PDF documents into raw text for easier processing by the system.</p>
-                  </div>
-                </div>
-          
-                <div class="col-md-6">
-                  <div class="tech-card">
-                    <div class="d-flex align-items-center mb-3">
-                      <i class="bi bi-text-paragraph me-3" style="color: #0d6efd;"></i>
-                      <h4>LangChain</h4>
-                    </div>
-                    <p>Handles text processing including text splitting and human message management.</p>
-                  </div>
-                </div>
-          
-                <div class="col-md-6">
-                  <div class="tech-card">
-                    <div class="d-flex align-items-center mb-3">
-                      <i class="bi bi-table me-3" style="color: #198754;"></i>
-                      <h4>Pandas</h4>
-                    </div>
-                    <p>Used for data manipulation and analysis, creating data frames for quality check visualizations.</p>
-                  </div>
-                </div>
-          
-                <div class="col-md-6">
-                  <div class="tech-card">
-                    <div class="d-flex align-items-center mb-3">
-                      <i class="bi bi-bar-chart-line me-3" style="color: #fd7e14;"></i>
-                      <h4>Matplotlib</h4>
-                    </div>
-                    <p>Generates visualized graphs for data analysis and quality checks.</p>
-                  </div>
-                </div>
-          
-                <div class="col-md-6">
-                  <div class="tech-card">
-                    <div class="d-flex align-items-center mb-3">
-                      <i class="bi bi-gear me-3" style="color: #0dcaf0;"></i>
-                      <h4>Flask</h4>
-                    </div>
-                    <p>Web framework handling backend operations, HTTP requests, and API endpoints.</p>
-                  </div>
-                </div>
-          
-                <div class="col-md-6">
-                  <div class="tech-card">
-                    <div class="d-flex align-items-center mb-3">
-                      <i class="bi bi-shield-lock me-3" style="color: #6f42c1;"></i>
-                      <h4>Bcrypt</h4>
-                    </div>
-                    <p>Secures user passwords through hashing before database storage.</p>
-                  </div>
-                </div>
-          
-                <div class="col-md-6">
-                  <div class="tech-card">
-                    <div class="d-flex align-items-center mb-3">
-                      <i class="bi bi-database me-3" style="color: #6c757d;"></i>
-                      <h4>MySQL</h4>
-                    </div>
-                    <p>Database system storing user authentication details and usage history.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
           
             <div class="mt-5" id="technical-decisions">
               <h3>Technical Decisions Summary</h3>
@@ -535,8 +487,7 @@
               <li><a href="#technology-review" class="d-block py-2">Technology Review</a>
                 <ul class="list-unstyled">
                   <li class="sub-item"><a href="#pinecone" class="d-block py-2">Pinecone Vector DB</a></li>
-                  <li class="sub-item"><a href="#openai" class="d-block py-2">OpenAI GPT-3.5</a></li>
-                  <li class="sub-item"><a href="#implementation-libraries" class="d-block py-2">Implementation Libraries</a></li>
+                  <li class="sub-item"><a href="#openai" class="d-block py-2">OpenAI GPT-4o mini</a></li>
                   <li class="sub-item"><a href="#technical-decisions" class="d-block py-2">Technical Decisions</a></li>
                 </ul>
               </li>
@@ -630,14 +581,11 @@ document.addEventListener('DOMContentLoaded', function() {
   
   if (!footer || !nav) return;
   
-  // 设置IntersectionObserver来检测footer
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // 当footer进入视口时，添加scrolled-to-bottom类
         body.classList.add('scrolled-to-bottom');
       } else {
-        // 当footer离开视口时，移除scrolled-to-bottom类
         body.classList.remove('scrolled-to-bottom');
       }
     });
@@ -645,7 +593,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   observer.observe(footer);
   
-  // 确保导航栏在页面加载时位置正确
+
   function checkNavPosition() {
     const scrollBottom = window.innerHeight + window.scrollY;
     const docHeight = document.body.offsetHeight;
@@ -658,10 +606,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  // 初始检查
+  
   checkNavPosition();
   
-  // 滚动时检查
+  
   window.addEventListener('scroll', checkNavPosition);
 });
 </script>

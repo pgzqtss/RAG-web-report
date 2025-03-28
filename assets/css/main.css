@@ -165,7 +165,7 @@ h6 {
   }
 }
 
-.header .btn-getstarted,
+/*.header .btn-getstarted,
 .header .btn-getstarted:focus {
   color: var(--contrast-color);
   background: var(--accent-color);
@@ -180,18 +180,18 @@ h6 {
 .header .btn-getstarted:focus:hover {
   color: var(--contrast-color);
   background: color-mix(in srgb, var(--accent-color), transparent 15%);
-}
+}*/
 
 @media (max-width: 1200px) {
   .header .logo {
     order: 1;
   }
 
-  .header .btn-getstarted {
+  /*.header .btn-getstarted {
     order: 2;
     margin: 0 15px 0 0;
     padding: 6px 15px;
-  }
+  }*/
 
   .header .navmenu {
     order: 3;
@@ -895,7 +895,7 @@ section,
   }
 }
 
-.hero .btn-get-started {
+/*.hero .btn-get-started {
   color: var(--contrast-color);
   background: var(--accent-color);
   font-family: var(--heading-font);
@@ -913,7 +913,7 @@ section,
   color: var(--contrast-color);
   background: color-mix(in srgb, var(--accent-color), transparent 15%);
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
-}
+}*/
 
 .hero .btn-watch-video {
   font-size: 16px;
@@ -954,10 +954,10 @@ section,
     margin-bottom: 30px;
   }
 
-  .hero .btn-get-started,
+  /*.hero .btn-get-started,
   .hero .btn-watch-video {
     font-size: 13px;
-  }
+  }*/
 }
 
 

@@ -367,16 +367,20 @@
           <li><a href="../../index.html">Home</a></li>
           <li><a href="requirements.html">Requirements</a></li>
           <li><a href="research.html">Research</a></li>
-          <li><a href="algorithm.html"class="active">Algorithm</a></li>
+
+          <li><a href="algorithm.html" class="active">Algorithm</a></li>
+          <li><a href="ui-design.html">UI Design</a></li>
+
           <li><a href="system-design.html">System Design</a></li>
-          <li><a href="implements.html">Implements</a></li>
+          <li><a href="implements.html">Implementation</a></li>
           <li><a href="testing.html">Testing</a></li>
           <li><a href="evaluation.html">Evaluation</a></li>
-          <li><a href="appendix.html">Appendix</a></li>
+
+          <li><a href="appendix.html">Appendices</a></li>
+
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-      <a class="btn-getstarted" href="../../index.html">Get Started</a>
     </div>
   </header>
 
@@ -400,6 +404,7 @@
             <h3 class="subsection-title">Experiment on Fine-tuning</h3>
             <p class="intro-text">
               We were thinking of improving accuracy and relevancy, so we planned to fine-tune a language model to achieve better performance. 
+              Theoretically, a fine-tuned model 
               However, due to various reasons such as GPU limitation, cost limitation, time limitation, we stopped implementing. 
               The fine-tuning code is available in our GitHub, called model_agent in backend. Here is the process of how we did it.
             </p>
@@ -477,13 +482,13 @@
           <div class="results-content">
             <p class="results-text">
               Unfortunately, the result output was some sentences that aren't even grammatically correct, 
-              many sentences were nonsensical and lack coherence. As the model failed to produce meaningful 
-              systematic reviews, we did not conduct any measurement evaluations like BLEU scores.
+              many sentence were meaningless and lack coherence. As the model failed to produce a usable 
+              output, we did not conduct any measurement evaluations like cosine similarity or BLEU scores.
             </p>
             <p class="results-text">
               Overall, it is an interesting experience, especially the fine-tuning process for transformer models. 
               Also, we understand that there is a lot of challenges beside writing the code itself, such as data quality, 
-              pre-trained model itself, etc. If given more time and computational resources, we could try this on a larger 
+              pre-trained model itself, etc. If we are given more time and resources, we could try this on a larger 
               dataset and better language model, potentially achieving higher quality results.
             </p>
           </div>
@@ -491,10 +496,6 @@
           <div class="comparison-section"id="comparison">
             <h5 class="comparison-title">Comparison Between Outputs</h5>
             <p class="comparison-description">
-              Here's the comparison between output from our fine-tuned model, and our current application output:
-            </p>
-            <h5>Comparison Between Outputs</h5>
-            <p>
               Here's the comparison between output from our fine-tuned model, and our current application output:
             </p>
             <!-- Replace with your actual file paths -->
